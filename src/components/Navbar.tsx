@@ -34,8 +34,8 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? 'bg-white/95 backdrop-blur-md shadow-sm'
-          : 'bg-transparent'
+        ? 'bg-white/95 backdrop-blur-md shadow-sm'
+        : 'bg-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -81,7 +81,7 @@ export function Navbar() {
               Solicitar Proposta
             </Button>
             <a
-              href="https://sigess.com.br/auth"
+              href="https://app.sigess.com.br/auth"
               className="inline-flex h-9 items-center justify-center rounded-md border-2 border-emerald-600 bg-transparent px-5 text-sm font-bold text-emerald-600 shadow-sm hover:bg-emerald-50 transition-colors"
             >
               Entrar
