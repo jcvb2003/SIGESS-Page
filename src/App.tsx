@@ -1,33 +1,31 @@
-import { Navbar } from './components/Navbar';
-import { Hero } from './sections/Hero';
-import { CompleteManagement } from './sections/CompleteManagement';
-import { ForWho } from './sections/ForWho';
-import { Modules } from './sections/Modules';
-import { Differentials } from './sections/Differentials';
-import { Defeso } from './sections/Defeso';
-import { Pricing } from './sections/Pricing';
-import { Testimonials } from './sections/Testimonials';
-import { Contact } from './sections/Contact';
-import { Footer } from './sections/Footer';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Home } from './pages/Home';
+import { Utilities } from './pages/Utilities';
+import { TermsOfUse } from './pages/TermsOfUse';
 import './App.css';
+
+// Componente para resetar o scroll ao mudar de página
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <CompleteManagement />
-        <ForWho />
-        <Modules />
-        <Differentials />
-        <Defeso />
-        <Pricing />
-        <Testimonials />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/utilitarios" element={<Utilities />} />
+        <Route path="/termos-uso" element={<TermsOfUse />} />
+      </Routes>
+    </Router>
   );
 }
 

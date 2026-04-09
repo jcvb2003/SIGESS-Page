@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X, Fish } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const navLinks = [
@@ -13,6 +14,8 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,39 +27,47 @@ export function Navbar() {
   }, []);
 
   const scrollToSection = (href: string) => {
+    setIsMobileMenuOpen(false);
+
+    if (location.pathname !== '/') {
+      navigate('/' + href);
+      return;
+    }
+
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
-    setIsMobileMenuOpen(false);
   };
+
+  const isDark = isScrolled || location.pathname !== '/';
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-        ? 'bg-white/95 backdrop-blur-md shadow-sm'
-        : 'bg-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isDark ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="flex items-center gap-2 group"
             onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              if (location.pathname === '/') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
             }}
           >
             <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center group-hover:bg-emerald-700 transition-colors">
               <Fish className="w-6 h-6 text-white" />
             </div>
-            <span className={`text-xl font-bold transition-colors ${isScrolled ? 'text-slate-800' : 'text-slate-800'
-              }`}>
+            <span className="text-xl font-bold text-slate-800">
               SIGESS
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
@@ -64,12 +75,19 @@ export function Navbar() {
               <button
                 key={link.href}
                 onClick={() => scrollToSection(link.href)}
-                className={`text-sm font-medium transition-colors hover:text-emerald-600 ${isScrolled ? 'text-slate-600' : 'text-slate-600'
-                  }`}
+                className="text-sm font-medium transition-colors hover:text-emerald-600 text-slate-600"
               >
                 {link.label}
               </button>
             ))}
+            <Link
+              to="/utilitarios"
+              className={`text-sm font-medium transition-colors hover:text-emerald-600 ${
+                location.pathname === '/utilitarios' ? 'text-emerald-600' : 'text-slate-600'
+              }`}
+            >
+              Utilitários
+            </Link>
           </div>
 
           {/* CTA Buttons */}
@@ -115,6 +133,15 @@ export function Navbar() {
                 {link.label}
               </button>
             ))}
+            <Link
+              to="/utilitarios"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`block w-full text-left px-4 py-3 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors font-medium ${
+                location.pathname === '/utilitarios' ? 'text-emerald-600 bg-emerald-50' : 'text-slate-600'
+              }`}
+            >
+              Utilitários
+            </Link>
             <Button
               onClick={() => scrollToSection('#contato')}
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white mt-4"
@@ -122,7 +149,7 @@ export function Navbar() {
               Solicitar Proposta
             </Button>
             <a
-              href="https://progess.com.br/auth"
+              href="https://app.sigess.com.br/auth"
               className="inline-flex w-full items-center justify-center rounded-md border-2 border-emerald-600 bg-transparent px-5 py-2.5 mt-3 text-sm font-bold text-emerald-600 shadow-sm hover:bg-emerald-50 transition-colors"
             >
               Entrar
