@@ -4,25 +4,26 @@ const testimonials = [
   {
     quote: 'O SIGESS transformou a nossa secretaria. Antes levávamos dias para organizar os requerimentos do defeso. Hoje fazemos tudo em horas.',
     author: 'Presidente',
-    entity: 'Colônia Z-2 de Pescadores',
+    entity: 'Colônia Z-50 de Oeiras do Pará',
     rating: 5,
   },
   {
     quote: 'Finalmente um sistema que entende a realidade dos sindicatos de pesca. O controle financeiro é exatamente o que a gente precisava.',
     author: 'Secretária',
-    entity: 'SINPESCA Breves Eliseu',
+    entity: 'SINPESCA - Breves',
     rating: 5,
   },
   {
-    quote: 'A gestão do DAE era um pesadelo. Com o SIGESS, consigo ver em segundos quem está em dia e quem tem pendências.',
-    author: 'Tesoureiro',
-    entity: 'Associação de Pescadores do Litoral',
+    quote: 'O preenchimento do REAP é coisa de outro mundo. A facilidade que cada automação trouxe para o nosso dia a dia é incrível!',
+    author: 'Presidente',
+    entity: 'SINPESCA - Oeiras do Pará',
     rating: 5,
+    image: '/images/santana.png',
   },
   {
     quote: 'O suporte é excelente. Sempre que precisamos, a equipe está pronta para ajudar. Recomendo para todas as entidades de pesca.',
     author: 'Diretor',
-    entity: 'Sindicato dos Pescadores Artesanais',
+    entity: 'APOP',
     rating: 5,
   },
 ];
@@ -40,7 +41,7 @@ export function Testimonials() {
             O que dizem nossos clientes
           </h2>
           <p className="text-lg text-slate-600">
-            Entidades de pesca artesanal de todo o Brasil já utilizam o SIGESS 
+            Entidades de pesca artesanal de todo o Brasil já utilizam o SIGESS
             para simplificar sua gestão.
           </p>
         </div>
@@ -71,11 +72,19 @@ export function Testimonials() {
 
               {/* Author */}
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center">
-                  <span className="text-emerald-700 font-bold text-lg">
-                    {testimonial.author.charAt(0)}
-                  </span>
-                </div>
+                {testimonial.image ? (
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.author}
+                    className="w-12 h-12 rounded-full object-cover"
+                  />
+                ) : (
+                  <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                    <span className="text-emerald-700 font-bold text-lg">
+                      {testimonial.author.charAt(0)}
+                    </span>
+                  </div>
+                )}
                 <div>
                   <p className="font-semibold text-slate-800">{testimonial.author}</p>
                   <p className="text-sm text-slate-500">{testimonial.entity}</p>

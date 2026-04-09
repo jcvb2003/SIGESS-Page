@@ -16,7 +16,17 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
+    
+    const message = `Olá! Gostaria de uma proposta do SIGESS. Seguem meus dados:
+*Nome:* ${formData.nome}
+*Entidade:* ${formData.entidade}
+*Município:* ${formData.municipio}
+*Telefone:* ${formData.telefone}
+*Nº de Sócios:* ${formData.socios}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/5591993193461?text=${encodedMessage}`, '_blank');
+    
     setIsSubmitted(true);
   };
 

@@ -58,10 +58,10 @@ export function Footer() {
               <span className="text-xl font-bold text-white">SIGESS</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm">
-              Gestão completa para sindicatos e colônias de pescadores artesanais. 
+              Gestão completa para sindicatos e colônias de pescadores artesanais.
               O único sistema desenvolvido especificamente para a realidade da pesca artesanal brasileira.
             </p>
-            
+
             {/* Contact info */}
             <div className="space-y-3">
               <div className="flex items-center gap-3">
@@ -70,11 +70,11 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                <span className="text-sm">(99) 99999-9999</span>
+                <span className="text-sm">(99) 99319-3461</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                <span className="text-sm">Brasil</span>
+                <span className="text-sm">Oeiras do Pará - PA</span>
               </div>
             </div>
           </div>
@@ -195,20 +195,20 @@ export function Footer() {
 
           {/* Social links */}
           <div className="flex items-center gap-4">
-            <SocialIcon 
-              href="https://instagram.com" 
-              icon={Instagram} 
-              label="Instagram" 
+            <SocialIcon
+              href="https://instagram.com"
+              icon={Instagram}
+              label="Instagram"
             />
-            <SocialIcon 
-              href="https://linkedin.com" 
-              icon={Linkedin} 
-              label="LinkedIn" 
+            <SocialIcon
+              href="https://linkedin.com"
+              icon={Linkedin}
+              label="LinkedIn"
             />
-            <SocialIcon 
-              href="https://facebook.com" 
-              icon={Facebook} 
-              label="Facebook" 
+            <SocialIcon
+              href="https://facebook.com"
+              icon={Facebook}
+              label="Facebook"
             />
           </div>
         </div>

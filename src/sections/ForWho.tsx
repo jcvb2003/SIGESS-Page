@@ -4,7 +4,7 @@ const entities = [
   {
     icon: Anchor,
     title: 'Colônias de Pescadores',
-    description: 'Z-2, Z-1 e demais colônias municipais. Gestão completa para organizações de todos os portes.',
+    description: 'Todas as colônias municipais. Gestão completa para organizações de todos os portes.',
     color: 'bg-blue-50 text-blue-600',
   },
   {
@@ -34,7 +34,7 @@ export function ForWho() {
             Para quem é o SIGESS
           </h2>
           <p className="text-lg text-slate-600">
-            O SIGESS foi desenvolvido por quem conhece a pesca artesanal. 
+            O SIGESS foi desenvolvido por quem conhece a pesca artesanal.
             Atendemos diferentes tipos de entidades com a mesma dedicação.
           </p>
         </div>
