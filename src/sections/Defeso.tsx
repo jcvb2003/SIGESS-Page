@@ -20,7 +20,7 @@ const steps = [
     icon: CheckCircle,
     phase: 'Após o defeso',
     description:
-      'Acompanhe quem recebeu o benefício, registre os pagamentos pendentes e emita os comprovantes. Mantenha o histórico completo de cada sócio.',
+      'Importe o arquivo oficial do Portal da Transparência e descubra quem já recebeu o benefício em conta. O sistema cruza os dados automaticamente — confirme em lote e acione a cobrança das anuidades com um clique.',
   },
 ];
 

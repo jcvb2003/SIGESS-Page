@@ -8,6 +8,7 @@ const footerLinks = {
     { label: 'Defeso', href: '#defeso' },
     { label: 'Utilitários', href: '/utilitarios', isExternal: false },
     { label: 'Planos', href: '#planos' },
+    { label: 'FAQ', href: '#faq' },
   ],
   empresa: [
     { label: 'Sobre nós', href: '#' },
@@ -70,7 +71,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                <span className="text-sm">(99) 99319-3461</span>
+                <span className="text-sm">(91) 99319-3461</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-emerald-500" aria-hidden="true" />
