@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle, Fish } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export function Hero() {
@@ -49,7 +49,7 @@ export function Hero() {
           <div className="space-y-8 animate-fade-in-up">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
-              <Fish className="w-4 h-4" />
+              <img src="/logo.svg" alt="" className="w-5 h-5" />
               <span>Gestão para Pesca Artesanal</span>
             </div>
 
@@ -141,7 +141,7 @@ export function Hero() {
             <div className="absolute -top-4 -right-4 bg-emerald-600 text-white rounded-xl shadow-xl p-3 animate-float delay-300">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                  <Fish className="w-4 h-4" />
+                  <img src="/logo.svg" alt="" className="w-4 h-4 brightness-0 invert" />
                 </div>
                 <div>
                   <p className="text-xs font-medium opacity-90">Defeso 2026</p>

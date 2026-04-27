@@ -40,7 +40,7 @@ const modules = [
       'Garanta que nenhum pescador fique sem benefício',
       'Histórico de requerimentos',
     ],
-    image: '/images/tela-defeso.jpg',
+    image: '/images/requirements.png',
     color: 'from-emerald-500 to-emerald-600',
   },
   {

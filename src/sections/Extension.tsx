@@ -23,8 +23,8 @@ const extensionFeatures = [
   },
   {
     icon: Zap,
-    title: 'Cadastro Automático via PesqBrasil',
-    description: 'Ao abrir a ficha de um pescador no PesqBrasil, a extensão captura todos os dados e os envia direto para o cadastro do sócio no SIGESS. Sem digitar duas vezes.',
+    title: 'Cadastro Automático via Gov.br',
+    description: 'Ao abrir a ficha de um pescador no Gov.br, a extensão captura todos os dados e os envia direto para o cadastro do sócio no SIGESS. Sem digitar duas vezes.',
   },
 ];
 
@@ -47,8 +47,8 @@ export function Extension() {
             O braço automatizado do SIGESS
           </h2>
           <p className="text-lg text-slate-400 leading-relaxed">
-            A Extensão SIGESS conecta o sistema diretamente aos portais do governo — 
-            MTE, MPA, eSocial, gov.br — e executa as tarefas burocráticas no lugar 
+            A Extensão SIGESS conecta o sistema diretamente aos portais do governo —
+            MTE, MPA, eSocial, gov.br — e executa as tarefas burocráticas no lugar
             do seu funcionário. Não é um atalho. É automação real, do início ao fim.
           </p>
         </div>
@@ -56,7 +56,7 @@ export function Extension() {
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {extensionFeatures.map((feature, index) => (
-            <div 
+            <div
               key={index}
               className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-emerald-500/50 transition-all duration-300 group"
             >
@@ -79,12 +79,12 @@ export function Extension() {
                 Disponível para clientes SIGESS
               </h3>
               <p className="text-emerald-50 leading-relaxed text-sm">
-                Instalação via Firefox em minutos, 
+                Instalação via Firefox em minutos,
                 sem configuração técnica.
               </p>
             </div>
             <div className="mt-8">
-              <a 
+              <a
                 href="#contato"
                 onClick={(e) => {
                   e.preventDefault();

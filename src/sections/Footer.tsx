@@ -1,4 +1,4 @@
-import { Fish, Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const footerLinks = {
@@ -52,10 +52,8 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
-            <Link to="/" className="flex items-center gap-2 mb-6" aria-label="SIGESS Home">
-              <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center">
-                <Fish className="w-6 h-6 text-white" aria-hidden="true" />
-              </div>
+            <Link to="/" className="flex items-center gap-3 mb-6" aria-label="SIGESS Home">
+              <img src="/logo.svg" alt="SIGESS Logo" className="h-10 w-auto" />
               <span className="text-xl font-bold text-white">SIGESS</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm">

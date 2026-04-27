@@ -27,7 +27,7 @@ export function Pricing() {
             Investimento
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
-            Planos e contratação
+            Planos e <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">contratação</span>
           </h2>
           <p className="text-lg text-slate-600">
             Modelo de licenciamento anual por entidade. O valor é definido conforme o número de sócios cadastrados.

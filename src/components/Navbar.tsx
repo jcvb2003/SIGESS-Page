@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Fish } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -53,7 +53,7 @@ export function Navbar() {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-2 group"
+            className="flex items-center gap-3 group"
             onClick={(e) => {
               if (location.pathname === '/') {
                 e.preventDefault();
@@ -61,9 +61,7 @@ export function Navbar() {
               }
             }}
           >
-            <div className="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center group-hover:bg-emerald-700 transition-colors">
-              <Fish className="w-6 h-6 text-white" />
-            </div>
+            <img src="/logo.svg" alt="SIGESS Logo" className="h-10 w-auto group-hover:scale-105 transition-transform" />
             <span className="text-xl font-bold text-slate-800">
               SIGESS
             </span>

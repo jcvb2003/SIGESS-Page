@@ -59,7 +59,7 @@ export function Contact() {
                 Contato
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                Pronto para modernizar sua entidade?
+                Pronto para <span className="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">modernizar</span> sua entidade?
               </h2>
               <p className="text-lg text-slate-300 leading-relaxed">
                 Fale conosco pelo WhatsApp ou preencha o formulário. Nossa equipe 
