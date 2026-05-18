@@ -17,7 +17,7 @@ const faqs = [
       {
         question: 'Preciso instalar algum programa no computador?',
         answer:
-          'Não. O SIGESS funciona direto pelo navegador — Chrome, Firefox ou Edge. Não há instalação, não depende de um computador específico e os dados ficam seguros na nuvem.',
+          'Não. O SIGESS funciona direto pelo navegador - Chrome, Firefox ou Edge. Não há instalação, não depende de um computador específico e os dados ficam seguros na nuvem.',
       },
       {
         question: 'A secretaria tem pouca internet. O sistema vai funcionar?',
@@ -27,7 +27,7 @@ const faqs = [
       {
         question: 'Outros sindicatos vão conseguir ver os dados dos nossos sócios?',
         answer:
-          'Não. Cada entidade tem sua própria instância isolada do sistema. Os dados de uma entidade são completamente separados dos de qualquer outra — por arquitetura, não apenas por configuração.',
+          'Não. Cada entidade tem sua própria instância isolada do sistema. Os dados de uma entidade são completamente separados dos de qualquer outra - por arquitetura, não apenas por configuração.',
       },
     ],
   },
@@ -37,22 +37,27 @@ const faqs = [
       {
         question: 'O sistema gera os requerimentos de Seguro Defeso automaticamente?',
         answer:
-          'Sim. Com os dados do sócio já cadastrados, o SIGESS preenche e gera o requerimento pronto para assinar — sem precisar digitar nada duas vezes.',
+          'Sim. Com os dados do sócio já cadastrados, o SIGESS preenche e gera o requerimento pronto para assinar, sem precisar digitar tudo de novo.',
       },
       {
         question: 'Como eu sei quem já recebeu o benefício do defeso?',
         answer:
-          'O SIGESS importa o arquivo oficial do Portal da Transparência do governo federal e cruza automaticamente com os requerimentos cadastrados. Em minutos você sabe exatamente quem já recebeu o dinheiro em conta.',
+          'O SIGESS importa o arquivo oficial do Portal da Transparência e cruza automaticamente com os requerimentos cadastrados. Assim, a entidade descobre quem recebeu o seguro sem precisar entrar na conta gov.br de cada pescador para fazer a pesquisa.',
       },
       {
         question: 'O que é a Extensão SIGESS e eu preciso dela?',
         answer:
-          'A Extensão é um complemento para o navegador Firefox que automatiza tarefas nos portais do governo — como preencher o REAP, fazer login múltiplo no eSocial e gerar boletos GPS. É especialmente útil para entidades com muitos sócios para processar. O sistema web funciona normalmente sem ela.',
+          'A Extensão é um complemento para o Firefox que automatiza tarefas nos portais do governo, como preencher o REAP, fazer login múltiplo no eSocial e gerar boletos GPS. Ela é especialmente útil para entidades com muitos sócios e operações em lote.',
       },
       {
         question: 'O SIGESS cuida do REAP?',
         answer:
-          'Sim. O sistema controla quais anos cada sócio já enviou, identifica pendências usando a lista oficial do governo e, com a Extensão, envia o formulário automaticamente para até 5 sócios de uma vez.',
+          'Sim. O sistema controla quais anos cada sócio já enviou, identifica pendências usando a lista oficial do governo e, com a Extensão, permite fazer REAP em cerca de 20 segundos e enviar em lote para vários sócios.',
+      },
+      {
+        question: 'É possível gerar boletos e processar REAP em lote?',
+        answer:
+          'Sim. O ecossistema do SIGESS foi pensado para operação em escala: boletos podem ser gerados em massa e o REAP pode ser processado em lote, reduzindo horas de trabalho manual da secretaria.',
       },
     ],
   },
@@ -62,12 +67,12 @@ const faqs = [
       {
         question: 'Quanto custa?',
         answer:
-          'O valor é uma licença anual ajustada ao tamanho da sua entidade — quanto mais sócios, maior o valor. Não há taxa de setup nem custo por usuário interno. Entre em contato para receber uma proposta para a sua realidade.',
+          'O valor é uma licença anual ajustada ao tamanho da sua entidade - quanto mais sócios, maior o valor. Não há taxa de setup nem custo por usuário interno. Entre em contato para receber uma proposta para a sua realidade.',
       },
       {
         question: 'Quantos funcionários podem usar ao mesmo tempo?',
         answer:
-          'Sem limite. Você cadastra quantos usuários internos precisar, cada um com o nível de acesso adequado — secretaria, financeiro ou administrador.',
+          'Sem limite. Você cadastra quantos usuários internos precisar, cada um com o nível de acesso adequado - secretaria, financeiro ou administrador.',
       },
       {
         question: 'Se eu cancelar, perco os dados?',
@@ -75,9 +80,14 @@ const faqs = [
           'Não. Seus dados pertencem à sua entidade. Em caso de cancelamento, fornecemos exportação completa de tudo que foi cadastrado.',
       },
       {
+        question: 'Tem treinamento na implantação?',
+        answer:
+          'Sim. Nossa equipe realiza uma videochamada de treinamento completo, mostrando como usar o sistema na prática e tirando as dúvidas da equipe.',
+      },
+      {
         question: 'Tem suporte? Como funciona?',
         answer:
-          'Sim, suporte técnico está incluso na licença. O atendimento é feito por WhatsApp com uma equipe que conhece a realidade dos sindicatos de pesca.',
+          'Sim. O suporte técnico está incluso na licença e é 100% humano. O atendimento é feito por WhatsApp, Meet e telefone, com uma equipe que conhece a realidade das entidades de pesca.',
       },
       {
         question: 'É possível migrar os dados que já temos em planilha?',
@@ -90,9 +100,8 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-20 lg:py-28 bg-slate-50">
+    <section id="faq" className="relative py-20 lg:py-28 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Dúvidas frequentes
@@ -106,7 +115,6 @@ export function FAQ() {
           </p>
         </div>
 
-        {/* FAQ Groups */}
         <div className="space-y-12">
           {faqs.map((group) => (
             <div key={group.category}>
@@ -133,7 +141,6 @@ export function FAQ() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
         <div className="mt-16 text-center">
           <p className="text-slate-600 mb-4">
             Ainda tem dúvidas? Fale diretamente com nossa equipe.

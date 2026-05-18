@@ -51,7 +51,7 @@ const modules = [
       'Anuidades e mensalidades',
       'Gestão do DAE (Previdência Social)',
       'Contribuições compulsórias e facultativas',
-      'Cadastros governamentais',
+      'Boletos e guias com operação em massa',
       'Comprovantes na hora',
     ],
     image: '/images/tela-financeiro.jpg',
@@ -62,7 +62,8 @@ const modules = [
     title: 'REAP',
     description: 'Controle completo do Relatório de Exercício da Atividade Pesqueira. Desde o acompanhamento das pendências ao preenchimento e envio para o governo.',
     features: [
-      'REAP Simplificado (2021–2024) por ano de emissão do RGP',
+      'Em muitos casos, um REAP pode ser feito em cerca de 20 segundos',
+      'REAP Simplificado (2021-2024) por ano de emissão do RGP',
       'REAP Anual (2025 em diante) com importação de comprovantes PDF',
       'Identificação de pendências via lista oficial do governo',
       'Envio em lote para até 5 sócios via Extensão',
@@ -105,7 +106,6 @@ export function Modules() {
   return (
     <section id="modulos" className="relative py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Funcionalidades
@@ -119,7 +119,6 @@ export function Modules() {
           </p>
         </div>
 
-        {/* Modules Grid */}
         <div className="space-y-16">
           {modules.map((module, index) => (
             <div
@@ -127,9 +126,7 @@ export function Modules() {
               className={`grid lg:grid-cols-2 gap-8 lg:gap-16 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
             >
-              {/* Content */}
               <div className={`space-y-6 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                {/* Icon and Title */}
                 <div className="flex items-center gap-4">
                   <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
                     <module.icon className="w-7 h-7 text-white" />
@@ -143,7 +140,6 @@ export function Modules() {
                   {module.description}
                 </p>
 
-                {/* Features List */}
                 <ul className="space-y-3">
                   {module.features.map((feature, fIndex) => (
                     <li key={fIndex} className="flex items-start gap-3">
@@ -154,7 +150,6 @@ export function Modules() {
                 </ul>
               </div>
 
-              {/* Image */}
               {module.image ? (
                 <div className={`relative ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200/50">
@@ -164,7 +159,6 @@ export function Modules() {
                       className="w-full h-auto"
                     />
                   </div>
-                  {/* Decorative elements */}
                   <div className={`absolute -z-10 w-full h-full rounded-2xl bg-gradient-to-br ${module.color} opacity-10 -bottom-4 -right-4`} />
                 </div>
               ) : (
@@ -224,7 +218,6 @@ export function Modules() {
                         </>
                       ) : module.title === 'REAP' ? (
                         <>
-                          {/* Card 1: Simplificado */}
                           <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                             <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                               <Calendar className="w-24 h-24 text-teal-600" />
@@ -234,7 +227,7 @@ export function Modules() {
                                 <Calendar className="w-5 h-5 text-teal-600" />
                               </div>
                               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Simplificado</p>
-                              <p className="text-xl font-bold text-slate-800 mb-3">2021–2024</p>
+                              <p className="text-xl font-bold text-slate-800 mb-3">2021-2024</p>
                               <div className="flex gap-1">
                                 {[21, 22, 23, 24].map(y => (
                                   <div key={y} className="w-7 h-5 bg-teal-500 rounded flex items-center justify-center text-[9px] text-white font-bold tracking-tighter">'{y}</div>
@@ -243,7 +236,6 @@ export function Modules() {
                             </div>
                           </div>
 
-                          {/* Card 2: Anual */}
                           <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                             <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                               <FileSearch className="w-24 h-24 text-teal-600" />
@@ -263,7 +255,6 @@ export function Modules() {
                             </div>
                           </div>
 
-                          {/* Card 3: Lote */}
                           <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                             <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                               <Users className="w-24 h-24 text-teal-600" />
@@ -284,7 +275,6 @@ export function Modules() {
                             </div>
                           </div>
 
-                          {/* Card 4: Radar */}
                           <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                             <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                               <Search className="w-24 h-24 text-teal-600" />
@@ -325,7 +315,7 @@ export function Modules() {
                                 <Settings className="w-5 h-5 text-slate-600" />
                               </div>
                               <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Defeso</p>
-                              <p className="text-2xl font-bold text-slate-800">Mar – Mai</p>
+                              <p className="text-2xl font-bold text-slate-800">Mar - Mai</p>
                             </div>
                           </div>
                           <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all col-span-2">

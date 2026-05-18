@@ -28,12 +28,10 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-emerald-50/50" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-50/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
-      {/* Wave pattern */}
       <div className="absolute bottom-0 left-0 right-0 h-32 opacity-10">
         <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
           <path
@@ -45,15 +43,12 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
           <div className="space-y-8 animate-fade-in-up">
-            {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
               <img src="/logo.svg" alt="" className="w-5 h-5" />
               <span>Gestão para Pesca Artesanal</span>
             </div>
 
-            {/* Title */}
             <div className="space-y-4">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight">
                 Simplifique a{' '}
@@ -61,17 +56,17 @@ export function Hero() {
                 da sua entidade de pesca
               </h1>
               <p className="text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed">
-                Chega de planilhas, cadernos e perda de tempo. O SIGESS organiza seus sócios,
-                documentos e finanças de forma simples, segura e 100% online.
+                O único sistema desenvolvido para a realidade do pescador artesanal brasileiro.
+                Do cadastro do sócio ao controle do defeso, tudo em um só lugar - simples,
+                seguro e 100% online.
               </p>
             </div>
 
-            {/* Features list */}
             <div className="flex flex-wrap gap-4">
               {[
-                'Acesso de qualquer lugar',
-                'Dados seguros na nuvem',
-                'Suporte dedicado',
+                'REAP em cerca de 20 segundos',
+                'Guia GPS/DAE e REAP em lote',
+                'Treinamento completo + suporte humano',
               ].map((feature, index) => (
                 <div
                   key={index}
@@ -83,7 +78,6 @@ export function Hero() {
               ))}
             </div>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
@@ -109,7 +103,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Dashboard Preview */}
           <div
             ref={imageRef}
             className="relative animate-slide-in-right transition-transform duration-300 ease-out"
@@ -120,11 +113,9 @@ export function Hero() {
                 alt="Dashboard do SIGESS"
                 className="w-full h-auto"
               />
-              {/* Overlay gradient */}
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/10 to-transparent pointer-events-none" />
             </div>
 
-            {/* Floating stats card */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-slate-100 animate-float">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
@@ -137,7 +128,6 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Floating badge */}
             <div className="absolute -top-4 -right-4 bg-emerald-600 text-white rounded-xl shadow-xl p-3 animate-float delay-300">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">

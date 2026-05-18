@@ -20,28 +20,19 @@ const steps = [
     icon: CheckCircle,
     phase: 'Após o defeso',
     description:
-      'Importe o arquivo oficial do Portal da Transparência e descubra quem já recebeu o benefício em conta. O sistema cruza os dados automaticamente — confirme em lote e acione a cobrança das anuidades com um clique.',
+      'Importe o arquivo oficial do Portal da Transparência e descubra automaticamente quem já recebeu o benefício em conta. O sistema cruza os dados sem precisar entrar no gov.br de cada pescador - confirme em lote e acione a cobrança das anuidades com um clique.',
   },
 ];
 
 export function Defeso() {
   return (
     <section id="defeso" className="relative py-20 lg:py-28 bg-gradient-emerald overflow-hidden">
-      {/* Background decorations */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
-      {/* Wave top */}
-      <div className="absolute top-0 left-0 right-0 h-16 -mt-1">
-        <svg viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path d="M0 64V32C240 64 480 0 720 32C960 64 1200 0 1440 32V64H0Z" fill="white" />
-        </svg>
-      </div>
-
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center mb-14">
           <span className="inline-block px-4 py-1.5 bg-white/20 text-white rounded-full text-sm font-medium mb-4">
             Exclusivo SIGESS
@@ -55,9 +46,7 @@ export function Defeso() {
           </p>
         </div>
 
-        {/* Timeline */}
         <div className="relative">
-          {/* Vertical line */}
           <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-white/30 -translate-x-1/2" />
 
           <div className="space-y-8 md:space-y-12">
@@ -66,7 +55,6 @@ export function Defeso() {
                 key={step.phase}
                 className={`flex flex-col md:flex-row items-center gap-6 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
               >
-                {/* Card */}
                 <div className={`flex-1 ${i % 2 === 1 ? 'md:text-right' : 'md:text-left'}`}>
                   <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
                     <h3 className="font-bold text-lg text-white mb-2">{step.phase}</h3>
@@ -74,7 +62,6 @@ export function Defeso() {
                   </div>
                 </div>
 
-                {/* Center icon */}
                 <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center z-10 shrink-0 shadow-lg">
                   <step.icon className="w-7 h-7 text-emerald-600" />
                 </div>
@@ -85,7 +72,6 @@ export function Defeso() {
           </div>
         </div>
 
-        {/* Presidential override */}
         <div className="mt-12 flex items-start gap-4 bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
           <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
             <UserCheck className="w-6 h-6 text-white" />
@@ -93,13 +79,12 @@ export function Defeso() {
           <div>
             <h4 className="font-bold text-white mb-1">Liberação presidencial</h4>
             <p className="text-sm text-emerald-100 leading-relaxed">
-              O presidente pode liberar manualmente sócios com pendências para assinarem o requerimento —
+              O presidente pode liberar manualmente sócios com pendências para assinarem o requerimento -
               com registro completo de quem autorizou e por quê. Transparência total nas exceções.
             </p>
           </div>
         </div>
 
-        {/* CTA */}
         <div className="mt-12 text-center">
           <a
             href="#contato"
@@ -117,12 +102,6 @@ export function Defeso() {
         </div>
       </div>
 
-      {/* Wave bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-16 -mb-1">
-        <svg viewBox="0 0 1440 64" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path d="M0 0V32C240 0 480 64 720 32C960 0 1200 64 1440 32V0H0Z" fill="white" />
-        </svg>
-      </div>
     </section>
   );
 }

@@ -2,7 +2,7 @@ import { Quote, Star } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: 'O SIGESS transformou a nossa secretaria. Antes levávamos dias para organizar os requerimentos do defeso. Hoje fazemos tudo em horas.',
+    quote: 'O SIGESS transformou a nossa secretaria. Antes levávamos dias para organizar os requerimentos do defeso. Hoje fazemos tudo em minutos.',
     author: 'Presidente',
     entity: 'Colônia Z-50 de Oeiras do Pará',
     rating: 5,

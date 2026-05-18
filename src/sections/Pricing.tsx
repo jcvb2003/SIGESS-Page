@@ -1,13 +1,53 @@
-import { CheckCircle, Users, ArrowRight } from 'lucide-react';
+import { CheckCircle, Users, ArrowRight, Zap, Monitor, Puzzle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const features = [
   'Instância exclusiva e segura',
   'Todos os módulos inclusos',
-  'Suporte técnico dedicado',
-  'Atualizações contínuas',
+  'Treinamento completo na implantação',
+  'Suporte humano por WhatsApp, Meet e telefone',
   'Sem limite de usuários internos',
   'Dados protegidos e isolados',
+];
+
+const pricingItems = [
+  {
+    icon: Monitor,
+    category: 'Sistema Web',
+    product: 'Até 5000 sócios',
+    plan: 'Anual',
+    price: 'R$ 2.499,00',
+  },
+  {
+    icon: Monitor,
+    category: 'Sistema Web',
+    product: '+5000*',
+    plan: 'Anual',
+    price: 'R$ 3.299,00',
+  },
+  {
+    icon: Puzzle,
+    category: 'Extensão',
+    product: 'Firefox',
+    plan: 'Anual',
+    price: 'R$ 2.999,00',
+  },
+  {
+    icon: Zap,
+    category: 'Combo',
+    product: 'Até 5000 sócios + Extensão',
+    plan: 'Anual',
+    price: 'R$ 4.499,00',
+    featured: true,
+  },
+  {
+    icon: Zap,
+    category: 'Combo',
+    product: '+5000* + Extensão',
+    plan: 'Anual',
+    price: 'R$ 5.499,00',
+    featured: true,
+  },
 ];
 
 export function Pricing() {
@@ -21,7 +61,6 @@ export function Pricing() {
   return (
     <section id="planos" className="relative py-20 lg:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Investimento
@@ -30,15 +69,13 @@ export function Pricing() {
             Planos e <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">contratação</span>
           </h2>
           <p className="text-lg text-slate-600">
-            Modelo de licenciamento anual por entidade. O valor é definido conforme o número de sócios cadastrados.
+            Licenciamento anual por entidade, com opções para sistema web, extensão e combos completos.
           </p>
         </div>
 
-        {/* Pricing Card */}
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 lg:p-12 text-white shadow-2xl">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left side */}
+            <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
               <div className="space-y-6">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium">
                   <Users className="w-4 h-4" />
@@ -46,12 +83,31 @@ export function Pricing() {
                 </div>
 
                 <h3 className="text-2xl lg:text-3xl font-bold">
-                  Proposta personalizada
+                  Um investimento pequeno perto do custo de uma equipe inteira
                 </h3>
 
                 <p className="text-slate-300 leading-relaxed">
-                  Valor ajustado à realidade da sua entidade.
+                  O ecossistema do SIGESS pode custar menos de 5% do valor anual de 5 funcionários
+                  recebendo salário mínimo, enquanto automatiza tarefas críticas da secretaria.
                 </p>
+
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">5 funcionários</p>
+                    <p className="text-2xl font-bold text-white">R$ 97.260</p>
+                    <p className="text-sm text-slate-400 mt-1">Só em 12 meses de salário mínimo</p>
+                  </div>
+                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Combo até 5000</p>
+                    <p className="text-2xl font-bold text-emerald-400">R$ 4.499</p>
+                    <p className="text-sm text-slate-400 mt-1">Sistema web + extensão por 1 ano</p>
+                  </div>
+                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
+                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Comparação</p>
+                    <p className="text-2xl font-bold text-emerald-400">~4,6%</p>
+                    <p className="text-sm text-slate-400 mt-1">Do custo salarial anual</p>
+                  </div>
+                </div>
 
                 <div className="space-y-4">
                   {features.map((feature, index) => (
@@ -63,14 +119,56 @@ export function Pricing() {
                 </div>
               </div>
 
-              {/* Right side */}
-              <div className="bg-white/5 rounded-2xl p-8 border border-white/10">
-                <p className="text-slate-300 text-lg font-semibold mb-2">Proposta personalizada</p>
-                <p className="text-slate-400 text-sm mb-8">
-                  Valor ajustado à realidade da sua entidade
+              <div className="space-y-5">
+                <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
+                  <p className="text-slate-200 text-lg font-semibold mb-1">Tabela de preços</p>
+                  <p className="text-slate-400 text-sm">
+                    Valores anuais para contratação do sistema, extensão ou combo completo.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  {pricingItems.map((item) => (
+                    <div
+                      key={`${item.category}-${item.product}`}
+                      className={`rounded-2xl border p-5 transition-colors ${
+                        item.featured
+                          ? 'bg-emerald-500/10 border-emerald-400/30'
+                          : 'bg-white/5 border-white/10'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-4">
+                        <div className="flex items-start gap-4">
+                          <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+                            item.featured ? 'bg-emerald-500/20' : 'bg-white/10'
+                          }`}>
+                            <item.icon className={`w-5 h-5 ${item.featured ? 'text-emerald-300' : 'text-slate-200'}`} />
+                          </div>
+                          <div>
+                            <p className={`text-sm font-semibold ${item.featured ? 'text-emerald-300' : 'text-slate-300'}`}>
+                              {item.category}
+                            </p>
+                            <p className="text-white font-semibold">{item.product}</p>
+                            <p className="text-slate-400 text-sm">{item.plan}</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-2xl font-bold text-white">{item.price}</p>
+                          {item.featured ? (
+                            <p className="text-xs uppercase tracking-[0.2em] text-emerald-300 mt-1">Mais vantajoso</p>
+                          ) : null}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <p className="text-xs text-slate-400 leading-relaxed">
+                  * Faixa para entidades com mais de 5000 sócios, atendendo até 10000.
+                  Acima disso, os valores são planejados conforme a operação da entidade.
                 </p>
 
-                <div className="space-y-4">
+                <div className="space-y-4 pt-2">
                   <Button
                     size="lg"
                     onClick={scrollToContact}
@@ -101,13 +199,12 @@ export function Pricing() {
           </div>
         </div>
 
-        {/* Trust badges */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { label: 'Sem taxa de setup', desc: 'Comece imediatamente' },
-            { label: 'Cancelamento flexível', desc: 'Sem multa ou fidelidade' },
+            { label: 'Treinamento incluso', desc: 'Implantação guiada' },
             { label: 'Suporte incluso', desc: 'Atendimento humano' },
-            { label: 'Garantia de 30 dias', desc: 'Dinheiro de volta' },
+            { label: 'Licença anual', desc: 'Mais previsibilidade' },
           ].map((item, index) => (
             <div key={index}>
               <p className="font-semibold text-slate-800 mb-1">{item.label}</p>

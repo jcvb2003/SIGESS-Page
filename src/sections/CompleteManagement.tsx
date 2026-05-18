@@ -92,7 +92,7 @@ export function CompleteManagement() {
           line-height: 1.65;
           margin-bottom: 36px;
           font-weight: 300;
-          max-width: 480px;
+          max-width: 520px;
           font-family: var(--font-body);
         }
 
@@ -297,24 +297,26 @@ export function CompleteManagement() {
       <div className="hero">
         <div className="hero-left">
           <div className="hero-badge">
-            <span className="hero-badge-dot"></span>Gestão sindical especializada
+            <span className="hero-badge-dot"></span>Produtividade real na secretaria
           </div>
-          <h2 className="hero-title">Gestão completa para <span>entidades de pesca</span> artesanal</h2>
+          <h2 className="hero-title">Mais resultado com <span>menos trabalho manual</span></h2>
           <p className="hero-sub">
-            O único sistema desenvolvido para a realidade do pescador artesanal brasileiro. Do cadastro do sócio ao controle do defeso, tudo em um só lugar — simples, seguro e 100% online.
+            O ecossistema do SIGESS automatiza tarefas que normalmente consomem várias pessoas na secretaria.
+            REAP, boletos, defeso, controle financeiro e conferências passam a acontecer com muito mais velocidade,
+            menos erro e mais previsibilidade.
           </p>
           <div className="hero-stats">
             <div>
-              <div className="hero-stat-num">100%</div>
-              <div className="hero-stat-label">Online, sem instalação</div>
+              <div className="hero-stat-num">20s</div>
+              <div className="hero-stat-label">Para fazer um REAP</div>
             </div>
             <div>
-              <div className="hero-stat-num">15min</div>
-              <div className="hero-stat-label">Para ativar nova entidade</div>
+              <div className="hero-stat-num">Lote</div>
+              <div className="hero-stat-label">Boletos e REAP em massa</div>
             </div>
             <div>
-              <div className="hero-stat-num">LGPD</div>
-              <div className="hero-stat-label">Dados protegidos por lei</div>
+              <div className="hero-stat-num">5x</div>
+              <div className="hero-stat-label">Capaz de substituir até 5 funcionários</div>
             </div>
           </div>
         </div>
@@ -327,47 +329,47 @@ export function CompleteManagement() {
             </div>
             <div className="screen-inner">
               <div className="mock-header">
-                <span className="mock-title">Financeiro</span>
-                <span className="mock-badge-green">2026</span>
+                <span className="mock-title">Central de Automação</span>
+                <span className="mock-badge-green">Ativa</span>
               </div>
               <div className="mock-cards">
                 <div className="mock-card">
-                  <div className="mock-card-label">Arrecadado no ano</div>
-                  <div className="mock-card-val green">R$ 48.200</div>
+                  <div className="mock-card-label">Tempo médio REAP</div>
+                  <div className="mock-card-val green">20s</div>
                 </div>
                 <div className="mock-card">
-                  <div className="mock-card-label">Inadimplentes</div>
-                  <div className="mock-card-val red">127</div>
+                  <div className="mock-card-label">Processamento em lote</div>
+                  <div className="mock-card-val blue">5 sócios</div>
                 </div>
                 <div className="mock-card">
-                  <div className="mock-card-label">DAE pendentes</div>
-                  <div className="mock-card-val amber">23</div>
+                  <div className="mock-card-label">Boletos gerados</div>
+                  <div className="mock-card-val amber">126</div>
                 </div>
                 <div className="mock-card">
-                  <div className="mock-card-label">Arrecadado no mês</div>
-                  <div className="mock-card-val blue">R$ 3.840</div>
+                  <div className="mock-card-label">Seguro identificado</div>
+                  <div className="mock-card-val green">48 pagos</div>
                 </div>
               </div>
               <div className="mock-table">
                 <div className="mock-table-head">
                   <span className="mock-th">Sócio</span>
-                  <span className="mock-th">Situação</span>
-                  <span className="mock-th">Regime</span>
+                  <span className="mock-th">REAP</span>
+                  <span className="mock-th">Seguro</span>
                 </div>
                 <div className="mock-row">
                   <div><div className="mock-name">Ana da Silva</div><div className="mock-cpf">123.456.789-01</div></div>
-                  <span className="mock-status st-ok">Em dia</span>
-                  <span style={{ fontSize: '10px', color: '#94a3b8' }}>Anuidade</span>
+                  <span className="mock-status st-ok">Enviado</span>
+                  <span style={{ fontSize: '10px', color: '#059669', fontWeight: 700 }}>Recebeu</span>
                 </div>
                 <div className="mock-row">
                   <div><div className="mock-name">João Costa</div><div className="mock-cpf">234.567.890-12</div></div>
-                  <span className="mock-status st-bad">2 anos atraso</span>
-                  <span style={{ fontSize: '10px', color: '#94a3b8' }}>Anuidade</span>
+                  <span className="mock-status st-warn">Pendente</span>
+                  <span style={{ fontSize: '10px', color: '#d97706', fontWeight: 700 }}>Aguardando</span>
                 </div>
                 <div className="mock-row">
                   <div><div className="mock-name">Maria Ferreira</div><div className="mock-cpf">345.678.901-23</div></div>
-                  <span className="mock-status st-warn">Liberada</span>
-                  <span style={{ fontSize: '10px', color: '#94a3b8' }}>Anuidade</span>
+                  <span className="mock-status st-ok">Em lote</span>
+                  <span style={{ fontSize: '10px', color: '#2563eb', fontWeight: 700 }}>Conferindo</span>
                 </div>
               </div>
             </div>
