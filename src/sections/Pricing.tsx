@@ -1,7 +1,62 @@
-import { CheckCircle, Users, ArrowRight, Zap, Monitor, Puzzle } from 'lucide-react';
+import { useState } from 'react';
+import {
+  CheckCircle,
+  ArrowRight,
+  Laptop,
+  Shield,
+  BookOpen,
+  Headphones,
+  CalendarCheck,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const features = [
+// ─────────────────────────────────────────────────────────────────────────────
+// FAIXAS DE LICENÇA
+// ─────────────────────────────────────────────────────────────────────────────
+const tiers = [
+  {
+    id: 'ate-500',
+    range: 'Até 500',
+    sub: 'sócios',
+    computers: 1,
+    price: 2197,
+    featured: false,
+  },
+  {
+    id: '501-1000',
+    range: '501 a 1.000',
+    sub: 'sócios',
+    computers: 2,
+    price: 2997,
+    featured: false,
+  },
+  {
+    id: '1001-2000',
+    range: '1.001 a 2.000',
+    sub: 'sócios',
+    computers: 3,
+    price: 3897,
+    featured: true, // destaque central
+  },
+  {
+    id: '2001-5000',
+    range: '2.001 a 5.000',
+    sub: 'sócios',
+    computers: 4,
+    price: 4797,
+    featured: false,
+  },
+  {
+    id: '5001-9000',
+    range: '5.001 a 9.000',
+    sub: 'sócios',
+    computers: 5,
+    price: 5997,
+    featured: false,
+  },
+];
+
+const commonFeatures = [
   'Instância exclusiva e segura',
   'Todos os módulos inclusos',
   'Treinamento completo na implantação',
@@ -10,208 +65,291 @@ const features = [
   'Dados protegidos e isolados',
 ];
 
-const pricingItems = [
-  {
-    icon: Monitor,
-    category: 'Sistema Web',
-    product: 'Até 5000 sócios',
-    plan: 'Anual',
-    price: 'R$ 2.499,00',
-  },
-  {
-    icon: Monitor,
-    category: 'Sistema Web',
-    product: '+5000*',
-    plan: 'Anual',
-    price: 'R$ 3.299,00',
-  },
-  {
-    icon: Puzzle,
-    category: 'Extensão',
-    product: 'Firefox',
-    plan: 'Anual',
-    price: 'R$ 2.999,00',
-  },
-  {
-    icon: Zap,
-    category: 'Combo',
-    product: 'Até 5000 sócios + Extensão',
-    plan: 'Anual',
-    price: 'R$ 4.499,00',
-    featured: true,
-  },
-  {
-    icon: Zap,
-    category: 'Combo',
-    product: '+5000* + Extensão',
-    plan: 'Anual',
-    price: 'R$ 5.499,00',
-    featured: true,
-  },
+const trustItems = [
+  { icon: Shield,        label: 'Sem taxa de setup',   desc: 'Comece imediatamente' },
+  { icon: BookOpen,      label: 'Treinamento incluso', desc: 'Implantação guiada'   },
+  { icon: Headphones,    label: 'Suporte incluso',     desc: 'Atendimento humano'   },
+  { icon: CalendarCheck, label: 'Licença anual',       desc: 'Mais previsibilidade' },
 ];
 
+function formatPrice(value: number): string {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
 export function Pricing() {
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
   const scrollToContact = () => {
     const element = document.querySelector('#contato');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="planos" className="relative py-20 lg:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+    <section id="planos" className="relative py-20 lg:py-28 bg-white overflow-hidden">
+      {/* Blob decorativo */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full"
+        style={{
+          background:
+            'radial-gradient(ellipse at center, rgba(16,185,129,0.06) 0%, transparent 70%)',
+        }}
+      />
+
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* ── Cabeçalho ───────────────────────────────────────────────────── */}
+        <div className="text-center max-w-3xl mx-auto mb-14">
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Investimento
           </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
-            Planos e <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">contratação</span>
+            Um plano.{' '}
+            <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
+              Tudo incluso.
+            </span>
           </h2>
-          <p className="text-lg text-slate-600">
-            Licenciamento anual por entidade, com opções para sistema web, extensão e combos completos.
+          <p className="text-lg text-slate-500">
+            Sistema web completo e extensão Firefox em uma única licença anual por entidade.
+            Sem separar produtos, sem escolher módulos — a licença inclui tudo que sua entidade
+            precisa para automatizar a secretaria, do cadastro de sócios ao processamento do REAP.
+            Escolha a faixa que corresponde ao tamanho da sua organização.
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl p-8 lg:p-12 text-white shadow-2xl">
-            <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 items-start">
-              <div className="space-y-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium">
-                  <Users className="w-4 h-4" />
-                  <span>Licença anual</span>
-                </div>
+        {/* ── Cards de faixas ─────────────────────────────────────────────── */}
+        <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
+          {tiers.map((tier, index) => {
+            const isHovered = hoveredIndex === index;
 
-                <h3 className="text-2xl lg:text-3xl font-bold">
-                  Um investimento pequeno perto do custo de uma equipe inteira
-                </h3>
-
-                <p className="text-slate-300 leading-relaxed">
-                  O ecossistema do SIGESS pode custar menos de 5% do valor anual de 5 funcionários
-                  recebendo salário mínimo, enquanto automatiza tarefas críticas da secretaria.
-                </p>
-
-                <div className="grid sm:grid-cols-3 gap-4">
-                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">5 funcionários</p>
-                    <p className="text-2xl font-bold text-white">R$ 97.260</p>
-                    <p className="text-sm text-slate-400 mt-1">Só em 12 meses de salário mínimo</p>
+            if (tier.featured) {
+              // ── Card de destaque ──────────────────────────────────────────
+              return (
+                <div
+                  key={tier.id}
+                  id={`card-${tier.id}`}
+                  className="relative flex flex-col rounded-3xl shadow-2xl shadow-emerald-500/25 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow"
+                  style={{
+                    background: 'linear-gradient(160deg, #059669 0%, #064e3b 100%)',
+                  }}
+                >
+                  {/* Badge "Mais contratado" */}
+                  <div className="absolute -top-4 inset-x-0 flex justify-center">
+                    <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-400 text-amber-900 text-xs font-black rounded-full shadow-lg uppercase tracking-wider whitespace-nowrap">
+                      ⭐ O Mais Contratado
+                    </span>
                   </div>
-                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Combo até 5000</p>
-                    <p className="text-2xl font-bold text-emerald-400">R$ 4.499</p>
-                    <p className="text-sm text-slate-400 mt-1">Sistema web + extensão por 1 ano</p>
-                  </div>
-                  <div className="bg-white/5 rounded-2xl p-5 border border-white/10">
-                    <p className="text-xs uppercase tracking-[0.2em] text-slate-400 mb-2">Comparação</p>
-                    <p className="text-2xl font-bold text-emerald-400">~4,6%</p>
-                    <p className="text-sm text-slate-400 mt-1">Do custo salarial anual</p>
-                  </div>
-                </div>
 
-                <div className="space-y-4">
-                  {features.map((feature, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                      <span className="text-slate-300">{feature}</span>
+                  <div className="pt-10 pb-9 px-8 flex flex-col gap-6 h-full">
+                    {/* Faixa */}
+                    <div className="text-center">
+                      <p className="text-sm uppercase tracking-widest text-emerald-300 font-bold mb-1">
+                        {tier.sub}
+                      </p>
+                      <p className="text-2xl font-black text-white leading-tight">
+                        {tier.range}
+                      </p>
                     </div>
-                  ))}
-                </div>
-              </div>
 
-              <div className="space-y-5">
-                <div className="bg-white/5 rounded-2xl p-6 border border-white/10">
-                  <p className="text-slate-200 text-lg font-semibold mb-1">Tabela de preços</p>
-                  <p className="text-slate-400 text-sm">
-                    Valores anuais para contratação do sistema, extensão ou combo completo.
-                  </p>
-                </div>
+                    <div className="h-px w-full bg-emerald-600/50" />
 
-                <div className="space-y-3">
-                  {pricingItems.map((item) => (
-                    <div
-                      key={`${item.category}-${item.product}`}
-                      className={`rounded-2xl border p-5 transition-colors ${
-                        item.featured
-                          ? 'bg-emerald-500/10 border-emerald-400/30'
-                          : 'bg-white/5 border-white/10'
-                      }`}
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex items-start gap-4">
-                          <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
-                            item.featured ? 'bg-emerald-500/20' : 'bg-white/10'
-                          }`}>
-                            <item.icon className={`w-5 h-5 ${item.featured ? 'text-emerald-300' : 'text-slate-200'}`} />
-                          </div>
-                          <div>
-                            <p className={`text-sm font-semibold ${item.featured ? 'text-emerald-300' : 'text-slate-300'}`}>
-                              {item.category}
-                            </p>
-                            <p className="text-white font-semibold">{item.product}</p>
-                            <p className="text-slate-400 text-sm">{item.plan}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className="text-2xl font-bold text-white">{item.price}</p>
-                          {item.featured ? (
-                            <p className="text-xs uppercase tracking-[0.2em] text-emerald-300 mt-1">Mais vantajoso</p>
-                          ) : null}
-                        </div>
+                    {/* Preço */}
+                    <div className="flex flex-col gap-1 items-center text-center">
+                      <p className="text-5xl font-black text-white leading-none tracking-tight">
+                        {formatPrice(tier.price)}
+                      </p>
+                      <div className="flex flex-col items-center gap-2 mt-2">
+                        <span className="text-sm text-emerald-200 font-medium">pagamento único anual</span>
+                        <span className="text-sm px-4 py-1 bg-emerald-800/60 text-emerald-100 rounded-full font-bold shadow-inner border border-emerald-700/50">
+                          Equivale a apenas {formatPrice(tier.price / 12)}/mês
+                        </span>
                       </div>
                     </div>
-                  ))}
-                </div>
 
-                <p className="text-xs text-slate-400 leading-relaxed">
-                  * Faixa para entidades com mais de 5000 sócios, atendendo até 10000.
-                  Acima disso, os valores são planejados conforme a operação da entidade.
-                </p>
+                    {/* Computadores */}
+                    <div className="flex items-center justify-center gap-2 bg-emerald-950/30 rounded-xl px-4 py-3 mt-2 border border-emerald-600/30">
+                      <Laptop className="w-5 h-5 text-emerald-300 flex-shrink-0" />
+                      <span className="text-sm text-emerald-50 font-bold">
+                        {tier.computers} computadores para a extensão
+                      </span>
+                    </div>
 
-                <div className="space-y-4 pt-2">
-                  <Button
-                    size="lg"
-                    onClick={scrollToContact}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-6 text-lg font-semibold btn-glow group"
-                  >
-                    Solicitar proposta
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
+                    {/* Features summary */}
+                    <div className="flex flex-col gap-3 mt-4 mb-6">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-medium text-emerald-50">Todos os módulos web liberados</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-medium text-emerald-50">Automações MTE/MPA ilimitadas</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-medium text-emerald-50">Treinamento Premium Guiado</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-medium text-emerald-50">Suporte Humano Prioritário</span>
+                      </div>
+                    </div>
 
-                  <Button
-                    size="lg"
-                    onClick={scrollToContact}
-                    className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-6 text-lg font-semibold"
-                  >
-                    <svg
-                      className="w-5 h-5 mr-2"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
+                    {/* CTA */}
+                    <Button
+                      id={`cta-${tier.id}`}
+                      size="lg"
+                      onClick={scrollToContact}
+                      className="w-full bg-white hover:bg-emerald-50 text-emerald-800 font-black py-7 text-lg shadow-xl mt-auto group"
                     >
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                    </svg>
-                    Falar no WhatsApp
-                  </Button>
+                      Solicitar Proposta
+                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+                    </Button>
+                  </div>
                 </div>
+              );
+            }
+
+            // ── Cards normais ─────────────────────────────────────────────
+            return (
+              <div
+                key={tier.id}
+                id={`card-${tier.id}`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`
+                  flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
+                  w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
+                  ${isHovered
+                    ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
+                    : 'bg-slate-800/80 border-slate-700 shadow-lg'
+                  }
+                `}
+              >
+                {/* Faixa */}
+                <div className="text-center mb-6">
+                  <p className="text-sm uppercase tracking-widest text-slate-400 font-bold mb-1">
+                    {tier.sub}
+                  </p>
+                  <p className="text-2xl font-bold text-white leading-tight">
+                    {tier.range}
+                  </p>
+                </div>
+                
+                <div className="h-px w-full bg-slate-700/50 mb-6" />
+
+                {/* Preço */}
+                <div className="flex flex-col gap-1 items-center text-center">
+                  <p className="text-4xl font-black text-white leading-none tracking-tight">
+                    {formatPrice(tier.price)}
+                  </p>
+                  <div className="flex flex-col items-center gap-2 mt-2">
+                    <span className="text-sm text-slate-400 font-medium">pagamento único anual</span>
+                    <span className="text-sm px-4 py-1 bg-slate-700/50 text-slate-200 rounded-full font-bold border border-slate-600/50">
+                      Equivale a apenas {formatPrice(tier.price / 12)}/mês
+                    </span>
+                  </div>
+                </div>
+
+                {/* Computadores */}
+                <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
+                  <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
+                  <span className="text-sm text-slate-200 font-bold">
+                    {tier.computers} {tier.computers === 1 ? 'computador' : 'computadores'}
+                  </span>
+                </div>
+
+                {/* Features summary */}
+                <div className="flex flex-col gap-3 mt-6 mb-8">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-slate-300">Todos os módulos web liberados</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-slate-300">Automações MTE/MPA ilimitadas</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-slate-300">Treinamento Guiado</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-medium text-slate-300">Suporte Humano Rápido</span>
+                  </div>
+                </div>
+
+                {/* CTA */}
+                <Button
+                  id={`cta-${tier.id}`}
+                  size="lg"
+                  onClick={scrollToContact}
+                  className="w-full mt-auto border-2 border-slate-600 bg-transparent hover:bg-slate-700 hover:border-slate-500 text-white font-bold py-7 text-lg group"
+                >
+                  Solicitar Proposta
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+                </Button>
               </div>
-            </div>
+            );
+          })}
+        </div>
+
+        {/* Nota */}
+        <div className="text-center mt-8 space-y-4">
+          <div className="max-w-md mx-auto bg-emerald-50/50 rounded-xl p-4 border border-emerald-100">
+            <p className="text-sm text-slate-600">
+              <span className="font-semibold text-emerald-800">Não sabe ao certo quantos sócios ativos a entidade tem?</span>{' '}
+              <br className="hidden sm:block" />
+              Nossa equipe ajuda você a fazer esse levantamento sem compromisso.{' '}
+              <button onClick={scrollToContact} className="text-emerald-700 font-bold hover:underline">
+                Falar com consultor
+              </button>
+            </p>
+          </div>
+          <p className="text-xs text-slate-400 max-w-md mx-auto">
+            Entidades com mais de 9.000 sócios têm valores planejados conforme a operação.
+            <button className="text-emerald-600 font-medium hover:underline ml-1" onClick={scrollToContact}>
+              Entre em contato.
+            </button>
+          </p>
+        </div>
+
+
+        {/* ── Benefícios comuns ────────────────────────────────────────────── */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-7">
+            Incluído em todos os planos
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {commonFeatures.map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-3 bg-emerald-50 rounded-xl px-4 py-3 border border-emerald-100"
+              >
+                <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-700">{feature}</span>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { label: 'Sem taxa de setup', desc: 'Comece imediatamente' },
-            { label: 'Treinamento incluso', desc: 'Implantação guiada' },
-            { label: 'Suporte incluso', desc: 'Atendimento humano' },
-            { label: 'Licença anual', desc: 'Mais previsibilidade' },
-          ].map((item, index) => (
-            <div key={index}>
-              <p className="font-semibold text-slate-800 mb-1">{item.label}</p>
-              <p className="text-sm text-slate-500">{item.desc}</p>
+        {/* ── Rodapé de confiança ─────────────────────────────────────────── */}
+        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-slate-100 pt-10">
+          {trustItems.map((item) => (
+            <div key={item.label} className="flex flex-col items-center gap-2">
+              <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
+                <item.icon className="w-5 h-5 text-emerald-700" />
+              </div>
+              <p className="font-semibold text-slate-800 text-sm">{item.label}</p>
+              <p className="text-xs text-slate-500">{item.desc}</p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
