@@ -9,7 +9,7 @@ export function Utilities() {
       <Navbar />
       <main>
         <UtilitiesHero />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+        <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
           {/* Featured Tools Grid */}
           <div className="grid gap-12">
             <REAPGenerator />

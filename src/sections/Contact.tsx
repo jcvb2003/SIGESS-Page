@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, User, Building, MapPin, Phone, Users, CheckCircle, Video, Headphones } from 'lucide-react';
+import { Send, User, Building, MapPin, Mail, Users, CheckCircle, Video, Headphones } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -10,7 +10,7 @@ export function Contact() {
     nome: '',
     entidade: '',
     municipio: '',
-    telefone: '',
+    email: '',
     socios: '',
   });
 
@@ -21,7 +21,7 @@ export function Contact() {
 *Nome:* ${formData.nome}
 *Entidade:* ${formData.entidade}
 *Município:* ${formData.municipio}
-*Telefone:* ${formData.telefone}
+*Email:* ${formData.email}
 *Nº de Sócios:* ${formData.socios}`;
 
     const encodedMessage = encodeURIComponent(message);
@@ -49,7 +49,7 @@ export function Contact() {
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <div>
@@ -201,16 +201,17 @@ export function Contact() {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="telefone" className="text-slate-700">
-                        Telefone
+                      <Label htmlFor="email" className="text-slate-700">
+                        E-mail
                       </Label>
                       <div className="relative">
-                        <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                        <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                         <Input
-                          id="telefone"
-                          name="telefone"
-                          placeholder="(00) 00000-0000"
-                          value={formData.telefone}
+                          id="email"
+                          name="email"
+                          type="email"
+                          placeholder="seu@email.com"
+                          value={formData.email}
                           onChange={handleChange}
                           className="pl-10"
                           required

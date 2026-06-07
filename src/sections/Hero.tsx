@@ -41,7 +41,7 @@ export function Hero() {
         </svg>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
@@ -107,13 +107,34 @@ export function Hero() {
             ref={imageRef}
             className="relative animate-slide-in-right transition-transform duration-300 ease-out"
           >
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50">
+            {/* Efeito de brilho de fundo */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-3xl blur-2xl opacity-20 animate-pulse" />
+            
+            {/* Mockup do Navegador */}
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50 bg-white ring-1 ring-slate-900/5">
+              {/* Barra do topo estilo macOS */}
+              <div className="flex items-center px-4 py-3 border-b border-slate-100 bg-slate-50/80 backdrop-blur-md">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-red-400" />
+                  <div className="w-3 h-3 rounded-full bg-amber-400" />
+                  <div className="w-3 h-3 rounded-full bg-emerald-400" />
+                </div>
+                <div className="flex-1 flex justify-center">
+                  <div className="bg-white border border-slate-200 rounded-md px-4 py-1 flex items-center gap-2 shadow-sm">
+                    <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                    </svg>
+                    <span className="text-[11px] font-medium text-slate-500 tracking-wide">app.sigess.com.br</span>
+                  </div>
+                </div>
+              </div>
+              
               <img
                 src="/images/dashboard-preview.jpg"
                 alt="Dashboard do SIGESS"
-                className="w-full h-auto"
+                className="w-full h-auto object-cover border-b border-slate-100"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/10 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/5 to-transparent pointer-events-none" />
             </div>
 
             <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-slate-100 animate-float">

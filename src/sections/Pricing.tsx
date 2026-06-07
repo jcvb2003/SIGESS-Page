@@ -3,10 +3,6 @@ import {
   CheckCircle,
   ArrowRight,
   Laptop,
-  Shield,
-  BookOpen,
-  Headphones,
-  CalendarCheck,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -54,22 +50,6 @@ const tiers = [
     price: 5997,
     featured: false,
   },
-];
-
-const commonFeatures = [
-  'Instância exclusiva e segura',
-  'Todos os módulos inclusos',
-  'Treinamento completo na implantação',
-  'Suporte humano por WhatsApp, Meet e telefone',
-  'Sem limite de usuários internos',
-  'Dados protegidos e isolados',
-];
-
-const trustItems = [
-  { icon: Shield,        label: 'Sem taxa de setup',   desc: 'Comece imediatamente' },
-  { icon: BookOpen,      label: 'Treinamento incluso', desc: 'Implantação guiada'   },
-  { icon: Headphones,    label: 'Suporte incluso',     desc: 'Atendimento humano'   },
-  { icon: CalendarCheck, label: 'Licença anual',       desc: 'Mais previsibilidade' },
 ];
 
 function formatPrice(value: number): string {
@@ -174,13 +154,17 @@ export function Pricing() {
                     {/* Computadores */}
                     <div className="flex items-center justify-center gap-2 bg-emerald-950/30 rounded-xl px-4 py-3 mt-2 border border-emerald-600/30">
                       <Laptop className="w-5 h-5 text-emerald-300 flex-shrink-0" />
-                      <span className="text-sm text-emerald-50 font-bold">
-                        {tier.computers} computadores para a extensão
+                      <span className="text-sm text-emerald-50 font-bold text-center">
+                        Extensão Firefox em até {tier.computers} {tier.computers === 1 ? 'PC' : 'PCs'}
                       </span>
                     </div>
 
                     {/* Features summary */}
                     <div className="flex flex-col gap-3 mt-4 mb-6">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-bold text-emerald-50">Acessos ilimitados ao Sistema Web</span>
+                      </div>
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
                         <span className="text-sm font-medium text-emerald-50">Todos os módulos web liberados</span>
@@ -196,6 +180,10 @@ export function Pricing() {
                       <div className="flex items-center gap-3">
                         <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
                         <span className="text-sm font-medium text-emerald-50">Suporte Humano Prioritário</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                        <span className="text-sm font-bold text-emerald-50">Sem taxa de implementação</span>
                       </div>
                     </div>
 
@@ -258,13 +246,17 @@ export function Pricing() {
                 {/* Computadores */}
                 <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
                   <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                  <span className="text-sm text-slate-200 font-bold">
-                    {tier.computers} {tier.computers === 1 ? 'computador' : 'computadores'}
+                  <span className="text-sm text-slate-200 font-bold text-center">
+                    Extensão Firefox em até {tier.computers} {tier.computers === 1 ? 'PC' : 'PCs'}
                   </span>
                 </div>
 
                 {/* Features summary */}
                 <div className="flex flex-col gap-3 mt-6 mb-8">
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-bold text-slate-200">Acessos ilimitados ao Sistema Web</span>
+                  </div>
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
                     <span className="text-sm font-medium text-slate-300">Todos os módulos web liberados</span>
@@ -280,6 +272,10 @@ export function Pricing() {
                   <div className="flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
                     <span className="text-sm font-medium text-slate-300">Suporte Humano Rápido</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                    <span className="text-sm font-bold text-slate-300">Sem taxa de implementação</span>
                   </div>
                 </div>
 
@@ -319,36 +315,9 @@ export function Pricing() {
         </div>
 
 
-        {/* ── Benefícios comuns ────────────────────────────────────────────── */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-7">
-            Incluído em todos os planos
-          </p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {commonFeatures.map((feature, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-3 bg-emerald-50 rounded-xl px-4 py-3 border border-emerald-100"
-              >
-                <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                <span className="text-sm font-medium text-slate-700">{feature}</span>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* ── Rodapé de confiança ─────────────────────────────────────────── */}
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center border-t border-slate-100 pt-10">
-          {trustItems.map((item) => (
-            <div key={item.label} className="flex flex-col items-center gap-2">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
-                <item.icon className="w-5 h-5 text-emerald-700" />
-              </div>
-              <p className="font-semibold text-slate-800 text-sm">{item.label}</p>
-              <p className="text-xs text-slate-500">{item.desc}</p>
-            </div>
-          ))}
-        </div>
+
+
 
       </div>
     </section>

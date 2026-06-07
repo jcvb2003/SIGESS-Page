@@ -30,7 +30,7 @@ export function CompleteManagement() {
           grid-template-columns: 1fr 1fr;
           gap: 60px;
           align-items: center;
-          max-width: 1200px;
+          max-width: 1536px;
           margin: 0 auto;
         }
 

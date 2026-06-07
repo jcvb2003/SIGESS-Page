@@ -1,4 +1,4 @@
-import { Anchor, Users, Building2 } from 'lucide-react';
+import { Anchor, Users, Building2, Briefcase } from 'lucide-react';
 
 const entities = [
   {
@@ -19,12 +19,18 @@ const entities = [
     description: 'De pequeno e médio porte. Solução acessível e completa para associações em crescimento.',
     color: 'bg-amber-50 text-amber-600',
   },
+  {
+    icon: Briefcase,
+    title: 'Advogados e Autônomos',
+    description: 'Profissionais que prestam serviços a entidades de pesca e precisam de acesso organizado às informações dos sócios.',
+    color: 'bg-purple-50 text-purple-600',
+  },
 ];
 
 export function ForWho() {
   return (
     <section id="para-quem" className="relative py-20 lg:py-28 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
@@ -40,7 +46,7 @@ export function ForWho() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {entities.map((entity, index) => (
             <div
               key={index}

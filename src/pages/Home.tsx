@@ -24,10 +24,10 @@ export function Home() {
         <Extension />
         <Differentials />
         <Defeso />
-        <Pricing />
         <Testimonials />
-        <Contact />
+        <Pricing />
         <FAQ />
+        <Contact />
       </main>
       <Footer />
     </div>

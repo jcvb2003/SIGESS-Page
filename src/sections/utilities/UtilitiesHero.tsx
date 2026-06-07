@@ -7,7 +7,7 @@ export function UtilitiesHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 to-white" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] bg-emerald-100/20 rounded-full blur-3xl" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-6 animate-fade-in">
           <Wrench className="w-4 h-4" />
           <span>Ecossistema de Ferramentas</span>
