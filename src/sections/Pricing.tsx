@@ -5,26 +5,27 @@ import {
   Laptop,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Slider } from '@/components/ui/slider';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // FAIXAS DE LICENÇA
 // ─────────────────────────────────────────────────────────────────────────────
-const tiers = [
-  {
-    id: 'ate-500',
-    range: 'Até 500',
-    sub: 'sócios',
-    computers: 1,
-    price: 2197,
-    featured: false,
-  },
+
+const initialTier = {
+  id: 'ate-500',
+  range: 'Até 500',
+  sub: 'sócios',
+  computers: 1,
+  price: 2197,
+};
+
+const dynamicTiers = [
   {
     id: '501-1000',
     range: '501 a 1.000',
     sub: 'sócios',
     computers: 2,
     price: 2997,
-    featured: false,
   },
   {
     id: '1001-2000',
@@ -32,7 +33,6 @@ const tiers = [
     sub: 'sócios',
     computers: 3,
     price: 3897,
-    featured: true, // destaque central
   },
   {
     id: '2001-5000',
@@ -40,7 +40,6 @@ const tiers = [
     sub: 'sócios',
     computers: 4,
     price: 4797,
-    featured: false,
   },
   {
     id: '5001-9000',
@@ -48,11 +47,19 @@ const tiers = [
     sub: 'sócios',
     computers: 5,
     price: 5997,
-    featured: false,
   },
 ];
 
-function formatPrice(value: number): string {
+const enterpriseTier = {
+  id: 'acima-9000',
+  range: 'Acima de 9.000',
+  sub: 'sócios',
+  computers: 'A consultar',
+  price: 'Sob consulta',
+};
+
+function formatPrice(value: number | string): string {
+  if (typeof value === 'string') return value;
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -63,6 +70,9 @@ function formatPrice(value: number): string {
 
 export function Pricing() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [sliderIndex, setSliderIndex] = useState(0);
+
+  const activeDynamicTier = dynamicTiers[sliderIndex];
 
   const scrollToContact = () => {
     const element = document.querySelector('#contato');
@@ -102,196 +112,283 @@ export function Pricing() {
           </p>
         </div>
 
+        {/* Slider Section */}
+        <div className="max-w-xl mx-auto mb-16 px-4">
+          <div className="flex flex-col items-center text-center mb-6">
+            <span className="text-sm font-semibold text-emerald-600 uppercase tracking-wider mb-2">Selecione o tamanho</span>
+            <p className="text-slate-600 font-medium">Arraste para selecionar a quantidade de sócios da sua entidade.</p>
+          </div>
+
+          <Slider
+            value={[sliderIndex]}
+            max={dynamicTiers.length - 1}
+            step={1}
+            onValueChange={(val) => setSliderIndex(val[0])}
+            className="w-full cursor-pointer"
+          />
+          <div className="flex justify-between mt-3 text-xs text-slate-400 font-bold px-1 uppercase tracking-wider">
+            <span>1.000</span>
+            <span>2.000</span>
+            <span>5.000</span>
+            <span>9.000</span>
+          </div>
+        </div>
+
         {/* ── Cards de faixas ─────────────────────────────────────────────── */}
         <div className="flex flex-wrap justify-center gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
-          {tiers.map((tier, index) => {
-            const isHovered = hoveredIndex === index;
 
-            if (tier.featured) {
-              // ── Card de destaque ──────────────────────────────────────────
-              return (
-                <div
-                  key={tier.id}
-                  id={`card-${tier.id}`}
-                  className="relative flex flex-col rounded-3xl shadow-2xl shadow-emerald-500/25 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow"
-                  style={{
-                    background: 'linear-gradient(160deg, #059669 0%, #064e3b 100%)',
-                  }}
-                >
-                  {/* Badge "Mais contratado" */}
-                  <div className="absolute -top-4 inset-x-0 flex justify-center">
-                    <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-400 text-amber-900 text-xs font-black rounded-full shadow-lg uppercase tracking-wider whitespace-nowrap">
-                      ⭐ O Mais Contratado
-                    </span>
-                  </div>
+          {/* CARD 1: INICIAL */}
+          <div
+            id={`card-${initialTier.id}`}
+            onMouseEnter={() => setHoveredIndex(0)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className={`
+              flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
+              w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
+              ${hoveredIndex === 0
+                ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
+                : 'bg-slate-800/80 border-slate-700 shadow-lg'
+              }
+            `}
+          >
+            {/* Faixa */}
+            <div className="text-center mb-6">
+              <p className="text-sm uppercase tracking-widest text-slate-400 font-bold mb-1">
+                {initialTier.sub}
+              </p>
+              <p className="text-2xl font-bold text-white leading-tight">
+                {initialTier.range}
+              </p>
+            </div>
 
-                  <div className="pt-10 pb-9 px-8 flex flex-col gap-6 h-full">
-                    {/* Faixa */}
-                    <div className="text-center">
-                      <p className="text-sm uppercase tracking-widest text-emerald-300 font-bold mb-1">
-                        {tier.sub}
-                      </p>
-                      <p className="text-2xl font-black text-white leading-tight">
-                        {tier.range}
-                      </p>
-                    </div>
+            <div className="h-px w-full bg-slate-700/50 mb-6" />
 
-                    <div className="h-px w-full bg-emerald-600/50" />
-
-                    {/* Preço */}
-                    <div className="flex flex-col gap-1 items-center text-center">
-                      <p className="text-5xl font-black text-white leading-none tracking-tight">
-                        {formatPrice(tier.price)}
-                      </p>
-                      <div className="flex flex-col items-center gap-2 mt-2">
-                        <span className="text-sm text-emerald-200 font-medium">pagamento único anual</span>
-                        <span className="text-sm px-4 py-1 bg-emerald-800/60 text-emerald-100 rounded-full font-bold shadow-inner border border-emerald-700/50">
-                          Equivale a apenas {formatPrice(tier.price / 12)}/mês
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Computadores */}
-                    <div className="flex items-center justify-center gap-2 bg-emerald-950/30 rounded-xl px-4 py-3 mt-2 border border-emerald-600/30">
-                      <Laptop className="w-5 h-5 text-emerald-300 flex-shrink-0" />
-                      <span className="text-sm text-emerald-50 font-bold text-center">
-                        Extensão Firefox em até {tier.computers} {tier.computers === 1 ? 'PC' : 'PCs'}
-                      </span>
-                    </div>
-
-                    {/* Features summary */}
-                    <div className="flex flex-col gap-3 mt-4 mb-6">
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-bold text-emerald-50">Acessos ilimitados ao Sistema Web</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-medium text-emerald-50">Todos os módulos web liberados</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-medium text-emerald-50">Automações MTE/MPA ilimitadas</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-medium text-emerald-50">Treinamento Premium Guiado</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-medium text-emerald-50">Suporte Humano Prioritário</span>
-                      </div>
-                      <div className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                        <span className="text-sm font-bold text-emerald-50">Sem taxa de implementação</span>
-                      </div>
-                    </div>
-
-                    {/* CTA */}
-                    <Button
-                      id={`cta-${tier.id}`}
-                      size="lg"
-                      onClick={scrollToContact}
-                      className="w-full bg-white hover:bg-emerald-50 text-emerald-800 font-black py-7 text-lg shadow-xl mt-auto group"
-                    >
-                      Solicitar Proposta
-                      <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
-                    </Button>
-                  </div>
-                </div>
-              );
-            }
-
-            // ── Cards normais ─────────────────────────────────────────────
-            return (
-              <div
-                key={tier.id}
-                id={`card-${tier.id}`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                className={`
-                  flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
-                  w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
-                  ${isHovered
-                    ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
-                    : 'bg-slate-800/80 border-slate-700 shadow-lg'
-                  }
-                `}
-              >
-                {/* Faixa */}
-                <div className="text-center mb-6">
-                  <p className="text-sm uppercase tracking-widest text-slate-400 font-bold mb-1">
-                    {tier.sub}
-                  </p>
-                  <p className="text-2xl font-bold text-white leading-tight">
-                    {tier.range}
-                  </p>
-                </div>
-                
-                <div className="h-px w-full bg-slate-700/50 mb-6" />
-
-                {/* Preço */}
-                <div className="flex flex-col gap-1 items-center text-center">
-                  <p className="text-4xl font-black text-white leading-none tracking-tight">
-                    {formatPrice(tier.price)}
-                  </p>
-                  <div className="flex flex-col items-center gap-2 mt-2">
-                    <span className="text-sm text-slate-400 font-medium">pagamento único anual</span>
-                    <span className="text-sm px-4 py-1 bg-slate-700/50 text-slate-200 rounded-full font-bold border border-slate-600/50">
-                      Equivale a apenas {formatPrice(tier.price / 12)}/mês
-                    </span>
-                  </div>
-                </div>
-
-                {/* Computadores */}
-                <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
-                  <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
-                  <span className="text-sm text-slate-200 font-bold text-center">
-                    Extensão Firefox em até {tier.computers} {tier.computers === 1 ? 'PC' : 'PCs'}
-                  </span>
-                </div>
-
-                {/* Features summary */}
-                <div className="flex flex-col gap-3 mt-6 mb-8">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-bold text-slate-200">Acessos ilimitados ao Sistema Web</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-slate-300">Todos os módulos web liberados</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-slate-300">Automações MTE/MPA ilimitadas</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-slate-300">Treinamento Guiado</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-medium text-slate-300">Suporte Humano Rápido</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
-                    <span className="text-sm font-bold text-slate-300">Sem taxa de implementação</span>
-                  </div>
-                </div>
-
-                {/* CTA */}
-                <Button
-                  id={`cta-${tier.id}`}
-                  size="lg"
-                  onClick={scrollToContact}
-                  className="w-full mt-auto border-2 border-slate-600 bg-transparent hover:bg-slate-700 hover:border-slate-500 text-white font-bold py-7 text-lg group"
-                >
-                  Solicitar Proposta
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
-                </Button>
+            {/* Preço */}
+            <div className="flex flex-col gap-1 items-center text-center">
+              <div className="flex items-end gap-1">
+                <p className="text-4xl font-black text-white leading-none tracking-tight">
+                  {formatPrice(initialTier.price / 12)}
+                </p>
+                <span className="text-xl font-bold text-slate-400 mb-1">/mês</span>
               </div>
-            );
-          })}
+            </div>
+
+            {/* Computadores */}
+            <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
+              <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
+              <span className="text-sm text-slate-200 font-bold text-center">
+                Extensão Firefox em até {initialTier.computers} {initialTier.computers === 1 ? 'PC' : 'PCs'}
+              </span>
+            </div>
+
+            {/* Features summary */}
+            <div className="flex flex-col gap-3 mt-6 mb-8">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-bold text-slate-200">Acessos ilimitados ao Sistema Web</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Todos os módulos web liberados</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Automações MTE/MPA ilimitadas</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Treinamento Guiado</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Suporte Humano Rápido</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-bold text-slate-300">Sem taxa de implementação</span>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <Button
+              id={`cta-${initialTier.id}`}
+              size="lg"
+              onClick={scrollToContact}
+              className="w-full mt-auto border-2 border-slate-600 bg-transparent hover:bg-slate-700 hover:border-slate-500 text-white font-bold py-7 text-lg group"
+            >
+              Solicitar Proposta
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+            </Button>
+          </div>
+
+          {/* CARD 2: DINÂMICO (DESTAQUE) */}
+          <div
+            id={`card-${activeDynamicTier.id}`}
+            className="relative flex flex-col rounded-3xl shadow-2xl shadow-emerald-500/25 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow"
+            style={{
+              background: 'linear-gradient(160deg, #059669 0%, #064e3b 100%)',
+            }}
+          >
+            {/* Badge "Mais contratado" */}
+            <div className="absolute -top-4 inset-x-0 flex justify-center">
+              <span className="inline-flex items-center gap-1.5 px-4 py-2 bg-amber-400 text-amber-900 text-xs font-black rounded-full shadow-lg uppercase tracking-wider whitespace-nowrap">
+                ⭐ O Mais Contratado
+              </span>
+            </div>
+
+            <div className="pt-10 pb-9 px-8 flex flex-col gap-6 h-full">
+              {/* Faixa */}
+              <div className="text-center">
+                <p className="text-sm uppercase tracking-widest text-emerald-300 font-bold mb-1">
+                  {activeDynamicTier.sub}
+                </p>
+                <p className="text-2xl font-black text-white leading-tight">
+                  {activeDynamicTier.range}
+                </p>
+              </div>
+
+              <div className="h-px w-full bg-emerald-600/50" />
+
+              {/* Preço */}
+              <div className="flex flex-col gap-1 items-center text-center">
+                <div className="flex items-end gap-1">
+                  <p className="text-5xl font-black text-white leading-none tracking-tight">
+                    {formatPrice(activeDynamicTier.price / 12)}
+                  </p>
+                  <span className="text-2xl font-bold text-emerald-300 mb-1">/mês</span>
+                </div>
+              </div>
+
+              {/* Computadores */}
+              <div className="flex items-center justify-center gap-2 bg-emerald-950/30 rounded-xl px-4 py-3 mt-2 border border-emerald-600/30">
+                <Laptop className="w-5 h-5 text-emerald-300 flex-shrink-0" />
+                <span className="text-sm text-emerald-50 font-bold text-center">
+                  Extensão Firefox em até {activeDynamicTier.computers} {activeDynamicTier.computers === 1 ? 'PC' : 'PCs'}
+                </span>
+              </div>
+
+              {/* Features summary */}
+              <div className="flex flex-col gap-3 mt-4 mb-6">
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-bold text-emerald-50">Acessos ilimitados ao Sistema Web</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-medium text-emerald-50">Todos os módulos web liberados</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-medium text-emerald-50">Automações MTE/MPA ilimitadas</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-medium text-emerald-50">Treinamento Guiado</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-medium text-emerald-50">Suporte Humano Rápido</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
+                  <span className="text-sm font-bold text-emerald-50">Sem taxa de implementação</span>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <Button
+                id={`cta-${activeDynamicTier.id}`}
+                size="lg"
+                onClick={scrollToContact}
+                className="w-full bg-white hover:bg-emerald-50 text-emerald-800 font-black py-7 text-lg shadow-xl mt-auto group"
+              >
+                Solicitar Proposta
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+              </Button>
+            </div>
+          </div>
+
+          {/* CARD 3: ACIMA DE 9.000 */}
+          <div
+            id={`card-${enterpriseTier.id}`}
+            onMouseEnter={() => setHoveredIndex(2)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className={`
+              flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
+              w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
+              ${hoveredIndex === 2
+                ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
+                : 'bg-slate-800/80 border-slate-700 shadow-lg'
+              }
+            `}
+          >
+            {/* Faixa */}
+            <div className="text-center mb-6">
+              <p className="text-sm uppercase tracking-widest text-slate-400 font-bold mb-1">
+                {enterpriseTier.sub}
+              </p>
+              <p className="text-2xl font-bold text-white leading-tight">
+                {enterpriseTier.range}
+              </p>
+            </div>
+
+            <div className="h-px w-full bg-slate-700/50 mb-6" />
+
+            {/* Preço */}
+            <div className="flex flex-col gap-1 items-center text-center">
+              <p className="text-4xl font-black text-white leading-none tracking-tight">
+                {formatPrice(enterpriseTier.price as string)}
+              </p>
+            </div>
+
+            {/* Computadores */}
+            <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
+              <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
+              <span className="text-sm text-slate-200 font-bold text-center">
+                Extensão Firefox: {enterpriseTier.computers}
+              </span>
+            </div>
+
+            {/* Features summary */}
+            <div className="flex flex-col gap-3 mt-6 mb-8">
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-bold text-slate-200">Acessos ilimitados ao Sistema Web</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Todos os módulos web liberados</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Automações MTE/MPA ilimitadas</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Treinamento Guiado</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-medium text-slate-300">Suporte Humano Prioritário</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle className="w-5 h-5 text-slate-500 flex-shrink-0" />
+                <span className="text-sm font-bold text-slate-300">Sem taxa de implementação</span>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <Button
+              id={`cta-${enterpriseTier.id}`}
+              size="lg"
+              onClick={scrollToContact}
+              className="w-full mt-auto border-2 border-slate-600 bg-transparent hover:bg-slate-700 hover:border-slate-500 text-white font-bold py-7 text-lg group"
+            >
+              Solicitar Proposta
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1.5 transition-transform" />
+            </Button>
+          </div>
+
         </div>
 
         {/* Nota */}
@@ -313,11 +410,6 @@ export function Pricing() {
             </button>
           </p>
         </div>
-
-
-
-
-
 
       </div>
     </section>
