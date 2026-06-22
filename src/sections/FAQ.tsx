@@ -25,7 +25,7 @@ const faqs = [
           'O SIGESS é online e precisa de conexão para funcionar. Para situações de campo com conectividade limitada, o sistema possui recursos de cache que permitem continuar trabalhando por períodos curtos sem sinal.',
       },
       {
-        question: 'Outros sindicatos vão conseguir ver os dados dos nossos sócios?',
+        question: 'Outras entidades vão conseguir ver os dados dos nossos sócios?',
         answer:
           'Não. Cada entidade tem sua própria instância isolada do sistema. Os dados de uma entidade são completamente separados dos de qualquer outra - por arquitetura, não apenas por configuração.',
       },
@@ -67,7 +67,7 @@ const faqs = [
       {
         question: 'Quanto custa?',
         answer:
-          'O valor é uma licença anual ajustada ao tamanho da sua entidade - quanto mais sócios, maior o valor. Não há taxa de setup nem custo por usuário interno. Entre em contato para receber uma proposta para a sua realidade.',
+          'O valor é uma licença mensal ajustada ao tamanho da sua entidade. Não há taxa de implementação nem custo por usuário interno. Entre em contato para receber uma proposta para a sua realidade.',
       },
       {
         question: 'Quantos funcionários podem usar ao mesmo tempo?',

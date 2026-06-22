@@ -57,7 +57,7 @@ export function Footer() {
               <span className="text-xl font-bold text-white">SIGESS</span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm">
-              Gestão completa para sindicatos e colônias de pescadores artesanais.
+              Gestão completa para sindicatos, colônias e associações de pescadores artesanais.
               O único sistema desenvolvido especificamente para a realidade da pesca artesanal brasileira.
             </p>
 

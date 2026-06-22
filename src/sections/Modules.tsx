@@ -49,7 +49,7 @@ const modules = [
   {
     icon: DollarSign,
     title: 'Módulo Financeiro',
-    description: 'Desenvolvido para a realidade financeira dos sindicatos de pesca.',
+    description: 'Desenvolvido para a realidade financeira das entidades de pesca artesanal.',
     features: [
       'Anuidades e mensalidades',
       'Gestão do DAE (Previdência Social)',
@@ -333,11 +333,10 @@ export function Modules() {
                 key={i}
                 id={`modulo-tab-${i}`}
                 onClick={() => setActive(i)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${
-                  isActive
+                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
                     ? `bg-gradient-to-br ${m.color} text-white shadow-md scale-[1.03]`
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
+                  }`}
               >
                 <Icon className="w-4 h-4 flex-shrink-0" />
                 <span>{m.title}</span>
@@ -396,11 +395,10 @@ export function Modules() {
                 id={`modulo-dot-${i}`}
                 onClick={() => setActive(i)}
                 aria-label={`Ir para ${modules[i].title}`}
-                className={`rounded-full transition-all duration-200 ${
-                  i === active
+                className={`rounded-full transition-all duration-200 ${i === active
                     ? 'w-6 h-2.5 bg-emerald-500'
                     : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
-                }`}
+                  }`}
               />
             ))}
           </div>

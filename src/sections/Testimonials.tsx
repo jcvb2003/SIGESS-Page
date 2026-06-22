@@ -8,7 +8,7 @@ const testimonials = [
     rating: 5,
   },
   {
-    quote: 'Finalmente um sistema que entende a realidade dos sindicatos de pesca. O controle financeiro é exatamente o que a gente precisava.',
+    quote: 'Finalmente um sistema que entende a realidade das entidades de pesca. O controle financeiro é exatamente o que a gente precisava.',
     author: 'Secretária',
     entity: 'SINPESCA - Breves',
     rating: 5,

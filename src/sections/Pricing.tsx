@@ -105,10 +105,9 @@ export function Pricing() {
             </span>
           </h2>
           <p className="text-lg text-slate-500">
-            Sistema web completo e extensão Firefox em uma única licença anual por entidade.
+            Sistema web completo e com um robô (automação via firefox) para a sua entidade.
             Sem separar produtos, sem escolher módulos — a licença inclui tudo que sua entidade
-            precisa para automatizar a secretaria, do cadastro de sócios ao processamento do REAP.
-            Escolha a faixa que corresponde ao tamanho da sua organização.
+            precisa para automatizar do cadastro de sócios ao processamento do REAP.
           </p>
         </div>
 
