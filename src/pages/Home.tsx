@@ -4,7 +4,7 @@ import { CompleteManagement } from '../sections/CompleteManagement';
 import { ForWho } from '../sections/ForWho';
 import { Modules } from '../sections/Modules';
 import { Extension } from '../sections/Extension';
-import { Differentials } from '../sections/Differentials';
+
 import { Defeso } from '../sections/Defeso';
 import { Pricing } from '../sections/Pricing';
 import { Testimonials } from '../sections/Testimonials';
@@ -22,7 +22,7 @@ export function Home() {
         <ForWho />
         <Modules />
         <Extension />
-        <Differentials />
+
         <Defeso />
         <Testimonials />
         <Pricing />
