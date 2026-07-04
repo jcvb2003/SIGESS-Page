@@ -245,7 +245,7 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Monitoramento</p>
                   <p className="text-xl font-bold text-slate-800 mb-3">Radar Automático</p>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-rose-50 text-rose-600 rounded-lg border border-rose-100">
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-rose-50 text-rose-600 rounded-full border border-rose-100">
                     <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
                     <span className="text-[10px] font-bold uppercase tracking-tight">12 Pendências</span>
                   </div>
@@ -311,9 +311,6 @@ export function Modules() {
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
-            Funcionalidades
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Módulos do sistema
           </h2>

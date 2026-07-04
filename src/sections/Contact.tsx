@@ -53,9 +53,6 @@ export function Contact() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <div>
-              <span className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium mb-4">
-                Contato
-              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 Pronto para <span className="bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent">modernizar</span> sua entidade?
               </h2>

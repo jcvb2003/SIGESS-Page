@@ -41,9 +41,6 @@ export function Testimonials() {
           ref={headerRef}
           className={`text-center max-w-3xl mx-auto mb-16 will-animate ${headerVisible ? 'is-visible' : ''}`}
         >
-          <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
-            Depoimentos
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             O que dizem nossos clientes
           </h2>
@@ -61,7 +58,7 @@ export function Testimonials() {
               className={`group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover relative will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Quote icon */}
-              <div className="absolute -top-4 -left-2 w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="absolute -top-4 -left-2 w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg">
                 <Quote className="w-5 h-5 text-white" />
               </div>
 

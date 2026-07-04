@@ -1,4 +1,4 @@
-import { Users, FileSignature, ClipboardList, Receipt, Zap, ArrowRight } from 'lucide-react';
+import { Users, FileSignature, ClipboardList, Receipt, Zap } from 'lucide-react';
 import { useInView } from '@/hooks/useInView';
 
 const extensionFeatures = [
@@ -59,9 +59,6 @@ export function Extension() {
           {/* Coluna Esquerda - Títulos e Bento Grid */}
           <div className="space-y-10">
             <div className={`will-animate-left ${sectionVisible ? 'is-visible' : ''}`}>
-              <span className="inline-block px-4 py-1.5 bg-white/20 text-white rounded-full text-sm font-medium mb-4">
-                Extensão para Firefox
-              </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 O braço automatizado do SIGESS
               </h2>
@@ -118,20 +115,6 @@ export function Extension() {
                 </div>
               ))}
             </div>
-
-            <div className={`pt-4 will-animate anim-delay-5 ${sectionVisible ? 'is-visible' : ''}`}>
-              <a
-                href="#contato"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.querySelector('#contato')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="inline-flex items-center gap-2 bg-white text-emerald-700 font-bold px-8 py-4 rounded-xl hover:bg-emerald-50 transition-all duration-300 shadow-xl hover:-translate-y-0.5 active:translate-y-0"
-              >
-                Quero automatizar minha secretaria
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Coluna Direita - Galeria de Logos Lado a Lado */}
@@ -152,13 +135,6 @@ export function Extension() {
             ))}
           </div>
 
-        </div>
-
-        {/* Rodapé da Seção */}
-        <div className={`mt-16 pt-8 border-t border-white/20 text-center will-animate anim-delay-5 ${sectionVisible ? 'is-visible' : ''}`}>
-          <p className="text-emerald-200 text-sm">
-            A extensão SIGESS funciona no Firefox e é distribuída diretamente para os clientes da plataforma.
-          </p>
         </div>
       </div>
     </section>

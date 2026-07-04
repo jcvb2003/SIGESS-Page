@@ -28,7 +28,7 @@ export function CompleteManagement() {
   const [rightRef, rightVisible] = useInView<HTMLDivElement>();
 
   return (
-    <section className="bg-white overflow-hidden py-20 lg:py-28">
+    <section className="bg-white overflow-hidden py-20 lg:py-28 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
         {/* ── Coluna esquerda ── */}
@@ -36,12 +36,6 @@ export function CompleteManagement() {
           ref={leftRef}
           className={`will-animate-left ${leftVisible ? 'is-visible' : ''}`}
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-            Produtividade real na secretaria
-          </div>
-
           {/* Título */}
           <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.08] tracking-tight mb-6">
             Mais resultado com{' '}
@@ -85,7 +79,7 @@ export function CompleteManagement() {
             {/* Área interna clara */}
             <div className="bg-slate-50 rounded-b-xl p-4">
               {/* Header do mockup */}
-              <div className="bg-white rounded-lg px-4 py-3 flex items-center justify-between mb-3 border border-slate-200">
+              <div className="bg-white rounded-xl px-4 py-3 flex items-center justify-between mb-3 border border-slate-200">
                 <span className="font-heading text-base font-bold text-slate-800">
                   Central de Automação
                 </span>
@@ -97,7 +91,7 @@ export function CompleteManagement() {
               {/* Grid de métricas 2×2 */}
               <div className="grid grid-cols-2 gap-2 mb-3">
                 {mockCards.map((c) => (
-                  <div key={c.label} className="bg-white rounded-lg p-3 border border-slate-200">
+                  <div key={c.label} className="bg-white rounded-xl p-3 border border-slate-200">
                     <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
                       {c.label}
                     </p>
@@ -109,7 +103,7 @@ export function CompleteManagement() {
               </div>
 
               {/* Mini tabela */}
-              <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
                 {/* Cabeçalho */}
                 <div className="grid grid-cols-[2fr_1fr_1fr] gap-2 bg-slate-50 px-3 py-2 border-b border-slate-200">
                   {['Sócio', 'REAP', 'Seguro'].map((h) => (

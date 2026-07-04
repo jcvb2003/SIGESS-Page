@@ -228,7 +228,7 @@ function SocialIcon({ href, icon: Icon, label }: SocialIconProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition-colors group"
+      className="w-10 h-10 rounded-xl bg-slate-800 flex items-center justify-center hover:bg-emerald-600 transition-colors group"
       aria-label={label}
     >
       <Icon className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />

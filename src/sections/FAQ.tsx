@@ -103,9 +103,6 @@ export function FAQ() {
     <section id="faq" className="relative py-20 lg:py-28 bg-white">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
-            Dúvidas frequentes
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Perguntas frequentes
           </h2>

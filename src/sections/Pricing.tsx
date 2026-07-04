@@ -95,9 +95,6 @@ export function Pricing() {
 
         {/* ── Cabeçalho ───────────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
-            Investimento
-          </span>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Um plano.{' '}
             <span className="bg-gradient-to-r from-emerald-500 to-emerald-700 bg-clip-text text-transparent">
@@ -142,7 +139,7 @@ export function Pricing() {
             onMouseEnter={() => setHoveredIndex(0)}
             onMouseLeave={() => setHoveredIndex(null)}
             className={`
-              flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
+              flex flex-col rounded-2xl border p-8 transition-all duration-300 cursor-default
               w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
               ${hoveredIndex === 0
                 ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
@@ -223,7 +220,7 @@ export function Pricing() {
           {/* CARD 2: DINÂMICO (DESTAQUE) */}
           <div
             id={`card-${activeDynamicTier.id}`}
-            className="relative flex flex-col rounded-3xl shadow-2xl shadow-emerald-500/25 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow"
+            className="relative flex flex-col rounded-2xl shadow-2xl shadow-emerald-500/25 w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow"
             style={{
               background: 'linear-gradient(160deg, #059669 0%, #064e3b 100%)',
             }}
@@ -313,7 +310,7 @@ export function Pricing() {
             onMouseEnter={() => setHoveredIndex(2)}
             onMouseLeave={() => setHoveredIndex(null)}
             className={`
-              flex flex-col rounded-3xl border p-8 transition-all duration-300 cursor-default
+              flex flex-col rounded-2xl border p-8 transition-all duration-300 cursor-default
               w-full md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1.5rem)] max-w-sm flex-grow
               ${hoveredIndex === 2
                 ? 'bg-slate-800 border-slate-600 shadow-2xl -translate-y-1.5'
@@ -402,12 +399,6 @@ export function Pricing() {
               </button>
             </p>
           </div>
-          <p className="text-xs text-slate-400 max-w-md mx-auto">
-            Entidades com mais de 9.000 sócios têm valores planejados conforme a operação.
-            <button className="text-emerald-600 font-medium hover:underline ml-1" onClick={scrollToContact}>
-              Entre em contato.
-            </button>
-          </p>
         </div>
 
       </div>
