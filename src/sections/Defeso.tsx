@@ -26,7 +26,7 @@ const steps = [
 
 export function Defeso() {
   return (
-    <section id="defeso" className="relative py-20 lg:py-28 bg-white overflow-hidden">
+    <section id="defeso" className="relative py-20 lg:py-28 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-50/60 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-50/60 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
 

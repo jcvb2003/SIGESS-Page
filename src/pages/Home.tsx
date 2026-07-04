@@ -17,17 +17,18 @@ export function Home() {
     <div className="min-h-screen bg-white">
       <Navbar />
       <main>
-        <Hero />
-        <CompleteManagement />
-        <ForWho />
-        <Modules />
-        <Extension />
-
-        <Defeso />
-        <Testimonials />
-        <Pricing />
-        <FAQ />
-        <Contact />
+        <div className="h-screen overflow-y-auto snap-y snap-mandatory">
+          <Hero />
+          <CompleteManagement />
+          <ForWho />
+          <Modules />
+          <Extension />
+          <Defeso />
+          <Testimonials />
+          <Pricing />
+          <FAQ />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </div>

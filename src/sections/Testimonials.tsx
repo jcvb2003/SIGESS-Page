@@ -34,7 +34,7 @@ export function Testimonials() {
   const [gridRef, gridVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
 
   return (
-    <section className="relative py-20 lg:py-28 bg-slate-50">
+    <section className="relative py-20 lg:py-28 bg-slate-50 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div

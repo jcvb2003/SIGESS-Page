@@ -108,7 +108,7 @@ const modules = [
 function ModuleVisual({ module }: { module: typeof modules[0] }) {
   if (module.image) {
     return (
-      <div className="relative">
+      <div className="relative max-w-md mx-auto lg:max-w-none lg:w-4/5">
         <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200/50">
           <img
             src={module.image}
@@ -123,71 +123,71 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
 
   return (
     <div className="relative">
-      <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100">
-        <div className="grid grid-cols-2 gap-4">
+      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+        <div className="grid grid-cols-2 gap-3">
           {module.title === 'Relatórios' ? (
             <>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Receipt className="w-24 h-24 text-purple-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center mb-3">
                     <Receipt className="w-5 h-5 text-purple-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Inadimplentes</p>
-                  <p className="text-2xl font-bold text-slate-800">45</p>
+                  <p className="text-xl font-bold text-slate-800">45</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <DollarSign className="w-24 h-24 text-emerald-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center mb-3">
                     <DollarSign className="w-5 h-5 text-emerald-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Arrecadação</p>
-                  <p className="text-2xl font-bold text-slate-800">R$ 125K</p>
+                  <p className="text-xl font-bold text-slate-800">R$ 125K</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Building className="w-24 h-24 text-blue-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center mb-3">
                     <Building className="w-5 h-5 text-blue-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">DAE Pendente</p>
-                  <p className="text-2xl font-bold text-slate-800">23</p>
+                  <p className="text-xl font-bold text-slate-800">23</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <FileCheck className="w-24 h-24 text-amber-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center mb-4">
+                  <div className="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center mb-3">
                     <FileCheck className="w-5 h-5 text-amber-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Exportados</p>
-                  <p className="text-2xl font-bold text-slate-800">156</p>
+                  <p className="text-xl font-bold text-slate-800">156</p>
                 </div>
               </div>
             </>
           ) : module.title === 'REAP' ? (
             <>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Calendar className="w-24 h-24 text-teal-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Calendar className="w-5 h-5 text-teal-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Simplificado</p>
-                  <p className="text-xl font-bold text-slate-800 mb-3">2021-2024</p>
+                  <p className="text-lg font-bold text-slate-800 mb-2">2021-2024</p>
                   <div className="flex gap-1">
                     {[21, 22, 23, 24].map(y => (
                       <div key={y} className="w-7 h-5 bg-teal-500 rounded flex items-center justify-center text-[9px] text-white font-bold tracking-tighter">'{y}</div>
@@ -196,16 +196,16 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <FileSearch className="w-24 h-24 text-teal-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <FileSearch className="w-5 h-5 text-teal-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">REAP Anual</p>
-                  <p className="text-xl font-bold text-slate-800 mb-3">Padrão 2025+</p>
+                  <p className="text-lg font-bold text-slate-800 mb-2">Padrão 2025+</p>
                   <div className="space-y-1.5">
                     <div className="h-1.5 w-full bg-slate-100 rounded-full overflow-hidden">
                       <div className="h-full w-2/3 bg-teal-500 rounded-full animate-pulse" />
@@ -215,16 +215,16 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Users className="w-24 h-24 text-teal-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Users className="w-5 h-5 text-teal-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Multiprocessamento</p>
-                  <p className="text-xl font-bold text-slate-800 mb-3">5 Sócios/Lote</p>
+                  <p className="text-lg font-bold text-slate-800 mb-2">5 Sócios/Lote</p>
                   <div className="flex -space-x-2">
                     {[1, 2, 3, 4, 5].map(i => (
                       <div key={i} className="w-7 h-7 rounded-full border-2 border-white bg-teal-100 flex items-center justify-center overflow-hidden">
@@ -235,16 +235,16 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
                 </div>
               </div>
 
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Search className="w-24 h-24 text-teal-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-teal-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Search className="w-5 h-5 text-teal-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Monitoramento</p>
-                  <p className="text-xl font-bold text-slate-800 mb-3">Radar Automático</p>
+                  <p className="text-lg font-bold text-slate-800 mb-2">Radar Automático</p>
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-rose-50 text-rose-600 rounded-full border border-rose-100">
                     <div className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping" />
                     <span className="text-[10px] font-bold uppercase tracking-tight">12 Pendências</span>
@@ -254,31 +254,31 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
             </>
           ) : (
             <>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Settings className="w-24 h-24 text-slate-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Settings className="w-5 h-5 text-slate-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Anuidade</p>
-                  <p className="text-2xl font-bold text-slate-800">R$ 120,00</p>
+                  <p className="text-xl font-bold text-slate-800">R$ 120,00</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Settings className="w-24 h-24 text-slate-600" />
                 </div>
                 <div className="relative z-10">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
                     <Settings className="w-5 h-5 text-slate-600" />
                   </div>
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Defeso</p>
-                  <p className="text-2xl font-bold text-slate-800">Mar - Mai</p>
+                  <p className="text-xl font-bold text-slate-800">Mar - Mai</p>
                 </div>
               </div>
-              <div className="bg-white rounded-2xl p-5 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all col-span-2">
+              <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all col-span-2">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
                   <Users className="w-24 h-24 text-emerald-600" />
                 </div>
@@ -307,10 +307,10 @@ export function Modules() {
   const next = () => setActive(i => (i + 1) % modules.length);
 
   return (
-    <section id="modulos" className="relative py-20 lg:py-28 bg-white">
+    <section id="modulos" className="relative pt-7 pb-5 lg:pt-10 lg:pb-7 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Módulos do sistema
           </h2>
@@ -350,7 +350,7 @@ export function Modules() {
               <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
                 <module.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-800">
+              <h3 className="text-xl font-bold text-slate-800">
                 {module.title}
               </h3>
             </div>

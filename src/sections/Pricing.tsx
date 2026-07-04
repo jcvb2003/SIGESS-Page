@@ -80,7 +80,7 @@ export function Pricing() {
   };
 
   return (
-    <section id="planos" className="relative py-20 lg:py-28 bg-white overflow-hidden">
+    <section id="planos" className="relative py-20 lg:py-28 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       {/* Blob decorativo */}
       <div
         aria-hidden="true"

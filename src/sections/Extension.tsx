@@ -46,7 +46,7 @@ export function Extension() {
   const otherFeatures = extensionFeatures.filter(f => !f.isFeatured);
 
   return (
-    <section id="extensao" className="relative py-20 lg:py-28 bg-gradient-emerald overflow-hidden">
+    <section id="extensao" className="relative py-20 lg:py-28 bg-gradient-emerald overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       {/* Elementos Decorativos de Fundo */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />

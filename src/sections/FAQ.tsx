@@ -100,7 +100,7 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-20 lg:py-28 bg-white">
+    <section id="faq" className="relative py-20 lg:py-28 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
