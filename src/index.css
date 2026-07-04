@@ -197,3 +197,55 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* ─── Animações controladas por Intersection Observer ─────────────────────── */
+
+/* Fade + slide para cima (padrão para seções e cards) */
+.will-animate {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.will-animate.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Fade + slide da direita (para painéis visuais/mockups) */
+.will-animate-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.will-animate-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Fade + slide da esquerda (para colunas de texto) */
+.will-animate-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.will-animate-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Delays escalonados para grids de cards */
+.anim-delay-0  { transition-delay: 0ms; }
+.anim-delay-1  { transition-delay: 80ms; }
+.anim-delay-2  { transition-delay: 160ms; }
+.anim-delay-3  { transition-delay: 240ms; }
+.anim-delay-4  { transition-delay: 320ms; }
+.anim-delay-5  { transition-delay: 400ms; }

@@ -1,4 +1,5 @@
 import { Anchor, Users, Building2, Briefcase } from 'lucide-react';
+import { useInView } from '@/hooks/useInView';
 
 const entities = [
   {
@@ -28,11 +29,17 @@ const entities = [
 ];
 
 export function ForWho() {
+  const [headerRef, headerVisible] = useInView<HTMLDivElement>();
+  const [gridRef, gridVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
   return (
     <section id="para-quem" className="relative py-20 lg:py-28 bg-slate-50">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center max-w-3xl mx-auto mb-16 will-animate ${headerVisible ? 'is-visible' : ''}`}
+        >
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Público-alvo
           </span>
@@ -46,11 +53,11 @@ export function ForWho() {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {entities.map((entity, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover"
+              className={`group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Icon */}
               <div className={`w-16 h-16 rounded-xl ${entity.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>

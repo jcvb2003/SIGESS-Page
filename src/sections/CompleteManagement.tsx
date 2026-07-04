@@ -1,381 +1,150 @@
+import { useInView } from '@/hooks/useInView';
+
+// ─── Dados de mock para o painel ────────────────────────────────────────────
+
+const mockCards = [
+  { label: 'Tempo médio REAP', value: '20s', valueColor: 'text-emerald-600' },
+  { label: 'Processamento em lote', value: '5 sócios', valueColor: 'text-blue-600' },
+  { label: 'Boletos gerados', value: '126', valueColor: 'text-amber-600' },
+  { label: 'Seguro identificado', value: '48 pagos', valueColor: 'text-emerald-600' },
+] as const;
+
+const mockRows = [
+  { name: 'Ana da Silva', cpf: '123.456.789-01', reap: { label: 'Enviado', cls: 'bg-emerald-50 text-emerald-800' }, seguro: { label: 'Recebeu', cls: 'text-emerald-600' } },
+  { name: 'João Costa', cpf: '234.567.890-12', reap: { label: 'Pendente', cls: 'bg-amber-50 text-amber-800' }, seguro: { label: 'Aguardando', cls: 'text-amber-600' } },
+  { name: 'Maria Ferreira', cpf: '345.678.901-23', reap: { label: 'Em lote', cls: 'bg-emerald-50 text-emerald-800' }, seguro: { label: 'Conferindo', cls: 'text-blue-600' } },
+] as const;
+
+const stats = [
+  { num: '20s', label: 'Para fazer um REAP' },
+  { num: 'Lote', label: 'Boletos e REAP em massa' },
+  { num: '5x', label: 'Capaz de substituir até 5 funcionários' },
+] as const;
+
+// ─── Componente ─────────────────────────────────────────────────────────────
+
 export function CompleteManagement() {
+  const [leftRef, leftVisible] = useInView<HTMLDivElement>();
+  const [rightRef, rightVisible] = useInView<HTMLDivElement>();
+
   return (
-    <div className="fidelity-hero-wrapper" style={{ overflow: 'hidden' }}>
-      <style>{`
-        .fidelity-hero-wrapper {
-          --em: #059669;
-          --em-dark: #047857;
-          --em-light: #d1fae5;
-          --em-xlight: #ecfdf5;
-          --slate: #0f172a;
-          --slate-mid: #334155;
-          --slate-light: #94a3b8;
-          --slate-xlight: #f1f5f9;
-          --white: #ffffff;
-          --font-head: 'Sora', sans-serif;
-          --font-body: 'DM Sans', sans-serif;
-          --r: 14px;
-          --r-sm: 8px;
-          --r-pill: 999px;
+    <section className="bg-white overflow-hidden py-20 lg:py-28">
+      <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
-          font-family: var(--font-body);
-          background: var(--white);
-          color: var(--slate);
-          line-height: 1.6;
-        }
-
-        .fidelity-hero-wrapper .hero {
-          padding: 90px 48px 80px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 60px;
-          align-items: center;
-          max-width: 1536px;
-          margin: 0 auto;
-        }
-
-        @media (max-width: 1024px) {
-          .fidelity-hero-wrapper .hero {
-            grid-template-columns: 1fr;
-            padding: 60px 24px;
-          }
-        }
-
-        .fidelity-hero-wrapper .hero-badge {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          background: var(--em-xlight);
-          color: var(--em-dark);
-          border: 1px solid var(--em-light);
-          border-radius: var(--r-pill);
-          padding: 6px 14px;
-          font-size: 12px;
-          font-weight: 600;
-          letter-spacing: .04em;
-          text-transform: uppercase;
-          margin-bottom: 24px;
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .hero-badge-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--em);
-        }
-
-        .fidelity-hero-wrapper .hero-title {
-          font-family: var(--font-head);
-          font-size: 52px;
-          font-weight: 800;
-          line-height: 1.08;
-          letter-spacing: -1.5px;
-          color: var(--slate);
-          margin-bottom: 24px;
-          margin-top: 0;
-        }
-
-        @media (max-width: 768px) {
-          .fidelity-hero-wrapper .hero-title {
-            font-size: 40px;
-          }
-        }
-
-        .fidelity-hero-wrapper .hero-title span {
-          color: var(--em);
-        }
-
-        .fidelity-hero-wrapper .hero-sub {
-          font-size: 18px;
-          color: var(--slate-mid);
-          line-height: 1.65;
-          margin-bottom: 36px;
-          font-weight: 300;
-          max-width: 520px;
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .hero-stats {
-          display: flex;
-          gap: 32px;
-          margin-top: 40px;
-          padding-top: 32px;
-          border-top: 1px solid #e2e8f0;
-        }
-
-        .fidelity-hero-wrapper .hero-stat-num {
-          font-family: var(--font-head);
-          font-size: 28px;
-          font-weight: 800;
-          color: var(--em);
-          letter-spacing: -1px;
-        }
-
-        .fidelity-hero-wrapper .hero-stat-label {
-          font-size: 13px;
-          color: var(--slate-light);
-          margin-top: 2px;
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .screen-mockup {
-          background: var(--slate);
-          border-radius: 16px;
-          padding: 4px;
-          box-shadow: 0 32px 80px rgba(15,23,42,0.18);
-        }
-
-        .fidelity-hero-wrapper .screen-bar {
-          background: #1e293b;
-          border-radius: 12px 12px 0 0;
-          padding: 10px 16px;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-        }
-
-        .fidelity-hero-wrapper .screen-dot {
-          width: 10px;
-          height: 10px;
-          border-radius: 50%;
-        }
-
-        .fidelity-hero-wrapper .screen-inner {
-          background: #f8fafc;
-          border-radius: 0 0 12px 12px;
-          padding: 16px;
-          overflow: hidden;
-        }
-
-        .fidelity-hero-wrapper .mock-header {
-          background: white;
-          border-radius: 8px;
-          padding: 12px 16px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          margin-bottom: 12px;
-          border: 1px solid #e2e8f0;
-        }
-
-        .fidelity-hero-wrapper .mock-title {
-          font-family: var(--font-head);
-          font-size: 16px;
-          font-weight: 700;
-          color: var(--slate);
-        }
-
-        .fidelity-hero-wrapper .mock-badge-green {
-          background: #d1fae5;
-          color: #065f46;
-          font-size: 10px;
-          font-weight: 700;
-          padding: 3px 8px;
-          border-radius: var(--r-pill);
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .mock-cards {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 8px;
-          margin-bottom: 12px;
-        }
-
-        .fidelity-hero-wrapper .mock-card {
-          background: white;
-          border-radius: 8px;
-          padding: 12px;
-          border: 1px solid #e2e8f0;
-        }
-
-        .fidelity-hero-wrapper .mock-card-label {
-          font-size: 10px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: .05em;
-          color: var(--slate-light);
-          margin-bottom: 4px;
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .mock-card-val {
-          font-family: var(--font-head);
-          font-size: 20px;
-          font-weight: 800;
-          letter-spacing: -0.5px;
-        }
-
-        .fidelity-hero-wrapper .mock-card-val.green { color: #059669; }
-        .fidelity-hero-wrapper .mock-card-val.red { color: #dc2626; }
-        .fidelity-hero-wrapper .mock-card-val.amber { color: #d97706; }
-        .fidelity-hero-wrapper .mock-card-val.blue { color: #2563eb; }
-
-        .fidelity-hero-wrapper .mock-table {
-          background: white;
-          border-radius: 8px;
-          border: 1px solid #e2e8f0;
-          overflow: hidden;
-        }
-
-        .fidelity-hero-wrapper .mock-table-head {
-          background: #f8fafc;
-          padding: 8px 12px;
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
-          gap: 8px;
-          border-bottom: 1px solid #e2e8f0;
-        }
-
-        .fidelity-hero-wrapper .mock-th {
-          font-size: 9px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: .06em;
-          color: var(--slate-light);
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .mock-row {
-          padding: 8px 12px;
-          display: grid;
-          grid-template-columns: 2fr 1fr 1fr;
-          gap: 8px;
-          align-items: center;
-          border-bottom: 1px solid #f1f5f9;
-        }
-
-        .fidelity-hero-wrapper .mock-row:last-child {
-          border-bottom: none;
-        }
-
-        .fidelity-hero-wrapper .mock-name {
-          font-size: 11px;
-          font-weight: 600;
-          color: var(--slate);
-          font-family: var(--font-body);
-        }
-
-        .fidelity-hero-wrapper .mock-cpf {
-          font-size: 10px;
-          color: var(--slate-light);
-          font-family: monospace;
-          margin-top: 2px;
-        }
-
-        .fidelity-hero-wrapper .mock-status {
-          display: inline-flex;
-          align-items: center;
-          gap: 4px;
-          font-size: 9px;
-          font-weight: 700;
-          padding: 2px 6px;
-          border-radius: var(--r-pill);
-          font-family: var(--font-body);
-          justify-content: center;
-        }
-
-        .fidelity-hero-wrapper .st-ok { background: #d1fae5; color: #065f46; }
-        .fidelity-hero-wrapper .st-bad { background: #fee2e2; color: #991b1b; }
-        .fidelity-hero-wrapper .st-warn { background: #fef3c7; color: #92400e; }
-
-        @keyframes fidFadeUp {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
-        .fidelity-hero-wrapper .hero-left {
-          animation: fidFadeUp .6s ease both;
-        }
-
-        .fidelity-hero-wrapper .hero-visual {
-          animation: fidFadeUp .6s .15s ease both;
-        }
-      `}</style>
-
-      <div className="hero">
-        <div className="hero-left">
-          <div className="hero-badge">
-            <span className="hero-badge-dot"></span>Produtividade real na secretaria
+        {/* ── Coluna esquerda ── */}
+        <div
+          ref={leftRef}
+          className={`will-animate-left ${leftVisible ? 'is-visible' : ''}`}
+        >
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-100 rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-6">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+            Produtividade real na secretaria
           </div>
-          <h2 className="hero-title">Mais resultado com <span>menos trabalho manual</span></h2>
-          <p className="hero-sub">
-            O ecossistema do SIGESS automatiza tarefas que normalmente consomem várias pessoas na secretaria.
-            REAP, boletos, defeso, controle financeiro e conferências passam a acontecer com muito mais velocidade,
-            menos erro e mais previsibilidade.
+
+          {/* Título */}
+          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.08] tracking-tight mb-6">
+            Mais resultado com{' '}
+            <span className="text-emerald-600">menos trabalho manual</span>
+          </h2>
+
+          {/* Subtítulo */}
+          <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl font-light">
+            O ecossistema do SIGESS automatiza tarefas que normalmente consomem várias pessoas na
+            secretaria. REAP, boletos, defeso, controle financeiro e conferências passam a acontecer
+            com muito mais velocidade, menos erro e mais previsibilidade.
           </p>
-          <div className="hero-stats">
-            <div>
-              <div className="hero-stat-num">20s</div>
-              <div className="hero-stat-label">Para fazer um REAP</div>
+
+          {/* Stats */}
+          <div className="flex flex-wrap gap-8 pt-8 border-t border-slate-200">
+            {stats.map((s) => (
+              <div key={s.num}>
+                <p className="font-heading text-3xl font-extrabold text-emerald-600 tracking-tight leading-none mb-1">
+                  {s.num}
+                </p>
+                <p className="text-sm text-slate-400">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Coluna direita — mockup ── */}
+        <div
+          ref={rightRef}
+          className={`will-animate-right ${rightVisible ? 'is-visible' : ''}`}
+        >
+          {/* Moldura dark do "monitor" */}
+          <div className="bg-slate-900 rounded-2xl p-1 shadow-[0_32px_80px_rgba(15,23,42,0.18)]">
+            {/* Barra de título estilo macOS */}
+            <div className="bg-slate-800 rounded-t-xl px-4 py-2.5 flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
             </div>
-            <div>
-              <div className="hero-stat-num">Lote</div>
-              <div className="hero-stat-label">Boletos e REAP em massa</div>
-            </div>
-            <div>
-              <div className="hero-stat-num">5x</div>
-              <div className="hero-stat-label">Capaz de substituir até 5 funcionários</div>
+
+            {/* Área interna clara */}
+            <div className="bg-slate-50 rounded-b-xl p-4">
+              {/* Header do mockup */}
+              <div className="bg-white rounded-lg px-4 py-3 flex items-center justify-between mb-3 border border-slate-200">
+                <span className="font-heading text-base font-bold text-slate-800">
+                  Central de Automação
+                </span>
+                <span className="bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-100">
+                  Ativa
+                </span>
+              </div>
+
+              {/* Grid de métricas 2×2 */}
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                {mockCards.map((c) => (
+                  <div key={c.label} className="bg-white rounded-lg p-3 border border-slate-200">
+                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
+                      {c.label}
+                    </p>
+                    <p className={`font-heading text-xl font-extrabold tracking-tight ${c.valueColor}`}>
+                      {c.value}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mini tabela */}
+              <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+                {/* Cabeçalho */}
+                <div className="grid grid-cols-[2fr_1fr_1fr] gap-2 bg-slate-50 px-3 py-2 border-b border-slate-200">
+                  {['Sócio', 'REAP', 'Seguro'].map((h) => (
+                    <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
+                      {h}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Linhas */}
+                {mockRows.map((row, i) => (
+                  <div
+                    key={row.name}
+                    className={`grid grid-cols-[2fr_1fr_1fr] gap-2 items-center px-3 py-2 ${
+                      i < mockRows.length - 1 ? 'border-b border-slate-100' : ''
+                    }`}
+                  >
+                    <div>
+                      <p className="text-[11px] font-semibold text-slate-800">{row.name}</p>
+                      <p className="text-[10px] text-slate-400 font-mono">{row.cpf}</p>
+                    </div>
+                    <span className={`inline-flex items-center justify-center text-[9px] font-bold px-2 py-0.5 rounded-full ${row.reap.cls}`}>
+                      {row.reap.label}
+                    </span>
+                    <span className={`text-[10px] font-bold ${row.seguro.cls}`}>
+                      {row.seguro.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-        <div className="hero-visual">
-          <div className="screen-mockup">
-            <div className="screen-bar">
-              <div className="screen-dot" style={{ background: '#ef4444' }}></div>
-              <div className="screen-dot" style={{ background: '#f59e0b' }}></div>
-              <div className="screen-dot" style={{ background: '#22c55e' }}></div>
-            </div>
-            <div className="screen-inner">
-              <div className="mock-header">
-                <span className="mock-title">Central de Automação</span>
-                <span className="mock-badge-green">Ativa</span>
-              </div>
-              <div className="mock-cards">
-                <div className="mock-card">
-                  <div className="mock-card-label">Tempo médio REAP</div>
-                  <div className="mock-card-val green">20s</div>
-                </div>
-                <div className="mock-card">
-                  <div className="mock-card-label">Processamento em lote</div>
-                  <div className="mock-card-val blue">5 sócios</div>
-                </div>
-                <div className="mock-card">
-                  <div className="mock-card-label">Boletos gerados</div>
-                  <div className="mock-card-val amber">126</div>
-                </div>
-                <div className="mock-card">
-                  <div className="mock-card-label">Seguro identificado</div>
-                  <div className="mock-card-val green">48 pagos</div>
-                </div>
-              </div>
-              <div className="mock-table">
-                <div className="mock-table-head">
-                  <span className="mock-th">Sócio</span>
-                  <span className="mock-th">REAP</span>
-                  <span className="mock-th">Seguro</span>
-                </div>
-                <div className="mock-row">
-                  <div><div className="mock-name">Ana da Silva</div><div className="mock-cpf">123.456.789-01</div></div>
-                  <span className="mock-status st-ok">Enviado</span>
-                  <span style={{ fontSize: '10px', color: '#059669', fontWeight: 700 }}>Recebeu</span>
-                </div>
-                <div className="mock-row">
-                  <div><div className="mock-name">João Costa</div><div className="mock-cpf">234.567.890-12</div></div>
-                  <span className="mock-status st-warn">Pendente</span>
-                  <span style={{ fontSize: '10px', color: '#d97706', fontWeight: 700 }}>Aguardando</span>
-                </div>
-                <div className="mock-row">
-                  <div><div className="mock-name">Maria Ferreira</div><div className="mock-cpf">345.678.901-23</div></div>
-                  <span className="mock-status st-ok">Em lote</span>
-                  <span style={{ fontSize: '10px', color: '#2563eb', fontWeight: 700 }}>Conferindo</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
-    </div>
+    </section>
   );
 }

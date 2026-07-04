@@ -1,4 +1,5 @@
 import { Quote, Star } from 'lucide-react';
+import { useInView } from '@/hooks/useInView';
 
 const testimonials = [
   {
@@ -29,11 +30,17 @@ const testimonials = [
 ];
 
 export function Testimonials() {
+  const [headerRef, headerVisible] = useInView<HTMLDivElement>();
+  const [gridRef, gridVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
+
   return (
     <section className="relative py-20 lg:py-28 bg-slate-50">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center max-w-3xl mx-auto mb-16 will-animate ${headerVisible ? 'is-visible' : ''}`}
+        >
           <span className="inline-block px-4 py-1.5 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Depoimentos
           </span>
@@ -47,11 +54,11 @@ export function Testimonials() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div ref={gridRef} className="grid md:grid-cols-2 gap-8">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover relative"
+              className={`group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover relative will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Quote icon */}
               <div className="absolute -top-4 -left-2 w-10 h-10 bg-emerald-600 rounded-lg flex items-center justify-center shadow-lg">
@@ -93,8 +100,6 @@ export function Testimonials() {
             </div>
           ))}
         </div>
-
-
       </div>
     </section>
   );
