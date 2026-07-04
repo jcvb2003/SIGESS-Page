@@ -5,7 +5,7 @@ const extensionFeatures = [
   {
     icon: Users,
     title: 'Login Múltiplo e Simultâneo',
-    description: 'Realize múltiplos logins ao mesmo tempo, cada sessão isolada. Passe uma lista de sócios e deixe a extensão trabalhar enquanto você atende.',
+    description: 'Realize múltiplos logins au mesmo tempo, cada sessão isolada. Passe uma lista de sócios e deixe a extensão trabalhar enquanto você atende.',
   },
   {
     icon: FileSignature,
@@ -30,38 +30,12 @@ const extensionFeatures = [
   },
 ];
 
-const integrations = [
-  {
-    name: 'PesqBrasil (MPA)',
-    logo: '/images/pesqbrasil-logo.svg',
-    action: 'Preenchimento e Envio de REAP',
-    isSvg: true,
-  },
-  {
-    name: 'Gov.br',
-    logo: '/images/logo-govbr.png',
-    action: 'Captura cadastral e login unificado',
-  },
-  {
-    name: 'Meu INSS',
-    logo: '/images/logo-inss.png',
-    action: 'Validação e consulta de Seguro-Defeso',
-  },
-  {
-    name: 'eSocial',
-    logo: '/images/logo-esocial.png',
-    action: 'Operação em lote e emissão de DAE',
-  },
-  {
-    name: 'CTPS Digital',
-    logo: '/images/logo-ctps.png',
-    action: 'Sincronização de NIT e contratos',
-  },
-  {
-    name: 'Receita Federal',
-    logo: '/images/logo-receita.png',
-    action: 'Consulta e regularidade de CPF',
-  },
+const compatibleSystems = [
+  { name: 'Gov.br', logo: '/images/logo-govbr.png' },
+  { name: 'Meu INSS', logo: '/images/logo-inss.png' },
+  { name: 'eSocial', logo: '/images/logo-esocial.png' },
+  { name: 'CTPS Digital', logo: '/images/logo-ctps.png' },
+  { name: 'Receita Federal', logo: '/images/logo-receita.png' },
 ];
 
 export function Extension() {
@@ -159,73 +133,155 @@ export function Extension() {
             </div>
           </div>
 
-          {/* Coluna Direita - Central de Conectividade Governamental (Logos Oficiais) */}
+          {/* Coluna Direita - Mockup de Navegador + Extension Widget com Logos Integrados */}
           <div className={`relative w-full max-w-lg mx-auto lg:max-w-none will-animate-right ${sectionVisible ? 'is-visible' : ''}`}>
             {/* Efeito de Brilho Traseiro */}
             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-400 to-teal-300 rounded-[2rem] blur-3xl opacity-20 pointer-events-none animate-pulse" />
             
-            {/* Container Central de Integrações */}
-            <div className="relative bg-slate-950/80 border border-white/15 rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl">
+            {/* Janela de Navegador Simulada */}
+            <div className="relative bg-slate-900 rounded-2xl overflow-hidden shadow-2xl border border-white/10">
               
-              {/* Cabeçalho do Painel */}
-              <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/10">
-                <div>
-                  <h3 className="font-heading text-lg font-bold text-white tracking-tight">
-                    Sistemas Integrados
-                  </h3>
-                  <p className="text-xs text-slate-400">Automação direta nos portais oficiais</p>
+              {/* Barra do Navegador */}
+              <div className="flex items-center px-4 py-3 border-b border-white/10 bg-slate-800">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
                 </div>
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/10 rounded-full border border-emerald-500/30">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
-                    Extensão Ativa
+                <div className="flex-1 flex justify-center px-4">
+                  <div className="bg-slate-950 border border-white/5 rounded-md px-3 py-1 flex items-center w-full max-w-xs justify-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                      <span className="w-1 h-1 rounded-full bg-emerald-400" />
+                    </span>
+                    <span className="text-[10px] text-gray-400 font-mono tracking-tight select-all">
+                      pesqbrasil.mpa.gov.br/reap
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Corpo da Janela (Portal Governamental Real) */}
+              <div className="relative h-[410px] sm:h-[450px] bg-slate-100 flex flex-col">
+                
+                {/* Header Azul Padrão do Governo Federal */}
+                <div className="bg-[#0c2a47] py-3.5 px-6 flex items-center justify-between border-b border-slate-200 select-none">
+                  <img 
+                    src="/images/pesqbrasil-logo.svg" 
+                    alt="PesqBrasil" 
+                    className="h-7 w-auto"
+                  />
+                  <span className="text-[9px] font-semibold text-slate-300 uppercase tracking-wider">
+                    Ministério da Pesca e Aquicultura
                   </span>
                 </div>
-              </div>
 
-              {/* Grid das Logos Oficiais */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {integrations.map((item, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-3.5 p-3.5 rounded-xl bg-white/5 border border-white/5 hover:border-white/15 transition-all duration-300 hover:bg-white/10 group"
-                  >
-                    {/* Container da Logo com proporções consistentes */}
-                    <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-2 shadow-md flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
-                      <img 
-                        src={item.logo} 
-                        alt={item.name} 
-                        className={`w-full h-full ${item.isSvg ? 'object-contain' : 'object-cover rounded-md'}`}
-                        loading="lazy"
-                      />
-                    </div>
-                    
-                    {/* Ação e Nome da Integração */}
+                {/* Conteúdo Interno do Portal */}
+                <div className="flex-1 p-6 flex flex-col justify-between select-none">
+                  
+                  {/* Cabeçalho do Formulário */}
+                  <div className="border-b border-slate-300 pb-3">
+                    <h4 className="text-xs font-bold text-slate-700 uppercase tracking-tight">
+                      Relatório de Exercício da Atividade Pesqueira - REAP
+                    </h4>
+                    <p className="text-[9px] text-slate-500">Ano de Exercício de Referência: 2025</p>
+                  </div>
+
+                  {/* Formulario */}
+                  <div className="grid grid-cols-2 gap-3 my-4">
                     <div className="space-y-1">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs font-bold text-white tracking-tight leading-tight">
-                          {item.name}
-                        </span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      <span className="text-[9px] font-bold text-slate-500 uppercase">CPF do Pescador</span>
+                      <div className="bg-emerald-50 border border-emerald-300 text-emerald-900 rounded px-2.5 py-1.5 text-xs font-mono">
+                        123.456.789-00
                       </div>
-                      <p className="text-[10px] text-slate-400 leading-tight">
-                        {item.action}
-                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-[9px] font-bold text-slate-500 uppercase">RGP / Protocolo</span>
+                      <div className="bg-emerald-50 border border-emerald-300 text-emerald-900 rounded px-2.5 py-1.5 text-xs font-mono">
+                        PA-0056942-8
+                      </div>
+                    </div>
+                    <div className="col-span-2 space-y-1">
+                      <span className="text-[9px] font-bold text-slate-500 uppercase">Atividade Declarada</span>
+                      <div className="bg-emerald-50 border border-emerald-300 text-emerald-900 rounded px-2.5 py-1.5 text-xs">
+                        Pesca Artesanal Embarcada - Camarão / Peixes Diversos
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
 
-              {/* Nota de rodapé da Central de Conectividade */}
-              <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-center gap-2">
-                <span className="text-[11px] text-slate-400 text-center font-medium">
-                  Integração nativa sem digitação manual e 100% segura.
-                </span>
-              </div>
+                  {/* Rodapé do Formulário */}
+                  <div className="flex justify-end gap-2 border-t border-slate-300 pt-3">
+                    <div className="px-3 py-1.5 bg-slate-300 text-slate-600 rounded text-[10px] font-bold uppercase">
+                      Cancelar
+                    </div>
+                    <div className="px-3 py-1.5 bg-[#0c2a47] text-white rounded text-[10px] font-bold uppercase opacity-50">
+                      Enviar REAP
+                    </div>
+                  </div>
+                </div>
 
+                {/* Widget Flutuante da Extensão (SIGESS Automator) */}
+                <div className="absolute top-16 right-4 w-[250px] bg-slate-900 border border-emerald-500/30 rounded-xl p-4 shadow-xl select-none animate-float">
+                  
+                  {/* Cabeçalho da Extensão */}
+                  <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-800">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 bg-emerald-500/20 rounded flex items-center justify-center">
+                        <img src="/logo.svg" alt="" className="w-3.5 h-3.5" />
+                      </div>
+                      <span className="text-white font-bold text-[11px] tracking-tight">SIGESS Automator</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 px-1.5 py-0.5 bg-emerald-500/10 rounded-full border border-emerald-500/30">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="text-[8px] font-bold text-emerald-400 uppercase tracking-wider">Ativo</span>
+                    </div>
+                  </div>
+
+                  {/* Status da Automação */}
+                  <div className="space-y-3">
+                    <div className="bg-slate-950/60 p-2.5 rounded-lg border border-slate-800">
+                      <p className="text-[9px] text-slate-500 font-mono mb-0.5 uppercase">Ação:</p>
+                      <p className="text-xs text-white font-semibold leading-tight">Preenchendo REAP Simplificado</p>
+                    </div>
+
+                    <div className="space-y-1">
+                      <div className="flex justify-between text-[9px] font-mono text-slate-500">
+                        <span>Progresso</span>
+                        <span className="text-emerald-400 font-bold">100%</span>
+                      </div>
+                      <div className="w-full bg-slate-800 rounded-full h-1">
+                        <div className="bg-emerald-500 h-full rounded-full w-full" />
+                      </div>
+                    </div>
+
+                    {/* Logos Integrados no Rodapé da Extensão */}
+                    <div className="pt-2 border-t border-slate-800/80">
+                      <p className="text-[9px] text-slate-500 font-mono mb-1.5 uppercase tracking-wider">
+                        Sistemas Compatíveis
+                      </p>
+                      <div className="flex gap-1.5 justify-start">
+                        {compatibleSystems.map((sys) => (
+                          <div 
+                            key={sys.name} 
+                            className="w-6 h-6 bg-white rounded flex items-center justify-center p-0.5 shadow-sm border border-slate-800/10 hover:scale-110 transition-transform duration-200"
+                            title={sys.name}
+                          >
+                            <img 
+                              src={sys.logo} 
+                              alt={sys.name} 
+                              className="w-full h-full object-contain rounded-sm" 
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
 
         {/* Rodapé da Seção */}
