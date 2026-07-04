@@ -1,30 +1,25 @@
 import { useEffect, useRef } from 'react';
-import { ArrowRight, CheckCircle } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { animate, stagger } from 'animejs';
+import { CheckCircle } from 'lucide-react';
+
+const SIGESS_LETTERS = 'SIGESS'.split('');
 
 export function Hero() {
-  const imageRef = useRef<HTMLDivElement>(null);
+  const wordmarkRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (imageRef.current) {
-        const rect = imageRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left - rect.width / 2) / 50;
-        const y = (e.clientY - rect.top - rect.height / 2) / 50;
-        imageRef.current.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
+    if (!wordmarkRef.current) return;
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const letters = wordmarkRef.current.querySelectorAll('.hero-letter');
+
+    animate(letters, {
+      translateY: [-32, 0],
+      opacity: [0, 1],
+      easing: 'easeOutExpo',
+      duration: 900,
+      delay: stagger(70),
+    });
   }, []);
-
-  const scrollToContact = () => {
-    const element = document.querySelector('#contato');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
@@ -32,134 +27,46 @@ export function Hero() {
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-50/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 opacity-10">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
-          <path
-            d="M0 60C240 20 480 100 720 60C960 20 1200 100 1440 60V120H0V60Z"
-            fill="#059669"
-          />
-        </svg>
-      </div>
-
-      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">
-              <img src="/logo.svg" alt="" className="w-5 h-5" />
-              <span>Gestão para Pesca Artesanal</span>
-            </div>
-
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-slate-800 leading-tight">
-                Simplifique a{' '}
-                <span className="text-emerald-600">gestão</span>{' '}
-                da sua entidade de pesca
-              </h1>
-              <p className="text-lg sm:text-xl text-slate-600 max-w-xl leading-relaxed">
-                O único sistema desenvolvido para a realidade do pescador artesanal brasileiro.
-                Do cadastro do sócio ao controle do defeso, tudo em um só lugar - simples,
-                seguro e 100% online.
-              </p>
-            </div>
-
-            <div className="flex flex-wrap gap-4">
-              {[
-                'REAP em cerca de 20 segundos',
-                'Guia GPS/DAE e REAP em lote',
-                'Treinamento completo + suporte humano',
-              ].map((feature, index) => (
-                <div
-                  key={index}
-                  className="flex items-center gap-2 text-slate-600"
-                >
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                  <span className="text-sm font-medium">{feature}</span>
-                </div>
+      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
+        <div className="flex flex-col items-center text-center gap-8 animate-fade-in-up">
+          <div className="flex flex-col items-center gap-5">
+            <h1
+              ref={wordmarkRef}
+              aria-label="SIGESS"
+              className="flex text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-emerald-600"
+            >
+              {SIGESS_LETTERS.map((letter, index) => (
+                <span key={index} aria-hidden="true" className="hero-letter inline-block opacity-0">
+                  {letter}
+                </span>
               ))}
-            </div>
+            </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                onClick={scrollToContact}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold btn-glow group"
-              >
-                Quero conhecer o SIGESS
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => {
-                  const element = document.querySelector('#modulos');
-                  if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }}
-                className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold"
-              >
-                Ver módulos
-              </Button>
-            </div>
+            <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight max-w-2xl">
+              Simplifique a <span className="text-emerald-600">gestão</span> da sua entidade de <span className="text-emerald-600">pesca artesanal</span>
+            </p>
+
+            <p className="text-base sm:text-lg text-slate-600 max-w-xl leading-relaxed">
+              O único sistema desenvolvido para a realidade do pescador artesanal brasileiro.
+              Do cadastro do sócio ao controle do defeso, tudo em um só lugar - simples,
+              seguro e 100% online.
+            </p>
           </div>
 
-          <div
-            ref={imageRef}
-            className="relative animate-slide-in-right transition-transform duration-300 ease-out"
-          >
-            {/* Efeito de brilho de fundo */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-3xl blur-2xl opacity-20 animate-pulse" />
-            
-            {/* Mockup do Navegador */}
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200/50 bg-white ring-1 ring-slate-900/5">
-              {/* Barra do topo estilo macOS */}
-              <div className="flex items-center px-4 py-3 border-b border-slate-100 bg-slate-50/80 backdrop-blur-md">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-amber-400" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-400" />
-                </div>
-                <div className="flex-1 flex justify-center">
-                  <div className="bg-white border border-slate-200 rounded-md px-4 py-1 flex items-center gap-2 shadow-sm">
-                    <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                    <span className="text-[11px] font-medium text-slate-500 tracking-wide">app.sigess.com.br</span>
-                  </div>
-                </div>
+          <div className="flex flex-wrap justify-center gap-4">
+            {[
+              'REAP em cerca de 20 segundos',
+              'Guia GPS/DAE e REAP em lote',
+              'Treinamento completo + suporte humano',
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className="flex items-center gap-2 text-slate-600"
+              >
+                <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                <span className="text-sm font-medium">{feature}</span>
               </div>
-              
-              <img
-                src="/images/dashboard-preview.jpg"
-                alt="Dashboard do SIGESS"
-                className="w-full h-auto object-cover border-b border-slate-100"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/5 to-transparent pointer-events-none" />
-            </div>
-
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-xl p-4 border border-slate-100 animate-float">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center">
-                  <CheckCircle className="w-6 h-6 text-emerald-600" />
-                </div>
-                <div>
-                  <p className="text-2xl font-bold text-slate-800">8.250+</p>
-                  <p className="text-sm text-slate-500">Sócios gerenciados</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="absolute -top-4 -right-4 bg-emerald-600 text-white rounded-xl shadow-xl p-3 animate-float delay-300">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                  <img src="/logo.svg" alt="" className="w-4 h-4 brightness-0 invert" />
-                </div>
-                <div>
-                  <p className="text-xs font-medium opacity-90">Defeso 2026</p>
-                  <p className="text-sm font-bold">Em andamento</p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>
