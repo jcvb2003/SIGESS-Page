@@ -43,13 +43,13 @@ export function Contact() {
   };
 
   return (
-    <section id="contato" className="relative py-20 lg:py-28 bg-gradient-dark snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="contato" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-gradient-dark snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-3xl -translate-x-1/3 translate-y-1/3" />
       </div>
 
-      <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-8">
             <div>

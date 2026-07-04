@@ -28,8 +28,8 @@ export function CompleteManagement() {
   const [rightRef, rightVisible] = useInView<HTMLDivElement>();
 
   return (
-    <section className="bg-white overflow-hidden py-20 lg:py-28 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
-      <div className="max-w-screen-2xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+    <section className="bg-white overflow-hidden min-h-screen flex items-center py-10 lg:py-14 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+      <div className="w-full max-w-screen-2xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
 
         {/* ── Coluna esquerda ── */}
         <div

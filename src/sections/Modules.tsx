@@ -307,8 +307,8 @@ export function Modules() {
   const next = () => setActive(i => (i + 1) % modules.length);
 
   return (
-    <section id="modulos" className="relative pt-7 pb-5 lg:pt-10 lg:pb-7 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="modulos" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+      <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
         <div className="text-center max-w-3xl mx-auto mb-6">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">

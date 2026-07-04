@@ -80,7 +80,7 @@ export function Pricing() {
   };
 
   return (
-    <section id="planos" className="relative py-20 lg:py-28 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="planos" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       {/* Blob decorativo */}
       <div
         aria-hidden="true"
@@ -91,7 +91,7 @@ export function Pricing() {
         }}
       />
 
-      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Cabeçalho ───────────────────────────────────────────────────── */}
         <div className="text-center max-w-3xl mx-auto mb-14">

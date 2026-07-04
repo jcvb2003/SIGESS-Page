@@ -31,7 +31,7 @@ const extensionFeatures = [
 ];
 
 const integrations = [
-  { name: 'PesqBrasil (MPA)', logo: '/images/pesqbrasil-logo.svg', isSvg: true },
+  { name: 'PesqBrasil (MPA)', logo: '/images/pesqbrasil-icon.png' },
   { name: 'Gov.br', logo: '/images/logo-govbr.png' },
   { name: 'Meu INSS', logo: '/images/logo-inss.png' },
   { name: 'eSocial', logo: '/images/logo-esocial.png' },
@@ -46,21 +46,21 @@ export function Extension() {
   const otherFeatures = extensionFeatures.filter(f => !f.isFeatured);
 
   return (
-    <section id="extensao" className="relative py-20 lg:py-28 bg-gradient-emerald overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="extensao" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-gradient-emerald overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       {/* Elementos Decorativos de Fundo */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
-      <div ref={sectionRef} className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div ref={sectionRef} className="relative w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           
           {/* Coluna Esquerda - Títulos e Bento Grid */}
           <div className="space-y-10">
             <div className={`will-animate-left ${sectionVisible ? 'is-visible' : ''}`}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
-                O braço automatizado do SIGESS
+                O Robô do SIGESS
               </h2>
               <p className="text-lg text-emerald-100 leading-relaxed max-w-xl">
                 A Extensão conecta o sistema diretamente aos portais do governo -
@@ -128,7 +128,7 @@ export function Extension() {
                 <img 
                   src={item.logo} 
                   alt={item.name} 
-                  className={`max-w-full max-h-full object-contain ${item.isSvg ? '' : 'rounded-md'} group-hover:scale-105 transition-transform duration-300`}
+                  className="max-w-full max-h-full object-contain rounded-md group-hover:scale-105 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>

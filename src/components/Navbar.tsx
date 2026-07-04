@@ -22,6 +22,7 @@ export function Navbar() {
       setIsScrolled(window.scrollY > 100);
     };
 
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
