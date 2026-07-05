@@ -13,8 +13,6 @@ import {
   Calendar,
   MagnifyingGlass as Search,
   FileMagnifyingGlass as FileSearch,
-  CaretLeft as ChevronLeft,
-  CaretRight as ChevronRight,
 } from '@phosphor-icons/react';
 
 const modules = [
@@ -305,14 +303,11 @@ export function Modules() {
   const [active, setActive] = useState(0);
   const module = modules[active];
 
-  const prev = () => setActive(i => (i - 1 + modules.length) % modules.length);
-  const next = () => setActive(i => (i + 1) % modules.length);
-
   return (
     <section id="modulos" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
-        <div className="text-center max-w-3xl mx-auto mb-6">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Módulos do sistema
           </h2>
@@ -322,94 +317,64 @@ export function Modules() {
           </p>
         </div>
 
-        {/* Navegação por abas */}
-        <div className="flex flex-wrap justify-center gap-2 mb-12">
-          {modules.map((m, i) => {
-            const Icon = m.icon;
-            const isActive = i === active;
-            return (
-              <button
-                key={i}
-                id={`modulo-tab-${i}`}
-                onClick={() => setActive(i)}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 ${isActive
-                    ? `bg-gradient-to-br ${m.color} text-white shadow-md scale-[1.03]`
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                  }`}
-              >
-                <Icon className="w-4 h-4 flex-shrink-0" />
-                <span>{m.title}</span>
-              </button>
-            );
-          })}
-        </div>
+        <div className="grid lg:grid-cols-[240px_1fr] gap-6 lg:gap-12 items-start">
+          {/* Navegação - lista lateral como um menu de app */}
+          <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible -mx-1 px-1 lg:mx-0 lg:px-0 pb-2 lg:pb-0 lg:border-r lg:border-slate-100 lg:pr-4">
+            {modules.map((m, i) => {
+              const Icon = m.icon;
+              const isActive = i === active;
+              return (
+                <button
+                  key={i}
+                  id={`modulo-tab-${i}`}
+                  onClick={() => setActive(i)}
+                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-left whitespace-nowrap transition-colors duration-200 ${isActive ? 'bg-slate-50' : 'hover:bg-slate-50/60'
+                    }`}
+                >
+                  <div
+                    className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-200 ${isActive ? `bg-gradient-to-br ${m.color} shadow-sm` : 'bg-slate-100'
+                      }`}
+                  >
+                    <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                  </div>
+                  <span className={`text-sm ${isActive ? 'font-bold text-slate-800' : 'font-medium text-slate-500'}`}>
+                    {m.title}
+                  </span>
+                </button>
+              );
+            })}
+          </nav>
 
-        {/* Painel do módulo ativo */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Conteúdo */}
-          <div className="space-y-6">
-            <div className="flex items-center gap-4">
-              <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
-                <module.icon className="w-7 h-7 text-white" />
+          {/* Painel do módulo ativo */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Conteúdo */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
+                  <module.icon className="w-7 h-7 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-slate-800">
+                  {module.title}
+                </h3>
               </div>
-              <h3 className="text-xl font-bold text-slate-800">
-                {module.title}
-              </h3>
+
+              <p className="text-lg text-slate-600">
+                {module.description}
+              </p>
+
+              <ul className="space-y-3">
+                {module.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-slate-600">{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <p className="text-lg text-slate-600">
-              {module.description}
-            </p>
-
-            <ul className="space-y-3">
-              {module.features.map((feature, fIndex) => (
-                <li key={fIndex} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
-                  <span className="text-slate-600">{feature}</span>
-                </li>
-              ))}
-            </ul>
+            {/* Visual */}
+            <ModuleVisual module={module} />
           </div>
-
-          {/* Visual */}
-          <ModuleVisual module={module} />
-        </div>
-
-        {/* Controles de navegação prev/next */}
-        <div className="flex items-center justify-center gap-4 mt-10">
-          <button
-            id="modulo-prev"
-            onClick={prev}
-            aria-label="Módulo anterior"
-            className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-
-          {/* Dots */}
-          <div className="flex gap-2">
-            {modules.map((_, i) => (
-              <button
-                key={i}
-                id={`modulo-dot-${i}`}
-                onClick={() => setActive(i)}
-                aria-label={`Ir para ${modules[i].title}`}
-                className={`rounded-full transition-all duration-200 ${i === active
-                    ? 'w-6 h-2.5 bg-emerald-500'
-                    : 'w-2.5 h-2.5 bg-slate-300 hover:bg-slate-400'
-                  }`}
-              />
-            ))}
-          </div>
-
-          <button
-            id="modulo-next"
-            onClick={next}
-            aria-label="Próximo módulo"
-            className="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </section>
