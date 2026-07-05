@@ -35,13 +35,14 @@ const modules = [
   {
     icon: FileText,
     title: 'Documentos e Requerimentos',
-    description: 'Gere automaticamente os requerimentos de Seguro-Defeso.',
+    description: 'Gere requerimentos de Seguro-Defeso e demais documentos do associado automaticamente.',
     features: [
-      'Requerimentos preenchidos automaticamente',
+      'Emissão de carteirinha e declarações do associado',
+      'Requerimentos de Seguro-Defeso preenchidos automaticamente',
       'Controle por período do defeso',
       'Evite retrabalho e falhas',
       'Garanta que nenhum pescador fique sem benefício',
-      'Histórico de requerimentos',
+      'Histórico de requerimentos e documentos emitidos',
     ],
     image: '/images/requirements.png',
     color: 'from-emerald-500 to-emerald-600',
@@ -52,6 +53,7 @@ const modules = [
     description: 'Desenvolvido para a realidade financeira das entidades de pesca artesanal.',
     features: [
       'Anuidades e mensalidades',
+      'Emissão de carnês e boletos via integração com Asaas',
       'Gestão do DAE (Previdência Social)',
       'Contribuições compulsórias e facultativas',
       'Boletos e guias com operação em massa',
