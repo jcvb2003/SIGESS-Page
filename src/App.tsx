@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { IconContext } from '@phosphor-icons/react';
 import { Home } from './pages/Home';
 import { Utilities } from './pages/Utilities';
 import { TermsOfUse } from './pages/TermsOfUse';
@@ -63,15 +64,17 @@ function PageMeta() {
 
 function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <PageMeta />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/utilitarios" element={<Utilities />} />
-        <Route path="/termos-uso" element={<TermsOfUse />} />
-      </Routes>
-    </Router>
+    <IconContext.Provider value={{ weight: 'duotone' }}>
+      <Router>
+        <ScrollToTop />
+        <PageMeta />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/utilitarios" element={<Utilities />} />
+          <Route path="/termos-uso" element={<TermsOfUse />} />
+        </Routes>
+      </Router>
+    </IconContext.Provider>
   );
 }
 

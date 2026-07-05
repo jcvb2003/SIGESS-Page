@@ -1,4 +1,4 @@
-import { Anchor, Users, Building2, Briefcase } from 'lucide-react';
+import { Anchor, Users, Buildings as Building2, Briefcase } from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
 const entities = [

@@ -2,20 +2,20 @@ import { useState } from 'react';
 import {
   Users,
   FileText,
-  DollarSign,
-  BarChart3,
-  Settings,
+  CurrencyDollar as DollarSign,
+  ChartBar as BarChart3,
+  Gear as Settings,
   CheckCircle,
   Receipt,
   Building,
-  FileCheck,
-  ClipboardList,
+  FileArrowDown as FileCheck,
+  ClipboardText as ClipboardList,
   Calendar,
-  Search,
-  FileSearch,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react';
+  MagnifyingGlass as Search,
+  FileMagnifyingGlass as FileSearch,
+  CaretLeft as ChevronLeft,
+  CaretRight as ChevronRight,
+} from '@phosphor-icons/react';
 
 const modules = [
   {

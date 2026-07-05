@@ -3,7 +3,7 @@ import {
   CheckCircle,
   ArrowRight,
   Laptop,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
 

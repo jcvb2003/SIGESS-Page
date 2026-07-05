@@ -1,4 +1,4 @@
-import { Users, FileSignature, ClipboardList, Receipt, Zap } from 'lucide-react';
+import { Users, Signature as FileSignature, ClipboardText as ClipboardList, Receipt, Lightning as Zap } from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
 const extensionFeatures = [

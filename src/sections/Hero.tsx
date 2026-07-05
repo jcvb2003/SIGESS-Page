@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle } from '@phosphor-icons/react';
 
 const SIGESS_LETTERS = 'SIGESS'.split('');
 

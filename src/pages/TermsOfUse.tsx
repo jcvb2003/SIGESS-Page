@@ -1,6 +1,6 @@
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../sections/Footer';
-import { FileText, Shield, LifeBuoy, Clock } from 'lucide-react';
+import { FileText, Shield, Lifebuoy as LifeBuoy, Clock } from '@phosphor-icons/react';
 
 export function TermsOfUse() {
   const lastUpdate = "09 de abril de 2026";

@@ -1,4 +1,4 @@
-import { Quote, Star } from 'lucide-react';
+import { Quotes as Quote, Star } from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
 const testimonials = [

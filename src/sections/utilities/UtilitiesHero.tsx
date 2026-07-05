@@ -1,4 +1,4 @@
-import { Wrench, Sparkles } from 'lucide-react';
+import { Wrench, Sparkle as Sparkles } from '@phosphor-icons/react';
 
 export function UtilitiesHero() {
   return (

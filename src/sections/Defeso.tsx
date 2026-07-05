@@ -1,4 +1,4 @@
-import { ClipboardCheck, FileSignature, CheckCircle, UserCheck } from 'lucide-react';
+import { ClipboardText as ClipboardCheck, Signature as FileSignature, CheckCircle, UserCheck } from '@phosphor-icons/react';
 
 const steps = [
   {

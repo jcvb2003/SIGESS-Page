@@ -1,19 +1,19 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import {
-  FileUp,
-  Trash2,
+  FileArrowUp as FileUp,
+  Trash as Trash2,
   Play,
-  CheckCircle2,
-  AlertCircle,
-  Loader2,
+  CheckCircle as CheckCircle2,
+  WarningCircle as AlertCircle,
+  Spinner as Loader2,
   FileText,
   QrCode,
   User,
   CreditCard,
-  ImageIcon,
-  Link2,
+  Image as ImageIcon,
+  LinkSimple as Link2,
   X as XIcon,
-} from 'lucide-react';
+} from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';

@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Instagram, Linkedin, Facebook } from 'lucide-react';
+import { Envelope as Mail, Phone, MapPin, InstagramLogo as Instagram, LinkedinLogo as Linkedin, FacebookLogo as Facebook } from '@phosphor-icons/react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const footerLinks = {

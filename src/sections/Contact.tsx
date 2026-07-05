@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, User, Building, MapPin, Mail, Users, CheckCircle, Video, Headphones } from 'lucide-react';
+import { PaperPlaneTilt as Send, User, Building, MapPin, Envelope as Mail, Users, CheckCircle, VideoCamera as Video, Headset as Headphones } from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
