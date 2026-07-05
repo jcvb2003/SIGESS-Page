@@ -22,28 +22,28 @@ const initialTier = {
 const dynamicTiers = [
   {
     id: '501-1000',
-    range: '501 a 1.000',
+    range: 'Até 1.000',
     sub: 'sócios',
     computers: 2,
     price: 2997,
   },
   {
     id: '1001-2000',
-    range: '1.001 a 2.000',
+    range: 'Até 2.000',
     sub: 'sócios',
     computers: 3,
     price: 3897,
   },
   {
     id: '2001-5000',
-    range: '2.001 a 5.000',
+    range: 'Até 5.000',
     sub: 'sócios',
     computers: 4,
     price: 4797,
   },
   {
     id: '5001-9000',
-    range: '5.001 a 9.000',
+    range: 'Até 9.000',
     sub: 'sócios',
     computers: 5,
     price: 5997,
@@ -173,7 +173,7 @@ export function Pricing() {
             <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
               <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
               <span className="text-sm text-slate-200 font-bold text-center">
-                Extensão Firefox em até {initialTier.computers} {initialTier.computers === 1 ? 'PC' : 'PCs'}
+                Robô em até {initialTier.computers} {initialTier.computers === 1 ? 'PC' : 'PCs'}
               </span>
             </div>
 
@@ -259,7 +259,7 @@ export function Pricing() {
               <div className="flex items-center justify-center gap-2 bg-emerald-950/30 rounded-xl px-4 py-3 mt-2 border border-emerald-600/30">
                 <Laptop className="w-5 h-5 text-emerald-300 flex-shrink-0" />
                 <span className="text-sm text-emerald-50 font-bold text-center">
-                  Extensão Firefox em até {activeDynamicTier.computers} {activeDynamicTier.computers === 1 ? 'PC' : 'PCs'}
+                  Robô em até {activeDynamicTier.computers} {activeDynamicTier.computers === 1 ? 'PC' : 'PCs'}
                 </span>
               </div>
 

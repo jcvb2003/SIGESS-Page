@@ -40,6 +40,17 @@ const integrations = [
   { name: 'CadÚnico', logo: '/images/logo-cadunico.png' },
 ];
 
+// Posiciona cada integração num circulo ao redor do nucleo (SIGESS),
+// como pontos de uma orbita - comeca no topo e distribui em sentido horario.
+const ORBIT_RADIUS = 42;
+const orbitPositions = integrations.map((_, index) => {
+  const angle = (-90 + (360 / integrations.length) * index) * (Math.PI / 180);
+  return {
+    x: 50 + ORBIT_RADIUS * Math.cos(angle),
+    y: 50 + ORBIT_RADIUS * Math.sin(angle),
+  };
+});
+
 export function Extension() {
   const [sectionRef, sectionVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
 
@@ -54,11 +65,12 @@ export function Extension() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-white rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
-      <div ref={sectionRef} className="relative w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          
-          {/* Coluna Esquerda - Títulos e Bento Grid */}
-          <div className="space-y-10">
+      <div ref={sectionRef} className="relative w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+
+          {/* Coluna Esquerda - Título e Card Destaque */}
+          <div className="space-y-6">
             <div className={`will-animate-left ${sectionVisible ? 'is-visible' : ''}`}>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
                 O Robô do SIGESS
@@ -70,73 +82,99 @@ export function Extension() {
               </p>
             </div>
 
-            {/* Bento Grid das Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {/* Card Destaque: REAP (Carro-Chefe) */}
-              {featuredFeature && (
-                <div 
-                  className={`md:col-span-2 group p-6 rounded-2xl bg-white/10 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-lg will-animate anim-delay-1 ${sectionVisible ? 'is-visible' : ''}`}
-                >
-                  <div className="flex gap-4">
-                    <div className="w-14 h-14 bg-white text-emerald-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                      <featuredFeature.icon className="w-7 h-7" />
+            {/* Card Destaque: REAP (Carro-Chefe) */}
+            {featuredFeature && (
+              <div
+                className={`group p-6 rounded-2xl bg-white/10 border border-white/20 hover:bg-white/15 transition-all duration-300 shadow-lg will-animate anim-delay-1 ${sectionVisible ? 'is-visible' : ''}`}
+              >
+                <div className="flex gap-4">
+                  <div className="w-14 h-14 bg-white text-emerald-700 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <featuredFeature.icon className="w-7 h-7" />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <h3 className="text-xl font-bold text-white">{featuredFeature.title}</h3>
+                      <span className="px-2 py-0.5 bg-emerald-400/30 text-white text-[10px] font-bold uppercase rounded-full tracking-wider">
+                        Carro-chefe
+                      </span>
                     </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <h3 className="text-xl font-bold text-white">{featuredFeature.title}</h3>
-                        <span className="px-2 py-0.5 bg-emerald-400/30 text-white text-[10px] font-bold uppercase rounded-full tracking-wider">
-                          Carro-chefe
-                        </span>
-                      </div>
-                      <p className="text-sm sm:text-base text-emerald-50 leading-relaxed">
-                        {featuredFeature.description}
-                      </p>
-                    </div>
+                    <p className="text-sm sm:text-base text-emerald-50 leading-relaxed">
+                      {featuredFeature.description}
+                    </p>
                   </div>
                 </div>
-              )}
-
-              {/* Cards Secundários */}
-              {otherFeatures.map((feature, index) => (
-                <div 
-                  key={index} 
-                  className={`p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 will-animate anim-delay-${index + 2} ${sectionVisible ? 'is-visible' : ''}`}
-                >
-                  <div className="flex gap-4">
-                    <div className="w-12 h-12 bg-emerald-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <feature.icon className="w-6 h-6 text-emerald-300" />
-                    </div>
-                    <div>
-                      <h3 className="text-base font-bold text-white mb-1.5">{feature.title}</h3>
-                      <p className="text-xs text-emerald-100/80 leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
 
-          {/* Coluna Direita - Galeria de Logos Lado a Lado */}
-          <div className={`flex flex-wrap justify-center items-center gap-4 sm:gap-6 will-animate-right ${sectionVisible ? 'is-visible' : ''}`}>
-            {integrations.map((item, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-2xl p-4 sm:p-5 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 group select-none"
-                title={item.name}
-              >
-                <img 
-                  src={item.logo} 
-                  alt={item.name} 
-                  className="max-w-full max-h-full object-contain rounded-md group-hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
+          {/* Coluna Direita - Orbita de Integracoes */}
+          <div className={`relative w-full max-w-xs sm:max-w-sm mx-auto aspect-square will-animate-right ${sectionVisible ? 'is-visible' : ''}`}>
+            {/* Linhas de conexao */}
+            <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full overflow-visible" aria-hidden="true">
+              {orbitPositions.map((pos, index) => (
+                <line
+                  key={index}
+                  x1="50"
+                  y1="50"
+                  x2={pos.x}
+                  y2={pos.y}
+                  stroke="white"
+                  strokeOpacity="0.35"
+                  strokeWidth="0.4"
                 />
-              </div>
-            ))}
+              ))}
+            </svg>
+
+            {/* Nucleo - SIGESS */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white shadow-xl flex items-center justify-center">
+              <img src="/logo.svg" alt="SIGESS" className="w-10 h-10 sm:w-12 sm:h-12 object-contain" />
+            </div>
+
+            {/* Integracoes em orbita */}
+            {integrations.map((item, index) => {
+              const pos = orbitPositions[index];
+              return (
+                <div
+                  key={index}
+                  className="absolute -translate-x-1/2 -translate-y-1/2 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 flex items-center justify-center p-2 group select-none"
+                  style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+                  title={item.name}
+                >
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    className="max-w-full max-h-full object-contain rounded-full group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                  />
+                </div>
+              );
+            })}
           </div>
 
         </div>
+
+        {/* Linha - Cards Secundários (largura total da página) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          {otherFeatures.map((feature, index) => (
+            <div
+              key={index}
+              className={`p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 will-animate anim-delay-${index + 2} ${sectionVisible ? 'is-visible' : ''}`}
+            >
+              <div className="flex flex-col">
+                <div className="w-11 h-11 bg-emerald-500/20 rounded-xl flex items-center justify-center flex-shrink-0 mb-3">
+                  <feature.icon className="w-5 h-5 text-emerald-300" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-white mb-1.5">{feature.title}</h3>
+                  <p className="text-xs text-emerald-100/80 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
     </section>
   );
