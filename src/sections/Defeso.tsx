@@ -33,7 +33,7 @@ export function Defeso() {
       <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
-            Como funciona o defeso no SIGESS
+            Como funciona o Seguro Defeso 2026 no SIGESS
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             O período de defeso é o momento mais crítico para qualquer entidade de pesca.

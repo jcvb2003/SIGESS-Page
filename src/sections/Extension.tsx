@@ -37,6 +37,7 @@ const integrations = [
   { name: 'eSocial', logo: '/images/logo-esocial.png' },
   { name: 'CTPS Digital', logo: '/images/logo-ctps.png' },
   { name: 'Receita Federal', logo: '/images/logo-receita.png' },
+  { name: 'CadÚnico', logo: '/images/logo-cadunico.png' },
 ];
 
 export function Extension() {

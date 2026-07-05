@@ -35,6 +35,11 @@ const faqs = [
     category: 'Defeso e módulos',
     items: [
       {
+        question: 'O que é o Seguro Defeso?',
+        answer:
+          'É um benefício pago pelo governo federal ao pescador profissional durante o período em que a pesca de determinada espécie é proibida, para permitir a reprodução dos peixes. Para receber, o pescador precisa estar com o RGP em dia e apresentar o requerimento junto à sua entidade.',
+      },
+      {
         question: 'O sistema gera os requerimentos de Seguro Defeso automaticamente?',
         answer:
           'Sim. Com os dados do sócio já cadastrados, o SIGESS preenche e gera o requerimento pronto para assinar, sem precisar digitar tudo de novo.',
@@ -42,7 +47,7 @@ const faqs = [
       {
         question: 'Como eu sei quem já recebeu o benefício do defeso?',
         answer:
-          'O SIGESS importa o arquivo oficial do Portal da Transparência e cruza automaticamente com os requerimentos cadastrados. Assim, a entidade descobre quem recebeu o seguro sem precisar entrar na conta gov.br de cada pescador para fazer a pesquisa.',
+          'O SIGESS tem um módulo que identifica os pagamentos, assim a entidade descobre quem recebeu o seguro sem precisar entrar na conta gov.br de cada pescador para fazer a pesquisa.',
       },
       {
         question: 'O que é a Extensão SIGESS e eu preciso dela?',
@@ -98,9 +103,28 @@ const faqs = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  ),
+};
+
 export function FAQ() {
   return (
     <section id="faq" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
