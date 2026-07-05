@@ -17,6 +17,23 @@ function ScrollToTop() {
   return null;
 }
 
+// O carrossel de scroll-snap so existe na Home - fora dela o html nao
+// deve ter scroll-snap-type, senao qualquer secao com snap-align (como
+// o Footer, compartilhado por todas as paginas) vira o unico ponto de
+// encaixe e a rolagem sempre "puxa" pra la.
+function SnapCarouselToggle() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('snap-carousel', pathname === '/');
+    return () => {
+      document.documentElement.classList.remove('snap-carousel');
+    };
+  }, [pathname]);
+
+  return null;
+}
+
 const PAGE_META: Record<string, { title: string; description: string }> = {
   '/': {
     title: 'SIGESS - Gestão para Entidades de Pesca',
@@ -68,6 +85,7 @@ function App() {
       <Router>
         <ScrollToTop />
         <PageMeta />
+        <SnapCarouselToggle />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/utilitarios" element={<Utilities />} />

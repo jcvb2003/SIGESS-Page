@@ -102,7 +102,7 @@ export function Pricing() {
             </span>
           </h2>
           <p className="text-lg text-slate-500">
-            Sistema web completo e com um robô (automação via firefox) para a sua entidade.
+            Sistema web completo e com um robô para a sua entidade.
             Sem separar produtos, sem escolher módulos — a licença inclui tudo que sua entidade
             precisa para automatizar do cadastro de sócios ao processamento do REAP.
           </p>
@@ -341,7 +341,7 @@ export function Pricing() {
             <div className="flex items-center justify-center gap-2 bg-slate-900/50 rounded-xl px-4 py-3 mt-6 border border-slate-700/50">
               <Laptop className="w-5 h-5 text-slate-400 flex-shrink-0" />
               <span className="text-sm text-slate-200 font-bold text-center">
-                Extensão Firefox: {enterpriseTier.computers}
+                Robô: {enterpriseTier.computers}
               </span>
             </div>
 

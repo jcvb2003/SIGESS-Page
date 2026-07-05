@@ -41,6 +41,8 @@
   }
   html {
     scroll-behavior: smooth;
+  }
+  html.snap-carousel {
     scroll-snap-type: y mandatory;
   }
   body {

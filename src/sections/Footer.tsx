@@ -47,7 +47,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-slate-950 text-slate-400 py-16">
+    <footer className="bg-slate-950 text-slate-400 py-16 snap-start scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand */}
