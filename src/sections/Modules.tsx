@@ -349,15 +349,6 @@ export function Modules() {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Conteúdo */}
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${module.color} flex items-center justify-center shadow-lg`}>
-                  <module.icon className="w-7 h-7 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-slate-800">
-                  {module.title}
-                </h3>
-              </div>
-
               <p className="text-lg text-slate-600">
                 {module.description}
               </p>
