@@ -27,13 +27,10 @@ const steps = [
 export function Defeso() {
   return (
     <section id="defeso" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-emerald-50/60 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-50/60 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
-
       <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
-            Como funciona o Seguro Defeso 2026 no SIGESS
+            Como funciona o defeso no SIGESS
           </h2>
           <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             O período de defeso é o momento mais crítico para qualquer entidade de pesca.
