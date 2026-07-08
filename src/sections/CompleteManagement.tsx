@@ -1,19 +1,42 @@
+import { useState, useEffect } from 'react';
+import { Lock } from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
-// ─── Dados de mock para o painel ────────────────────────────────────────────
-
-const mockCards = [
-  { label: 'Tempo médio REAP', value: '20s', valueColor: 'text-emerald-600' },
-  { label: 'Processamento em lote', value: '5 sócios', valueColor: 'text-blue-600' },
-  { label: 'Boletos gerados', value: '126', valueColor: 'text-amber-600' },
-  { label: 'Seguro identificado', value: '48 pagos', valueColor: 'text-emerald-600' },
-] as const;
-
-const mockRows = [
-  { name: 'Ana da Silva', cpf: '123.456.789-01', reap: { label: 'Enviado', cls: 'bg-emerald-50 text-emerald-800' }, seguro: { label: 'Recebeu', cls: 'text-emerald-600' } },
-  { name: 'João Costa', cpf: '234.567.890-12', reap: { label: 'Pendente', cls: 'bg-amber-50 text-amber-800' }, seguro: { label: 'Aguardando', cls: 'text-amber-600' } },
-  { name: 'Maria Ferreira', cpf: '345.678.901-23', reap: { label: 'Em lote', cls: 'bg-emerald-50 text-emerald-800' }, seguro: { label: 'Conferindo', cls: 'text-blue-600' } },
-] as const;
+// Abas de portais governamentais automatizados pelo Robô
+const portalTabs = [
+  {
+    id: 'gov',
+    label: 'Acesso Gov.br',
+    sub: 'Autenticação',
+    img: '/images/gov-login.jpg',
+    portal: 'sso.acesso.gov.br',
+    status: 'Fazendo login seguro no Gov.br com o CPF do sócio...'
+  },
+  {
+    id: 'pesqbrasil',
+    label: 'PesqBrasil',
+    sub: 'Cadastro RGP',
+    img: '/images/pesqbrasil-cadastro.jpg',
+    portal: 'pescadorprofissional.mpa.gov.br',
+    status: 'Preenchendo dados do pescador no PesqBrasil...'
+  },
+  {
+    id: 'mte',
+    label: 'MTE Defeso',
+    sub: 'Seguro Defeso',
+    img: '/images/mte-defeso.jpg',
+    portal: 'servicos.mte.gov.br',
+    status: 'Digitando requerimento de Seguro Defeso automaticamente...'
+  },
+  {
+    id: 'esocial',
+    label: 'eSocial / GPS',
+    sub: 'Guias DAE',
+    img: '/images/esocial-login.jpg',
+    portal: 'login.esocial.gov.br',
+    status: 'Gerando guias e boletos GPS em lote...'
+  }
+];
 
 const stats = [
   { num: '20s', label: 'Para fazer um REAP' },
@@ -26,6 +49,19 @@ const stats = [
 export function CompleteManagement() {
   const [leftRef, leftVisible] = useInView<HTMLDivElement>();
   const [rightRef, rightVisible] = useInView<HTMLDivElement>();
+  const [activeTab, setActiveTab] = useState('gov');
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const currentIndex = portalTabs.findIndex((tab) => tab.id === activeTab);
+      const nextIndex = (currentIndex + 1) % portalTabs.length;
+      setActiveTab(portalTabs[nextIndex].id);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [activeTab]);
+
+  const currentPortal = portalTabs.find(p => p.id === activeTab) ?? portalTabs[0];
 
   return (
     <section className="bg-white overflow-hidden min-h-screen flex items-center py-10 lg:py-14 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
@@ -62,77 +98,63 @@ export function CompleteManagement() {
           </div>
         </div>
 
-        {/* ── Coluna direita — mockup ── */}
+        {/* ── Coluna direita — mockup do navegador ── */}
         <div
           ref={rightRef}
           className={`will-animate-right ${rightVisible ? 'is-visible' : ''}`}
         >
-          {/* Moldura dark do "monitor" */}
-          <div className="bg-slate-900 rounded-2xl p-1 shadow-[0_32px_80px_rgba(15,23,42,0.18)]">
-            {/* Barra de título estilo macOS */}
-            <div className="bg-slate-800 rounded-t-xl px-4 py-2.5 flex items-center gap-1.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+          {/* Moldura do Navegador */}
+          <div className="bg-slate-800 rounded-2xl p-1.5 shadow-[0_32px_80px_rgba(15,23,42,0.18)] border border-slate-700">
+            {/* Barra de Título / Abas do Navegador */}
+            <div className="px-3 pt-2 pb-0 flex flex-col gap-2">
+              <div className="flex items-center justify-between">
+                {/* Botões do macOS */}
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
+                </div>
+              </div>
+
+              {/* Abas */}
+              <div className="flex gap-1 overflow-x-auto scrollbar-none pt-1">
+                {portalTabs.map((tab) => {
+                  const isActive = tab.id === activeTab;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`flex items-center justify-center px-4 py-1.5 rounded-t-md text-center min-w-[90px] sm:min-w-[110px] transition-all ${isActive
+                        ? 'bg-slate-200 text-slate-800 shadow-sm'
+                        : 'bg-slate-900/40 text-slate-400 hover:bg-slate-900/60 hover:text-slate-300'
+                        }`}
+                    >
+                      <span className="text-[10px] font-bold tracking-tight truncate">{tab.label}</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            {/* Área interna clara */}
-            <div className="bg-slate-50 rounded-b-xl p-4">
-              {/* Header do mockup */}
-              <div className="bg-white rounded-xl px-4 py-3 flex items-center justify-between mb-3 border border-slate-200">
-                <span className="font-heading text-base font-bold text-slate-800">
-                  Central de Automação
-                </span>
-                <span className="bg-emerald-50 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-100">
-                  Ativa
-                </span>
-              </div>
-
-              {/* Grid de métricas 2×2 */}
-              <div className="grid grid-cols-2 gap-2 mb-3">
-                {mockCards.map((c) => (
-                  <div key={c.label} className="bg-white rounded-xl p-3 border border-slate-200">
-                    <p className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-1">
-                      {c.label}
-                    </p>
-                    <p className={`font-heading text-xl font-extrabold tracking-tight ${c.valueColor}`}>
-                      {c.value}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Mini tabela */}
-              <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-                {/* Cabeçalho */}
-                <div className="grid grid-cols-[2fr_1fr_1fr] gap-2 bg-slate-50 px-3 py-2 border-b border-slate-200">
-                  {['Sócio', 'REAP', 'Seguro'].map((h) => (
-                    <span key={h} className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
-                      {h}
-                    </span>
-                  ))}
+            {/* Conteúdo do Navegador */}
+            <div className="bg-slate-100 rounded-b-xl overflow-hidden relative border border-slate-200">
+              {/* Barra de endereço simulada */}
+              <div className="bg-slate-200 px-3 py-1.5 flex items-center gap-2 border-b border-slate-300 select-none">
+                <Lock className="w-3 h-3 text-slate-500 flex-shrink-0" />
+                <div className="flex-1 bg-white rounded px-2.5 py-0.5 text-[9px] text-slate-500 truncate">
+                  https://{currentPortal.portal}
                 </div>
+              </div>
 
-                {/* Linhas */}
-                {mockRows.map((row, i) => (
-                  <div
-                    key={row.name}
-                    className={`grid grid-cols-[2fr_1fr_1fr] gap-2 items-center px-3 py-2 ${
-                      i < mockRows.length - 1 ? 'border-b border-slate-100' : ''
-                    }`}
-                  >
-                    <div>
-                      <p className="text-[11px] font-semibold text-slate-800">{row.name}</p>
-                      <p className="text-[10px] text-slate-400 font-mono">{row.cpf}</p>
-                    </div>
-                    <span className={`inline-flex items-center justify-center text-[9px] font-bold px-2 py-0.5 rounded-full ${row.reap.cls}`}>
-                      {row.reap.label}
-                    </span>
-                    <span className={`text-[10px] font-bold ${row.seguro.cls}`}>
-                      {row.seguro.label}
-                    </span>
-                  </div>
-                ))}
+              {/* Área da imagem do portal */}
+              <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
+                <img
+                  key={currentPortal.id}
+                  src={currentPortal.img}
+                  alt={currentPortal.label}
+                  className="w-full h-full object-cover object-top select-none pointer-events-none"
+                  style={{ animation: 'fadeIn 1s ease-in-out forwards' }}
+                />
               </div>
             </div>
           </div>
