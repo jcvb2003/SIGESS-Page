@@ -20,7 +20,7 @@ const steps = [
     icon: CheckCircle,
     phase: 'Após o defeso',
     description:
-      'Importe o arquivo oficial do Portal da Transparência e descubra automaticamente quem já recebeu o benefício em conta. O sistema cruza os dados sem precisar entrar no gov.br de cada pescador - confirme em lote e acione a cobrança das anuidades com um clique.',
+      'Acesse a área de requerimentos e descubra automaticamente quem já recebeu o benefício em conta. O sistema cruza os dados sem precisar entrar no gov.br de cada pescador - confirme em lote e acione a cobrança das anuidades com um clique.',
   },
 ];
 

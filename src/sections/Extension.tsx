@@ -5,17 +5,17 @@ const extensionFeatures = [
   {
     icon: Users,
     title: 'Login Múltiplo e Simultâneo',
-    description: 'Realize múltiplos logins ao mesmo tempo, cada sessão isolada. Passe uma lista de sócios e deixe a extensão trabalhar enquanto você atende.',
+    description: 'Realize múltiplos logins ao mesmo tempo, cada sessão isolada. Passe uma lista de sócios e deixe o robô trabalhar enquanto você atende.',
   },
   {
     icon: FileSignature,
     title: 'Digitação Automática do Seguro Defeso',
-    description: 'A extensão acessa o portal do MTE com as credenciais do sócio e preenche todos os campos do requerimento automaticamente. Você só confere e assina.',
+    description: 'O robô acessa o portal do MTE com as credenciais do sócio e preenche todos os campos do requerimento automaticamente. Você só confere e envia.',
   },
   {
     icon: ClipboardList,
     title: 'Preenchimento Automático do REAP',
-    description: 'Suporte completo para o REAP Simplificado (MPA) e o REAP Anual (Agro). Em muitos casos, um REAP pode ser feito em cerca de 20 segundos, com preenchimento automático e envio em lote.',
+    description: 'Suporte completo para o REAP Simplificado e o REAP Anual. Em muitos casos, um REAP pode ser feito em cerca de 20 segundos, com preenchimento automático e envio em lote.',
     isFeatured: true,
   },
   {
@@ -26,7 +26,7 @@ const extensionFeatures = [
   {
     icon: Zap,
     title: 'Cadastro Automático via Gov.br',
-    description: 'Ao abrir a ficha de um pescador no Gov.br, a extensão captura todos os dados e os envia direto para o cadastro do sócio no SIGESS. Sem digitar duas vezes.',
+    description: 'Ao abrir a ficha de um pescador no Gov.br, o robô captura todos os dados e os envia direto para o cadastro do sócio no SIGESS. Sem digitar duas vezes.',
   },
 ];
 
@@ -76,8 +76,8 @@ export function Extension() {
                 O Robô do SIGESS
               </h2>
               <p className="text-lg text-emerald-100 leading-relaxed max-w-xl">
-                A Extensão conecta o sistema diretamente aos portais do governo -
-                MTE, MPA, eSocial e gov.br - e executa tarefas burocráticas no lugar da equipe.
+                O Robô conecta o sistema diretamente aos portais do governo -
+                Carteira de Trabalho, PesqBrasil, eSocial, INSS, Gov.br - e executa tarefas burocráticas no lugar da equipe.
                 Não é um atalho. É automação real, pensada para reduzir horas de trabalho manual.
               </p>
             </div>
@@ -92,12 +92,7 @@ export function Extension() {
                     <featuredFeature.icon className="w-7 h-7" />
                   </div>
                   <div>
-                    <div className="flex items-center gap-2 mb-1.5">
-                      <h3 className="text-xl font-bold text-white">{featuredFeature.title}</h3>
-                      <span className="px-2 py-0.5 bg-emerald-400/30 text-white text-[10px] font-bold uppercase rounded-full tracking-wider">
-                        Carro-chefe
-                      </span>
-                    </div>
+                    <h3 className="text-xl font-bold text-white mb-1.5">{featuredFeature.title}</h3>
                     <p className="text-sm sm:text-base text-emerald-50 leading-relaxed">
                       {featuredFeature.description}
                     </p>

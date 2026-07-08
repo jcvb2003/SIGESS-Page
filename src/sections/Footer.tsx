@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 const footerLinks = {
   produto: [
     { label: 'Módulos', href: '#modulos' },
-    { label: 'Extensão', href: '#extensao' },
+    { label: 'Robô', href: '#extensao' },
     { label: 'Defeso', href: '#defeso' },
     { label: 'Utilitários', href: '/utilitarios', isExternal: false },
     { label: 'Planos', href: '#planos' },

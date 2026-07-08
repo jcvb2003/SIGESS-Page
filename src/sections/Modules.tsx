@@ -69,7 +69,7 @@ const modules = [
       'REAP Simplificado (2021-2024) por ano de emissão do RGP',
       'REAP Anual (2025 em diante) com importação de comprovantes PDF',
       'Identificação de pendências via lista oficial do governo',
-      'Envio em lote para até 5 sócios via Extensão',
+      'Envio em lote para até 5 sócios via Robô',
       'Histórico completo por sócio e ano de referência',
     ],
     image: null,

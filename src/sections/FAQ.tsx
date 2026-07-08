@@ -50,14 +50,14 @@ const faqs = [
           'O SIGESS tem um módulo que identifica os pagamentos, assim a entidade descobre quem recebeu o seguro sem precisar entrar na conta gov.br de cada pescador para fazer a pesquisa.',
       },
       {
-        question: 'O que é a Extensão SIGESS e eu preciso dela?',
+        question: 'O que é o Robô SIGESS e eu preciso dela?',
         answer:
-          'A Extensão é um complemento para o Firefox que automatiza tarefas nos portais do governo, como preencher o REAP, fazer login múltiplo no eSocial e gerar boletos GPS. Ela é especialmente útil para entidades com muitos sócios e operações em lote.',
+          'O Robô SIGESS é um complemento para o Firefox que automatiza tarefas nos portais do governo, como preencher o REAP, fazer login múltiplo no eSocial e gerar boletos GPS. Ela é especialmente útil para entidades com muitos sócios e operações em lote.',
       },
       {
         question: 'O SIGESS cuida do REAP?',
         answer:
-          'Sim. O sistema controla quais anos cada sócio já enviou, identifica pendências usando a lista oficial do governo e, com a Extensão, permite fazer REAP em cerca de 20 segundos e enviar em lote para vários sócios.',
+          'Sim. O sistema controla quais anos cada sócio já enviou, identifica pendências usando a lista oficial do governo e, com o Robô, permite fazer REAP em cerca de 20 segundos e enviar em lote para vários sócios.',
       },
       {
         question: 'É possível gerar boletos e processar REAP em lote?',

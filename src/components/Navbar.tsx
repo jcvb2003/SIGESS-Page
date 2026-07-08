@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 const navLinks = [
   { href: '#para-quem', label: 'Para Quem' },
   { href: '#modulos', label: 'Módulos' },
-  { href: '#extensao', label: 'Extensão' },
+  { href: '#extensao', label: 'Robô' },
   { href: '#defeso', label: 'Defeso' },
   { href: '#contato', label: 'Contato' },
 ];
@@ -45,9 +45,8 @@ export function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isDark ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isDark ? 'bg-white/95 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        }`}
     >
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -81,9 +80,8 @@ export function Navbar() {
             ))}
             <Link
               to="/utilitarios"
-              className={`text-sm font-medium transition-colors hover:text-emerald-600 ${
-                location.pathname === '/utilitarios' ? 'text-emerald-600' : 'text-slate-600'
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-emerald-600 ${location.pathname === '/utilitarios' ? 'text-emerald-600' : 'text-slate-600'
+                }`}
             >
               Utilitários
             </Link>
@@ -135,9 +133,8 @@ export function Navbar() {
             <Link
               to="/utilitarios"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block w-full text-left px-4 py-3 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors font-medium ${
-                location.pathname === '/utilitarios' ? 'text-emerald-600 bg-emerald-50' : 'text-slate-600'
-              }`}
+              className={`block w-full text-left px-4 py-3 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors font-medium ${location.pathname === '/utilitarios' ? 'text-emerald-600 bg-emerald-50' : 'text-slate-600'
+                }`}
             >
               Utilitários
             </Link>
