@@ -6,6 +6,7 @@ const SIGESS_LETTERS = 'SIGESS'.split('');
 
 export function Hero() {
   const wordmarkRef = useRef<HTMLHeadingElement>(null);
+  const mascotRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
     if (!wordmarkRef.current) return;
@@ -19,6 +20,16 @@ export function Hero() {
       duration: 900,
       delay: stagger(70),
     });
+
+    if (mascotRef.current) {
+      animate(mascotRef.current, {
+        scale: [0.5, 1],
+        opacity: [0, 1],
+        easing: 'easeOutBack',
+        duration: 1000,
+        delay: 200,
+      });
+    }
   }, []);
 
   return (
@@ -30,17 +41,27 @@ export function Hero() {
       <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
         <div className="flex flex-col items-center text-center gap-8 animate-fade-in-up">
           <div className="flex flex-col items-center gap-5">
-            <h1
-              ref={wordmarkRef}
-              aria-label="SIGESS"
-              className="flex text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-emerald-600"
-            >
-              {SIGESS_LETTERS.map((letter, index) => (
-                <span key={index} aria-hidden="true" className="hero-letter inline-block opacity-0">
-                  {letter}
-                </span>
-              ))}
-            </h1>
+            <div className="flex items-center justify-center relative select-none">
+              {/* Mascote do Peixinho SIGESS */}
+              <img
+                ref={mascotRef}
+                src="/images/mascote.png"
+                alt="Mascote SIGESS"
+                className="w-20 h-20 sm:w-28 sm:h-28 lg:w-36 lg:h-36 object-contain -mr-5 sm:-mr-7 lg:-mr-9 z-10 cursor-pointer transform -translate-y-2 sm:-translate-y-3 lg:-translate-y-4 opacity-0 transition-all duration-300 hover:scale-105"
+              />
+
+              <h1
+                ref={wordmarkRef}
+                aria-label="SIGESS"
+                className="flex text-6xl sm:text-7xl lg:text-8xl font-black tracking-tight text-emerald-600 z-0"
+              >
+                {SIGESS_LETTERS.map((letter, index) => (
+                  <span key={index} aria-hidden="true" className="hero-letter inline-block opacity-0">
+                    {letter}
+                  </span>
+                ))}
+              </h1>
+            </div>
 
             <p className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-800 leading-tight max-w-2xl">
               Simplifique a <span className="text-emerald-600">gestão</span> da sua entidade de <span className="text-emerald-600">pesca artesanal</span>
