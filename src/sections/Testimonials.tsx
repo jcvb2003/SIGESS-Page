@@ -55,7 +55,7 @@ export function Testimonials() {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className={`group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover relative will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
+              className={`bg-white rounded-2xl p-8 shadow-sm border border-slate-100 relative will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Quote icon */}
               <div className="absolute -top-4 -left-2 w-10 h-10 bg-emerald-600 rounded-xl flex items-center justify-center shadow-lg">

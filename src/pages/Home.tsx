@@ -8,8 +8,8 @@ import { Extension } from '../sections/Extension';
 import { Defeso } from '../sections/Defeso';
 import { Pricing } from '../sections/Pricing';
 import { Testimonials } from '../sections/Testimonials';
-import { Contact } from '../sections/Contact';
 import { FAQ } from '../sections/FAQ';
+import { ServiceFooter } from '../sections/ServiceFooter';
 import { Footer } from '../sections/Footer';
 
 export function Home() {
@@ -26,8 +26,8 @@ export function Home() {
         <Testimonials />
         <Pricing />
         <FAQ />
-        <Contact />
       </main>
+      <ServiceFooter />
       <Footer />
     </div>
   );

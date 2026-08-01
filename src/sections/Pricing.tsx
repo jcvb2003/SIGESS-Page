@@ -1,5 +1,11 @@
 import { useState } from 'react';
-import { ArrowRight, CheckCircle, Laptop } from '@phosphor-icons/react';
+import {
+  ArrowRight,
+  CheckCircle,
+  Devices,
+  Infinity as InfinityIcon,
+  Laptop,
+} from '@phosphor-icons/react';
 import { Button } from '@/components/ui/button';
 import { PlanContactDialog } from '@/components/PlanContactDialog';
 import type { PlanContactTier } from '@/components/PlanContactDialog';
@@ -14,11 +20,11 @@ const tiers: PlanContactTier[] = [
 ];
 
 const features = [
-  'Acessos ilimitados ao Sistema Web',
-  'Todos os módulos web liberados',
-  'Automações MTE/MPA ilimitadas',
-  'Treinamento Guiado',
-  'Suporte Humano Rápido',
+  'Carteirinhas, declarações e requerimentos',
+  'Gestão organizada por polos e unidades',
+  'Cobranças, carnês e boletos integrados ao Asaas',
+  'Relatórios em tempo real com exportação em PDF',
+  'Perfis de acesso para gestor e equipe',
   'Sem taxa de implementação',
 ];
 
@@ -64,26 +70,36 @@ export function Pricing() {
         </div>
 
         <article className="mx-auto grid max-w-5xl overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-700 to-emerald-950 shadow-xl shadow-emerald-900/10 md:grid-cols-2">
-          <div className="flex flex-col justify-between p-7 text-white sm:p-9 lg:p-10">
+          <div className="flex flex-col justify-between p-7 text-white sm:p-9 md:order-2 lg:p-10">
             <p className="max-w-md text-lg leading-relaxed text-emerald-50/95">
               Sistema web, automações do robô, treinamento e suporte para a rotina da sua entidade.
             </p>
 
-            <div className="mt-12 grid grid-cols-2 gap-3">
+            <div className="mt-10 grid grid-cols-2 gap-3">
               <div className="border border-white/20 bg-white/10 p-4">
-                <Laptop className="mb-5 h-5 w-5 text-emerald-100" />
+                <Laptop className="mb-3 h-5 w-5 text-emerald-100" />
                 <p className="text-sm text-emerald-100/80">Robô para</p>
                 <strong className="mt-1 block text-lg text-white">{computerLabel}</strong>
               </div>
               <div className="border border-white/20 bg-white/10 p-4">
-                <CheckCircle className="mb-5 h-5 w-5 text-emerald-100" />
+                <CheckCircle className="mb-3 h-5 w-5 text-emerald-100" />
                 <p className="text-sm text-emerald-100/80">Incluído</p>
                 <strong className="mt-1 block text-lg text-white">Todos os módulos</strong>
+              </div>
+              <div className="border border-white/20 bg-white/10 p-4">
+                <Devices className="mb-3 h-5 w-5 text-emerald-100" />
+                <p className="text-sm text-emerald-100/80">Sistema Web</p>
+                <strong className="mt-1 block text-lg leading-tight text-white">Dispositivos ilimitados</strong>
+              </div>
+              <div className="border border-white/20 bg-white/10 p-4">
+                <InfinityIcon className="mb-3 h-5 w-5 text-emerald-100" />
+                <p className="text-sm text-emerald-100/80">No PC com o robô</p>
+                <strong className="mt-1 block text-lg leading-tight text-white">Automações ilimitadas</strong>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-7 text-slate-800 sm:p-9 lg:p-10">
+          <div className="bg-white p-7 text-slate-800 sm:p-9 md:order-1 lg:p-10">
             <p className="text-xs font-bold uppercase tracking-wider text-slate-400">Investimento mensal</p>
             <div className="mt-2 flex items-end gap-2">
               <span className="text-5xl font-bold tracking-tight text-slate-900">{formatPrice(selectedTier.price)}</span>

@@ -1,12 +1,26 @@
 import { useState, useEffect } from 'react';
-import { Lock } from '@phosphor-icons/react';
+import {
+  ArrowClockwise,
+  ArrowLeft,
+  ArrowRight,
+  CaretDown,
+  DotsThreeVertical,
+  House,
+  Plus,
+  PuzzlePiece,
+  SlidersHorizontal,
+  Star,
+  X,
+} from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
 // Abas de portais governamentais automatizados pelo Robô
-const portalTabs = [
+const portalTabsData = [
   {
     id: 'gov',
     label: 'Acesso Gov.br',
+    browserTitle: 'gov.br - Acesse sua conta',
+    icon: '/images/logo-govbr.png',
     sub: 'Autenticação',
     img: '/images/gov-login.jpg',
     portal: 'sso.acesso.gov.br',
@@ -15,6 +29,8 @@ const portalTabs = [
   {
     id: 'pesqbrasil',
     label: 'PesqBrasil',
+    browserTitle: 'PesqBrasil',
+    icon: '/images/pesqbrasil-icon.png',
     sub: 'Cadastro RGP',
     img: '/images/pesqbrasil-cadastro.jpg',
     portal: 'pescadorprofissional.mpa.gov.br',
@@ -23,6 +39,8 @@ const portalTabs = [
   {
     id: 'mte',
     label: 'MTE Defeso',
+    browserTitle: 'Portal Emprega Brasil',
+    icon: '/images/logo-ctps.png',
     sub: 'Seguro Defeso',
     img: '/images/mte-defeso.jpg',
     portal: 'servicos.mte.gov.br',
@@ -31,6 +49,8 @@ const portalTabs = [
   {
     id: 'esocial',
     label: 'eSocial / GPS',
+    browserTitle: 'eSocial',
+    icon: '/images/logo-esocial.png',
     sub: 'Guias DAE',
     img: '/images/esocial-login.jpg',
     portal: 'login.esocial.gov.br',
@@ -38,10 +58,15 @@ const portalTabs = [
   }
 ];
 
+const portalOrder = ['gov', 'mte', 'esocial', 'pesqbrasil'];
+const portalTabs = [...portalTabsData].sort(
+  (first, second) => portalOrder.indexOf(first.id) - portalOrder.indexOf(second.id),
+);
+
 const stats = [
   { num: '20s', label: 'Para fazer um REAP' },
   { num: 'Lote', label: 'Boletos e REAP em massa' },
-  { num: '5x', label: 'Capaz de substituir até 5 funcionários' },
+  { num: '3x', label: 'Capaz de substituir até 3 funcionários' },
 ] as const;
 
 // ─── Componente ─────────────────────────────────────────────────────────────
@@ -103,59 +128,82 @@ export function CompleteManagement() {
           ref={rightRef}
           className={`will-animate-right ${rightVisible ? 'is-visible' : ''}`}
         >
-          {/* Moldura do Navegador */}
-          <div className="bg-slate-800 rounded-2xl p-1.5 shadow-[0_32px_80px_rgba(15,23,42,0.18)] border border-slate-700">
-            {/* Barra de Título / Abas do Navegador */}
-            <div className="px-3 pt-2 pb-0 flex flex-col gap-2">
-              <div className="flex items-center justify-between">
-                {/* Botões do macOS */}
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400/80" />
-                </div>
-              </div>
+          {/* Moldura do navegador */}
+          <div className="overflow-hidden rounded-xl border border-slate-600/70 bg-[#202536] shadow-[0_32px_80px_rgba(15,23,42,0.22)] ring-1 ring-slate-950/10">
+            {/* Barra de abas */}
+            <div className="flex h-10 items-end gap-1 bg-[#202536] px-1.5 pt-1.5 select-none">
+              <span className="mb-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#353c4f] text-slate-300">
+                <CaretDown className="h-3.5 w-3.5" weight="bold" />
+              </span>
 
-              {/* Abas */}
-              <div className="flex gap-1 overflow-x-auto scrollbar-none pt-1">
+              <div className="flex min-w-0 flex-1 items-end gap-1 overflow-hidden">
                 {portalTabs.map((tab) => {
                   const isActive = tab.id === activeTab;
                   return (
                     <button
                       key={tab.id}
+                      type="button"
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center justify-center px-4 py-1.5 rounded-t-md text-center min-w-[90px] sm:min-w-[110px] transition-all ${isActive
-                        ? 'bg-slate-200 text-slate-800 shadow-sm'
-                        : 'bg-slate-900/40 text-slate-400 hover:bg-slate-900/60 hover:text-slate-300'
+                      className={`group flex h-8 min-w-0 flex-1 items-center gap-2 rounded-t-xl px-2 text-left transition-colors ${isActive
+                        ? 'bg-[#3a4153] text-slate-100'
+                        : 'border-r border-white/10 text-slate-300 hover:bg-white/[0.06]'
                         }`}
                     >
-                      <span className="text-[10px] font-bold tracking-tight truncate">{tab.label}</span>
+                      <img
+                        src={tab.icon}
+                        alt=""
+                        className="h-3.5 w-3.5 shrink-0 object-contain"
+                      />
+                      <span className="min-w-0 flex-1 truncate text-[9px] font-medium sm:text-[10px]">
+                        {tab.browserTitle}
+                      </span>
+                      <X className={`hidden h-3 w-3 shrink-0 sm:block ${isActive ? 'text-slate-300' : 'text-slate-500'}`} />
                     </button>
                   );
                 })}
               </div>
+
+              <Plus className="mb-2 h-4 w-4 shrink-0 text-slate-300" weight="bold" />
             </div>
 
-            {/* Conteúdo do Navegador */}
-            <div className="bg-slate-100 rounded-b-xl overflow-hidden relative border border-slate-200">
-              {/* Barra de endereço simulada */}
-              <div className="bg-slate-200 px-3 py-1.5 flex items-center gap-2 border-b border-slate-300 select-none">
-                <Lock className="w-3 h-3 text-slate-500 flex-shrink-0" />
-                <div className="flex-1 bg-white rounded px-2.5 py-0.5 text-[9px] text-slate-500 truncate">
-                  https://{currentPortal.portal}
-                </div>
+            {/* Barra de navegação */}
+            <div className="flex h-10 items-center gap-1.5 border-t border-white/[0.03] bg-[#343b4d] px-2 text-slate-300 select-none sm:gap-2 sm:px-3">
+              <div className="hidden shrink-0 items-center gap-1 sm:flex">
+                <span className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/10">
+                  <ArrowLeft className="h-3.5 w-3.5" />
+                </span>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full text-slate-500">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </span>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/10">
+                  <ArrowClockwise className="h-3.5 w-3.5" />
+                </span>
+                <span className="flex h-7 w-7 items-center justify-center rounded-full hover:bg-white/10">
+                  <House className="h-3.5 w-3.5" />
+                </span>
               </div>
 
-              {/* Área da imagem do portal */}
-              <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
-                <img
-                  key={currentPortal.id}
-                  src={currentPortal.img}
-                  alt={currentPortal.label}
-                  className="w-full h-full object-cover object-top select-none pointer-events-none"
-                  style={{ animation: 'fadeIn 1s ease-in-out forwards' }}
-                />
+              <div className="flex h-7 min-w-0 flex-1 items-center gap-2 rounded-full bg-[#202536] px-3 ring-1 ring-white/[0.04]">
+                <SlidersHorizontal className="h-3.5 w-3.5 shrink-0 text-slate-300" weight="bold" />
+                <span className="truncate text-[9px] text-slate-200 sm:text-[10px]">
+                  {currentPortal.portal}
+                </span>
+                <Star className="ml-auto hidden h-3.5 w-3.5 shrink-0 text-slate-300 sm:block" />
               </div>
+
+              <PuzzlePiece className="hidden h-4 w-4 shrink-0 text-slate-300 sm:block" />
+              <DotsThreeVertical className="h-4 w-4 shrink-0 text-slate-300" weight="bold" />
+            </div>
+
+            {/* Área da imagem do portal */}
+            <div className="relative aspect-video w-full overflow-hidden bg-slate-900">
+              <img
+                key={currentPortal.id}
+                src={currentPortal.img}
+                alt={currentPortal.label}
+                className="h-full w-full select-none object-cover object-top pointer-events-none"
+                style={{ animation: 'fadeIn 1s ease-in-out forwards' }}
+              />
             </div>
           </div>
         </div>

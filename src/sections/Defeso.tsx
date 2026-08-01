@@ -1,4 +1,4 @@
-import { ClipboardText as ClipboardCheck, Signature as FileSignature, CheckCircle, UserCheck } from '@phosphor-icons/react';
+import { ClipboardText as ClipboardCheck, Signature as FileSignature, CheckCircle } from '@phosphor-icons/react';
 
 const steps = [
   {
@@ -20,7 +20,7 @@ const steps = [
     icon: CheckCircle,
     phase: 'Após o defeso',
     description:
-      'Acesse a área de requerimentos e descubra automaticamente quem já recebeu o benefício em conta. O sistema cruza os dados sem precisar entrar no gov.br de cada pescador - confirme em lote e acione a cobrança das anuidades com um clique.',
+      'Acompanhe quem já recebeu o benefício, filtre quem ainda está pendente e mantenha o histórico de cada requerimento atualizado para orientar o atendimento da entidade.',
   },
 ];
 
@@ -64,18 +64,6 @@ export function Defeso() {
           </div>
         </div>
 
-        <div className="mt-12 flex items-start gap-4 bg-slate-50 rounded-2xl p-6 border border-slate-100">
-          <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center flex-shrink-0">
-            <UserCheck className="w-6 h-6 text-emerald-600" />
-          </div>
-          <div>
-            <h4 className="font-bold text-slate-800 mb-1">Liberação presidencial</h4>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              O presidente pode liberar manualmente sócios com pendências para assinarem o requerimento -
-              com registro completo de quem autorizou e por quê. Transparência total nas exceções.
-            </p>
-          </div>
-        </div>
       </div>
 
     </section>

@@ -10,18 +10,6 @@ const footerLinks = {
     { label: 'Planos', href: '#planos' },
     { label: 'FAQ', href: '#faq' },
   ],
-  empresa: [
-    { label: 'Sobre nós', href: '#' },
-    { label: 'Blog', href: '#' },
-    { label: 'Carreiras', href: '#' },
-    { label: 'Contato', href: '#contato' },
-  ],
-  suporte: [
-    { label: 'Central de ajuda', href: '#' },
-    { label: 'Documentação', href: '#' },
-    { label: 'Status', href: '#' },
-    { label: 'WhatsApp', href: '#' },
-  ],
   legal: [
     { label: 'Termos de uso', href: '/termos-uso' },
     { label: 'Privacidade', href: '#' },
@@ -49,7 +37,7 @@ export function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-16 snap-start scroll-mt-16 lg:scroll-mt-20">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-3 lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6" aria-label="SIGESS Home">
@@ -98,60 +86,6 @@ export function Footer() {
                     >
                       {link.label}
                     </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Links - Empresa */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Empresa</h4>
-            <ul className="space-y-3">
-              {footerLinks.empresa.map((link) => (
-                <li key={`${link.label}-${link.href}`}>
-                  {link.href.startsWith('#') ? (
-                    <button
-                      onClick={() => handleLinkClick(link.href)}
-                      className="text-sm hover:text-emerald-400 transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href === '#' ? undefined : link.href}
-                      onClick={link.href === '#' ? (e) => e.preventDefault() : undefined}
-                      className="text-sm hover:text-emerald-400 transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Links - Suporte */}
-          <div>
-            <h4 className="text-white font-semibold mb-4">Suporte</h4>
-            <ul className="space-y-3">
-              {footerLinks.suporte.map((link) => (
-                <li key={`${link.label}-${link.href}`}>
-                  {link.href.startsWith('#') ? (
-                    <button
-                      onClick={() => handleLinkClick(link.href)}
-                      className="text-sm hover:text-emerald-400 transition-colors"
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <a
-                      href={link.href === '#' ? undefined : link.href}
-                      onClick={link.href === '#' ? (e) => e.preventDefault() : undefined}
-                      className="text-sm hover:text-emerald-400 transition-colors"
-                    >
-                      {link.label}
-                    </a>
                   )}
                 </li>
               ))}

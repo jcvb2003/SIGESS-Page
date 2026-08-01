@@ -54,10 +54,10 @@ export function ForWho() {
           {entities.map((entity, index) => (
             <div
               key={index}
-              className={`group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 card-hover will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
+              className={`bg-white rounded-2xl p-8 shadow-sm border border-slate-100 will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Icon */}
-              <div className={`w-16 h-16 rounded-xl ${entity.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+              <div className={`w-16 h-16 rounded-xl ${entity.color} flex items-center justify-center mb-6`}>
                 <entity.icon className="w-8 h-8" />
               </div>
 

@@ -5,6 +5,7 @@ import {
   Receipt,
   Lightning as Zap,
   Globe,
+  MagnifyingGlass,
 } from '@phosphor-icons/react';
 import { useInView } from '@/hooks/useInView';
 
@@ -40,6 +41,12 @@ const extensionFeatures = [
     shortTitle: 'Cadastro Gov.br',
     description: 'Ao abrir a ficha de um pescador no Gov.br, o robô captura todos os dados e os envia direto para o cadastro do sócio no SIGESS. Sem digitar duas vezes.',
   },
+  {
+    icon: MagnifyingGlass,
+    title: 'Saiba Quem Já Recebeu o Defeso',
+    shortTitle: 'Recebimento do Defeso',
+    description: 'O SIGESS mostra quais sócios já receberam o benefício sem precisar entrar no GOV.BR de cada pescador. Com essa informação, a entidade identifica pendências e organiza a cobrança das anuidades com mais agilidade e segurança.',
+  },
 ];
 
 const integrations = [
@@ -51,15 +58,6 @@ const integrations = [
   { name: 'Receita Federal', logo: '/images/logo-receita.png' },
   { name: 'CadÚnico', logo: '/images/logo-cadunico.png' },
 ];
-
-const ORBIT_RADIUS = 40;
-const orbitPositions = integrations.map((_, index) => {
-  const angle = (-90 + (360 / integrations.length) * index) * (Math.PI / 180);
-  return {
-    x: 50 + ORBIT_RADIUS * Math.cos(angle),
-    y: 50 + ORBIT_RADIUS * Math.sin(angle),
-  };
-});
 
 export function Extension() {
   const [sectionRef, sectionVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
@@ -90,7 +88,7 @@ export function Extension() {
           </p>
         </header>
 
-        <div className="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-5 sm:gap-6">
+        <div className="grid grid-cols-2 gap-x-4 gap-y-7 sm:grid-cols-3 sm:gap-6 lg:grid-cols-6">
           {extensionFeatures.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -148,54 +146,86 @@ export function Extension() {
               );
             })}
 
-            <article className="border-t border-emerald-100 p-6 sm:p-8 md:border-l">
+            <article className="border-t border-emerald-100 bg-emerald-50/45 p-6 sm:p-8 md:col-span-2">
               <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-700 text-white">
                   <Globe className="h-6 w-6" />
                 </div>
-                <div className="min-w-0">
-                  <h3 className="text-lg font-bold text-emerald-900">Portais conectados</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                    Integrações diretas com os portais usados no dia a dia da entidade.
+                <div>
+                  <h3 className="text-lg font-bold text-emerald-950">Portais conectados</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-slate-600">
+                    O SIGESS reúne, em um só fluxo, os portais usados no dia a dia da entidade.
                   </p>
-                  <div className="relative mx-auto mt-5 aspect-square w-full max-w-[260px]">
-                    <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full" aria-hidden="true">
-                      {orbitPositions.map((position, index) => (
-                        <line
-                          key={index}
-                          x1="50"
-                          y1="50"
-                          x2={position.x}
-                          y2={position.y}
-                          stroke="#a7f3d0"
-                          strokeWidth="0.6"
-                        />
-                      ))}
-                    </svg>
+                </div>
+              </div>
 
-                    <div className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-4 border-emerald-100 bg-white shadow-md">
-                      <img src="/logo.svg" alt="SIGESS" className="h-9 w-9 object-contain" />
+              <div className="relative mt-7 hidden min-h-36 sm:block">
+                <svg
+                  viewBox="0 0 1000 130"
+                  preserveAspectRatio="none"
+                  className="absolute inset-x-0 top-0 h-28 w-full"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M 55 66 C 150 18, 220 114, 315 66 S 480 18, 565 66 S 730 114, 815 66 S 920 34, 955 66"
+                    fill="none"
+                    stroke="#a7f3d0"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                </svg>
+
+                <div className="relative z-10 grid grid-cols-8 items-center gap-2">
+                  <div className="flex flex-col items-center pt-7 text-center">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl border-4 border-emerald-100 bg-white shadow-md shadow-emerald-900/10">
+                      <img src="/logo.svg" alt="SIGESS" className="h-10 w-10 object-contain" />
                     </div>
-
-                    {integrations.map((integration, index) => {
-                      const position = orbitPositions[index];
-                      return (
-                        <div
-                          key={integration.name}
-                          title={integration.name}
-                          className="absolute flex h-10 w-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white p-1.5 shadow-sm transition-transform hover:scale-110"
-                          style={{ left: `${position.x}%`, top: `${position.y}%` }}
-                        >
-                          <img
-                            src={integration.logo}
-                            alt={integration.name}
-                            className="max-h-full max-w-full object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                      );
-                    })}
+                    <span className="mt-2 text-xs font-bold text-emerald-900">SIGESS</span>
                   </div>
+
+                  {integrations.map((integration, index) => (
+                    <div
+                      key={integration.name}
+                      className={`flex flex-col items-center text-center ${index % 2 === 0 ? 'pt-0' : 'pt-14'}`}
+                    >
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-100 bg-white p-2 shadow-sm shadow-emerald-900/10">
+                        <img
+                          src={integration.logo}
+                          alt={integration.name}
+                          className="max-h-full max-w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                      <span className="mt-2 max-w-24 text-xs font-semibold leading-tight text-slate-600">
+                        {integration.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="relative mt-7 sm:hidden">
+                <div className="absolute bottom-5 left-6 top-5 w-px bg-emerald-200" aria-hidden="true" />
+                <div className="relative space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border-4 border-emerald-100 bg-white shadow-sm">
+                      <img src="/logo.svg" alt="SIGESS" className="h-7 w-7 object-contain" />
+                    </div>
+                    <span className="text-sm font-bold text-emerald-900">SIGESS</span>
+                  </div>
+                  {integrations.map((integration) => (
+                    <div key={integration.name} className="flex items-center gap-3">
+                      <div className="z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-emerald-100 bg-white p-2 shadow-sm">
+                        <img
+                          src={integration.logo}
+                          alt={integration.name}
+                          className="max-h-full max-w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                      <span className="text-sm font-semibold text-slate-600">{integration.name}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </article>

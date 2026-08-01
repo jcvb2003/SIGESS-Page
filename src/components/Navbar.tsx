@@ -8,7 +8,6 @@ const navLinks = [
   { href: '#modulos', label: 'Módulos' },
   { href: '#extensao', label: 'Robô' },
   { href: '#defeso', label: 'Defeso' },
-  { href: '#contato', label: 'Contato' },
 ];
 
 export function Navbar() {
@@ -90,10 +89,10 @@ export function Navbar() {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Button
-              onClick={() => scrollToSection('#contato')}
+              onClick={() => scrollToSection('#planos')}
               className="bg-emerald-600 hover:bg-emerald-700 text-white btn-glow"
             >
-              Solicitar Proposta
+              Planos
             </Button>
             <a
               href="https://app.sigess.com.br/auth"
@@ -139,10 +138,10 @@ export function Navbar() {
               Utilitários
             </Link>
             <Button
-              onClick={() => scrollToSection('#contato')}
+              onClick={() => scrollToSection('#planos')}
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white mt-4"
             >
-              Solicitar Proposta
+              Planos
             </Button>
             <a
               href="https://app.sigess.com.br/auth"

@@ -85,14 +85,8 @@ export function TermsOfUse() {
             </div>
           </div>
 
-          {/* Contact help */}
           <div className="mt-12 text-center text-slate-500 text-sm">
-            <p>Dúvidas sobre nossos termos? <button onClick={() => {
-              globalThis.scrollTo({ top: 0, behavior: 'smooth' });
-              // Simple way to navigate and scroll if needed, but Footer/Navbar handle this usually.
-              // For now, consistent with project:
-              globalThis.location.href = "/#contato";
-            }} className="text-emerald-600 hover:underline font-medium">Entre em contato conosco.</button></p>
+            <p>Dúvidas sobre nossos termos? <a href="mailto:contato@sigess.com.br" className="text-emerald-600 hover:underline font-medium">Envie um e-mail para nossa equipe.</a></p>
           </div>
         </div>
       </main>
