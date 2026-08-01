@@ -18,89 +18,125 @@ import {
 const modules = [
   {
     icon: Users,
-    title: 'Cadastro de Sócios',
-    description: 'Gerencie todos os dados dos seus pescadores em um único lugar.',
+    title: 'Sócios e cadastro',
+    description: 'Cadastro, consulta e atualização dos dados pessoais, profissionais e associativos.',
     features: [
-      'Documentos pessoais, RGP, NIT',
-      'Endereço e foto do associado',
-      'Situação associativa',
-      'Busca rápida por nome ou CPF',
-      'Cadastro com abas organizadas',
+      'Dados pessoais, documentos, endereço e informações profissionais',
+      'RGP, NIT, CPF e demais documentos do associado',
+      'Situação associativa, observações e histórico cadastral',
+      'Filtros por localidade, portaria, situação, RGP e aniversário',
+      'Fotografia, ficha cadastral e carteirinha do associado',
     ],
     image: '/images/tela-socios.jpg',
+    visualType: 'members',
     color: 'from-blue-500 to-blue-600',
   },
   {
     icon: FileText,
-    title: 'Documentos e Requerimentos',
-    description: 'Gere requerimentos de Seguro-Defeso e demais documentos do associado automaticamente.',
+    title: 'Documentos',
+    description: 'Emissão de documentos a partir das informações cadastradas no SIGESS.',
     features: [
-      'Emissão de carteirinha e declarações do associado',
-      'Requerimentos de Seguro-Defeso preenchidos automaticamente',
-      'Controle por período do defeso',
-      'Evite retrabalho e falhas',
-      'Garanta que nenhum pescador fique sem benefício',
-      'Histórico de requerimentos e documentos emitidos',
+      'Carteirinha e ficha cadastral do associado',
+      'Declaração de residência e termos de representação',
+      'Requerimentos e modelos próprios da entidade',
+      'Preenchimento de testemunhas quando exigido pelo documento',
+      'Geração dos documentos em PDF',
     ],
     image: '/images/requirements.png',
+    visualType: 'documents',
     color: 'from-emerald-500 to-emerald-600',
   },
   {
-    icon: DollarSign,
-    title: 'Módulo Financeiro',
-    description: 'Desenvolvido para a realidade financeira das entidades de pesca artesanal.',
+    icon: FileCheck,
+    title: 'Seguro Defeso',
+    description: 'Controle dos requerimentos, protocolos e recebimentos do Seguro Defeso.',
     features: [
-      'Anuidades e mensalidades',
-      'Emissão de carnês e boletos via integração com Asaas',
-      'Gestão do DAE (Previdência Social)',
-      'Contribuições compulsórias e facultativas',
-      'Boletos e guias com operação em massa',
-      'Comprovantes na hora',
+      'Registro de protocolo e situação do requerimento no MTE',
+      'Organização por período, portaria e status',
+      'Importação de dados do Portal da Transparência',
+      'Identificação dos associados encontrados na lista de beneficiários',
+      'Confirmação e histórico do recebimento do benefício',
     ],
-    image: '/images/tela-financeiro.jpg',
-    color: 'from-amber-500 to-amber-600',
+    image: '/images/requirements.png',
+    visualType: 'documents',
+    color: 'from-cyan-600 to-cyan-700',
   },
   {
     icon: ClipboardList,
     title: 'REAP',
-    description: 'Controle completo do Relatório de Exercício da Atividade Pesqueira. Desde o acompanhamento das pendências ao preenchimento e envio para o governo.',
+    description: 'Gestão do REAP Simplificado e Anual por associado e ano de referência.',
     features: [
-      'Em muitos casos, um REAP pode ser feito em cerca de 20 segundos',
-      'REAP Simplificado (2021-2024) por ano de emissão do RGP',
-      'REAP Anual (2025 em diante) com importação de comprovantes PDF',
-      'Identificação de pendências via lista oficial do governo',
-      'Envio em lote para até 5 sócios via Robô',
-      'Histórico completo por sócio e ano de referência',
+      'REAP Simplificado dos anos de 2021 a 2024',
+      'REAP Anual a partir de 2025',
+      'Importação e leitura dos comprovantes em PDF',
+      'Consulta de pendências a partir das listas oficiais',
+      'Controle de situação por associado e ano de referência',
+      'Seleção de associados para processamento em lote pelo Robô',
     ],
     image: null,
+    visualType: 'reap',
     color: 'from-teal-500 to-teal-600',
+  },
+  {
+    icon: DollarSign,
+    title: 'Financeiro',
+    description: 'Registro e acompanhamento das cobranças e recebimentos dos associados.',
+    features: [
+      'Anuidades, mensalidades, taxas e contribuições',
+      'Repasses DAE e importação de pagamentos',
+      'Cobranças individuais ou em lote integradas ao Asaas',
+      'Sessões de pagamento e emissão de recibos',
+      'Extrato financeiro individual do associado',
+      'Histórico de alterações e cancelamentos',
+    ],
+    image: '/images/tela-financeiro.jpg',
+    visualType: 'finance',
+    color: 'from-amber-500 to-amber-600',
+  },
+  {
+    icon: Building,
+    title: 'Coordenadores e polos',
+    description: 'Organização dos responsáveis, associados e unidades que compõem a entidade.',
+    features: [
+      'Cadastro de coordenadores e responsáveis regionais',
+      'Vinculação de associados aos coordenadores',
+      'Cadastro e administração de polos ou unidades',
+      'Seleção da unidade ativa durante a operação',
+      'Vinculação de usuários às unidades autorizadas',
+    ],
+    image: null,
+    visualType: 'settings',
+    color: 'from-indigo-500 to-indigo-600',
   },
   {
     icon: BarChart3,
     title: 'Relatórios',
-    description: 'Relatórios gerados em tempo real para tomada de decisão.',
+    description: 'Consultas consolidadas dos registros operacionais e financeiros da entidade.',
     features: [
-      'Lista de inadimplentes',
-      'Arrecadação por período',
-      'Extrato individual de sócios',
-      'Sócios com DAE pendente',
-      'Exportação em PDF',
+      'Relatório de requerimentos de Seguro Defeso',
+      'Relatório de associados em condição de aposentadoria',
+      'Pagamentos registrados por período',
+      'Repasses DAE registrados por período',
+      'Filtros e exportação dos relatórios disponíveis',
     ],
     image: null,
+    visualType: 'reports',
     color: 'from-purple-500 to-purple-600',
   },
   {
     icon: Settings,
-    title: 'Configurações',
-    description: 'Cada entidade configura seus próprios parâmetros.',
+    title: 'Gestão da entidade',
+    description: 'Configuração dos dados institucionais, parâmetros e acessos do SIGESS.',
     features: [
-      'Valores de anuidade personalizados',
-      'Período do defeso configurável',
-      'Cadastro de localidades',
-      'Dados da entidade',
-      'Perfis de acesso por funcionário',
+      'Dados institucionais, endereço, contatos e identidade visual',
+      'Cadastro de localidades e portarias',
+      'Períodos de pesca, defeso e publicações',
+      'Usuários, perfis e permissões de acesso',
+      'Importação e exportação de dados da entidade',
+      'Parâmetros de integração com a extensão SIGESS',
     ],
     image: null,
+    visualType: 'settings',
     color: 'from-slate-500 to-slate-600',
   },
 ];
@@ -125,7 +161,7 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
     <div className="relative">
       <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
         <div className="grid grid-cols-2 gap-3">
-          {module.title === 'Relatórios' ? (
+          {module.visualType === 'reports' ? (
             <>
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
@@ -176,7 +212,7 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
                 </div>
               </div>
             </>
-          ) : module.title === 'REAP' ? (
+          ) : module.visualType === 'reap' ? (
             <>
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-slate-100 relative overflow-hidden group hover:shadow-md transition-all">
                 <div className="absolute -right-4 -bottom-4 opacity-5 transform rotate-12 group-hover:scale-110 transition-transform">
@@ -312,8 +348,7 @@ export function Modules() {
             Módulos do sistema
           </h2>
           <p className="text-lg text-slate-600">
-            Tudo que sua entidade precisa em um só lugar. Cada módulo foi
-            pensado para o dia a dia da secretaria de pesca.
+            Conheça as áreas do SIGESS e as operações disponíveis em cada uma delas.
           </p>
         </div>
 
