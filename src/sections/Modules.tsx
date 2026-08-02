@@ -53,8 +53,6 @@ const modules = [
     features: [
       'Registro de protocolo e situação do requerimento no MTE',
       'Organização por período, portaria e status',
-      'Importação de dados do Portal da Transparência',
-      'Identificação dos associados encontrados na lista de beneficiários',
       'Confirmação e histórico do recebimento do benefício',
     ],
     image: '/images/requirements.png',
