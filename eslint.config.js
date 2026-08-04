@@ -20,4 +20,12 @@ export default defineConfig([
       globals: globals.browser,
     },
   },
+  {
+    files: ['src/components/ui/**/*.{ts,tsx}'],
+    rules: {
+      // These primitives intentionally export their CVA variants and hooks
+      // alongside components, which is the established shadcn/ui pattern.
+      'react-refresh/only-export-components': 'off',
+    },
+  },
 ])

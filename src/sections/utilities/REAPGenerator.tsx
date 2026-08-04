@@ -30,8 +30,11 @@ import {
   loadPesqBrasilLogo,
 } from '@/lib/logoCache';
 
-// Configurar o worker do PDF.js
-pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+// Configurar o worker do PDF.js somente no navegador; a página também é
+// pré-renderizada no Node, onde o objeto global do PDF.js não é inicializado.
+if (typeof window !== 'undefined') {
+  pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+}
 
 // ─── Tipos ──────────────────────────────────────────────────────────
 

@@ -4,6 +4,8 @@ import { IconContext } from '@phosphor-icons/react';
 import { Home } from './pages/Home';
 import { Utilities } from './pages/Utilities';
 import { TermsOfUse } from './pages/TermsOfUse';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { PAGE_META } from './config/pageMeta';
 import './App.css';
 
 // Componente para resetar o scroll ao mudar de página
@@ -34,24 +36,6 @@ function SnapCarouselToggle() {
   return null;
 }
 
-const PAGE_META: Record<string, { title: string; description: string }> = {
-  '/': {
-    title: 'SIGESS - Gestão para Entidades de Pesca',
-    description:
-      'Simplifique a gestão da sua entidade de pescadores. O SIGESS é um sistema de gestão de sócios com programas voltados para a atividade pesqueira e controle de sindicatos, associações e colônias.',
-  },
-  '/utilitarios': {
-    title: 'Utilitários SIGESS - Ferramentas Gratuitas para Entidades de Pesca',
-    description:
-      'Ferramentas gratuitas para facilitar o dia a dia da secretaria de pesca: extração de dados de PDFs, geradores de documentos e mais.',
-  },
-  '/termos-uso': {
-    title: 'Termos de Uso - SIGESS',
-    description:
-      'Termos de uso da plataforma SIGESS: condições de licença, isenção de responsabilidade e limitações de uso do site.',
-  },
-};
-
 // Mantém title, description, canonical e Open Graph sincronizados com a
 // rota atual, já que o index.html é compartilhado por todas as rotas da SPA.
 function PageMeta() {
@@ -79,10 +63,10 @@ function PageMeta() {
   return null;
 }
 
-function App() {
+export function AppContent() {
   return (
     <IconContext.Provider value={{ weight: 'duotone' }}>
-      <Router>
+      <>
         <ScrollToTop />
         <PageMeta />
         <SnapCarouselToggle />
@@ -90,9 +74,18 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/utilitarios" element={<Utilities />} />
           <Route path="/termos-uso" element={<TermsOfUse />} />
+          <Route path="/privacidade" element={<PrivacyPolicy />} />
         </Routes>
-      </Router>
+      </>
     </IconContext.Provider>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
+    </Router>
   );
 }
 
