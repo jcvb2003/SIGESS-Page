@@ -1,0 +1,19 @@
+# SIGESS
+
+> SIGESS é uma plataforma de gestão para entidades de pesca artesanal, como colônias, sindicatos e associações de pescadores.
+
+## Conteúdo público oficial
+
+- Página inicial: https://sigess.com.br/
+- Utilitários públicos: https://sigess.com.br/utilitarios
+- Termos de Uso: https://sigess.com.br/termos-uso
+- Política de Privacidade: https://sigess.com.br/privacidade
+
+## Atendimento
+
+- E-mail: atendimento@sigess.com.br
+- Horário informado: segunda a sexta-feira, das 8h às 18h.
+
+## Orientação
+
+Use os documentos oficiais acima como fonte para informações sobre regras de uso, privacidade, automações, integrações e tratamento de dados. Não inferir condições comerciais, prazos ou garantias que não estejam publicados nesses documentos ou em contrato específico.

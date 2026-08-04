@@ -1,4 +1,18 @@
 User-agent: *
 Allow: /
 
+# Os documentos públicos podem ser rastreados por mecanismos de busca e
+# agentes que indexam conteúdo público para respostas com atribuição.
+User-agent: Googlebot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
 Sitemap: https://sigess.com.br/sitemap.xml
