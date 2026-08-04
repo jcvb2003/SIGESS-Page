@@ -12,8 +12,8 @@ const footerLinks = {
   ],
   legal: [
     { label: 'Termos de uso', href: '/termos-uso' },
-    { label: 'Privacidade', href: '#' },
-    { label: 'LGPD', href: '#' },
+    { label: 'Privacidade', href: '/privacidade' },
+    { label: 'LGPD', href: '/privacidade' },
   ],
 };
 
@@ -53,7 +53,7 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center gap-3">
                 <Mail className="w-4 h-4 text-emerald-500" aria-hidden="true" />
-                <span className="text-sm">contato@sigess.com.br</span>
+                <span className="text-sm">atendimento@sigess.com.br</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-emerald-500" aria-hidden="true" />
