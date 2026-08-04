@@ -4,7 +4,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router-dom';
 
-const routes = ['/termos-uso', '/privacidade'];
+const routes = ['/', '/termos-uso', '/privacidade'];
 const root = process.cwd();
 const template = await readFile(`${root}/dist/index.html`, 'utf8');
 const vite = await createServer({
