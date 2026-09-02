@@ -53,14 +53,14 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section className="relative flex items-center overflow-hidden pt-20 snap-start snap-always scroll-mt-16 lg:min-h-screen lg:scroll-mt-20">
       <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-emerald-50/50" />
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-emerald-100/30 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-emerald-50/50 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
       <div className="relative max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 w-full">
-        <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(560px,1.1fr)] xl:gap-16 animate-fade-in-up">
-          <div className="flex flex-col items-center text-center gap-8 lg:items-start lg:text-left">
+        <div className="grid min-w-0 items-center gap-10 lg:grid-cols-2 xl:grid-cols-[minmax(0,0.9fr)_minmax(560px,1.1fr)] xl:gap-16 animate-fade-in-up">
+          <div className="flex min-w-0 flex-col items-center gap-8 text-center lg:items-start lg:text-left">
             <div className="flex flex-col items-center gap-5 lg:items-start">
               <div className="flex items-center justify-center relative select-none lg:justify-start">
               {/* Mascote do Peixinho SIGESS */}
@@ -112,7 +112,7 @@ export function Hero() {
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full min-w-0">
             <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-slate-950 ring-1 ring-white/70">
               <div className="flex items-center border-b border-white/10 bg-slate-900 px-4 py-3 sm:px-5">
                 <div className="flex items-center gap-2" aria-hidden="true">

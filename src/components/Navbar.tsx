@@ -104,7 +104,10 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            type="button"
+            aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={isMobileMenuOpen}
+            className="flex h-11 w-11 items-center justify-center rounded-lg hover:bg-slate-100 transition-colors lg:hidden"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -118,8 +121,8 @@ export function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in">
-          <div className="px-4 py-4 space-y-3">
+        <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-slate-100 bg-white shadow-lg animate-fade-in lg:hidden">
+          <div className="space-y-2 px-4 py-4 pb-6">
             {navLinks.map((link) => (
               <button
                 key={link.href}

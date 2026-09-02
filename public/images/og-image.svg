@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#f8fafc"/>
+  <rect width="1200" height="14" fill="#059668"/>
+  <rect x="0" y="14" width="1200" height="1" fill="#dbe5e8"/>
+
+  <image x="105" y="150" width="156" height="144" preserveAspectRatio="xMidYMid meet" xlink:href="../logo.svg"/>
+
+  <text x="315" y="236" font-family="Arial, Helvetica, sans-serif" font-size="78" font-weight="700" letter-spacing="-2" fill="#17233b">SIGESS</text>
+  <text x="319" y="285" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#059668">GESTÃO PARA ENTIDADES DE PESCA</text>
+
+  <text x="105" y="390" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#17233b">Gestão completa para</text>
+  <text x="105" y="447" font-family="Arial, Helvetica, sans-serif" font-size="46" font-weight="700" fill="#059668">sindicatos, colônias e associações.</text>
+
+  <rect x="105" y="493" width="990" height="1" fill="#dbe5e8"/>
+  <text x="105" y="543" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#64748b">Cadastro, financeiro e automações em um só lugar.</text>
+  <text x="1095" y="543" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#059668">sigess.com.br</text>
+</svg>

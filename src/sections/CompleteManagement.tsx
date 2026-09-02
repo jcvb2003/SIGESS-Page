@@ -89,8 +89,8 @@ export function CompleteManagement() {
   const currentPortal = portalTabs.find(p => p.id === activeTab) ?? portalTabs[0];
 
   return (
-    <section className="bg-white overflow-hidden min-h-screen flex items-center py-10 lg:py-14 snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
-      <div className="w-full max-w-screen-2xl mx-auto px-6 lg:px-12 grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+    <section className="flex items-center overflow-hidden bg-white py-8 snap-start snap-always scroll-mt-16 sm:py-10 lg:min-h-screen lg:py-14 lg:scroll-mt-20">
+      <div className="mx-auto grid w-full max-w-screen-2xl items-center gap-8 px-4 sm:gap-12 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-12">
 
         {/* ── Coluna esquerda ── */}
         <div
@@ -98,26 +98,26 @@ export function CompleteManagement() {
           className={`will-animate-left ${leftVisible ? 'is-visible' : ''}`}
         >
           {/* Título */}
-          <h2 className="font-heading text-4xl sm:text-5xl font-extrabold text-slate-900 leading-[1.08] tracking-tight mb-6">
+          <h2 className="mb-4 font-heading text-3xl font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:mb-6 sm:text-5xl sm:leading-[1.08]">
             Mais resultado com{' '}
             <span className="text-emerald-600">menos trabalho manual</span>
           </h2>
 
           {/* Subtítulo */}
-          <p className="text-lg text-slate-500 leading-relaxed mb-10 max-w-xl font-light">
+          <p className="mb-7 max-w-xl text-base font-light leading-relaxed text-slate-500 sm:text-lg lg:mb-10">
             O ecossistema do SIGESS automatiza tarefas que normalmente consomem várias pessoas na
             secretaria. REAP, boletos, defeso, controle financeiro e conferências passam a acontecer
             com muito mais velocidade, menos erro e mais previsibilidade.
           </p>
 
           {/* Stats */}
-          <div className="flex flex-wrap gap-8 pt-8 border-t border-slate-200">
+          <div className="grid grid-cols-3 gap-3 border-t border-slate-200 pt-6 sm:gap-4 sm:pt-8">
             {stats.map((s) => (
-              <div key={s.num}>
-                <p className="font-heading text-3xl font-extrabold text-emerald-600 tracking-tight leading-none mb-1">
+              <div key={s.num} className="min-w-0">
+                <p className="mb-1 font-heading text-2xl font-extrabold leading-none tracking-tight text-emerald-600 sm:text-3xl">
                   {s.num}
                 </p>
-                <p className="text-sm text-slate-400">{s.label}</p>
+                <p className="text-xs leading-tight text-slate-400 sm:text-sm sm:leading-normal">{s.label}</p>
               </div>
             ))}
           </div>
@@ -126,10 +126,10 @@ export function CompleteManagement() {
         {/* ── Coluna direita — mockup do navegador ── */}
         <div
           ref={rightRef}
-          className={`will-animate-right ${rightVisible ? 'is-visible' : ''}`}
+          className={`min-w-0 will-animate-right ${rightVisible ? 'is-visible' : ''}`}
         >
           {/* Moldura do navegador */}
-          <div className="overflow-hidden rounded-xl border border-slate-600/70 bg-[#202536] shadow-[0_32px_80px_rgba(15,23,42,0.22)] ring-1 ring-slate-950/10">
+          <div className="overflow-hidden rounded-lg border border-slate-600/70 bg-[#202536] shadow-[0_24px_56px_rgba(15,23,42,0.18)] ring-1 ring-slate-950/10 sm:rounded-xl sm:shadow-[0_32px_80px_rgba(15,23,42,0.22)]">
             {/* Barra de abas */}
             <div className="flex h-10 items-end gap-1 bg-[#202536] px-1.5 pt-1.5 select-none">
               <span className="mb-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#353c4f] text-slate-300">
@@ -144,7 +144,8 @@ export function CompleteManagement() {
                       key={tab.id}
                       type="button"
                       onClick={() => setActiveTab(tab.id)}
-                      className={`group flex h-8 min-w-0 flex-1 items-center gap-2 rounded-t-xl px-2 text-left transition-colors ${isActive
+                      aria-label={tab.browserTitle}
+                      className={`group flex h-8 min-w-0 flex-1 items-center justify-center gap-1 rounded-t-xl px-1 text-left transition-colors sm:justify-start sm:gap-2 sm:px-2 ${isActive
                         ? 'bg-[#3a4153] text-slate-100'
                         : 'border-r border-white/10 text-slate-300 hover:bg-white/[0.06]'
                         }`}
@@ -154,7 +155,7 @@ export function CompleteManagement() {
                         alt=""
                         className="h-3.5 w-3.5 shrink-0 object-contain"
                       />
-                      <span className="min-w-0 flex-1 truncate text-[9px] font-medium sm:text-[10px]">
+                      <span className="hidden min-w-0 flex-1 truncate text-[10px] font-medium sm:block">
                         {tab.browserTitle}
                       </span>
                       <X className={`hidden h-3 w-3 shrink-0 sm:block ${isActive ? 'text-slate-300' : 'text-slate-500'}`} />

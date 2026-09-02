@@ -120,13 +120,13 @@ const faqJsonLd = {
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="faq" className="relative flex items-center bg-white py-10 snap-start snap-always scroll-mt-16 lg:min-h-screen lg:py-14 lg:scroll-mt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="mx-auto mb-10 max-w-3xl text-center lg:mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Perguntas frequentes
           </h2>
@@ -147,7 +147,7 @@ export function FAQ() {
                   <AccordionItem
                     key={index}
                     value={`${group.category}-${index}`}
-                    className="bg-white border border-slate-200 rounded-xl px-6 shadow-sm data-[state=open]:border-emerald-200 data-[state=open]:shadow-md transition-all duration-200"
+                    className="rounded-xl border border-slate-200 bg-white px-4 shadow-sm transition-all duration-200 data-[state=open]:border-emerald-200 data-[state=open]:shadow-md sm:px-6"
                   >
                     <AccordionTrigger className="text-left text-slate-800 font-semibold hover:text-emerald-700 hover:no-underline py-5 text-base">
                       {item.question}

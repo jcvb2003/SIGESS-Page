@@ -48,9 +48,16 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
   }
   h1, h2, h3, h4, h5, h6, .font-heading {
     font-family: 'Sora', sans-serif;
+  }
+}
+
+@media (max-width: 1023px) {
+  html.snap-carousel {
+    scroll-snap-type: none;
   }
 }
 
@@ -252,3 +259,18 @@
 .anim-delay-3  { transition-delay: 240ms; }
 .anim-delay-4  { transition-delay: 320ms; }
 .anim-delay-5  { transition-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

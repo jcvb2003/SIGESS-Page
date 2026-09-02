@@ -26,9 +26,9 @@ const steps = [
 
 export function Defeso() {
   return (
-    <section id="defeso" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white overflow-hidden snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="defeso" className="relative flex items-center overflow-hidden bg-white py-10 snap-start snap-always scroll-mt-16 lg:min-h-screen lg:py-14 lg:scroll-mt-20">
       <div className="relative w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-14">
+        <div className="mb-10 text-center lg:mb-14">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Como funciona o defeso no SIGESS
           </h2>
@@ -45,9 +45,9 @@ export function Defeso() {
             {steps.map((step, i) => (
               <div
                 key={step.phase}
-                className={`flex flex-col md:flex-row items-center gap-6 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                className={`flex flex-col items-center gap-4 md:flex-row md:gap-6 ${i % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
               >
-                <div className={`flex-1 ${i % 2 === 1 ? 'md:text-right' : 'md:text-left'}`}>
+                <div className={`w-full flex-1 ${i % 2 === 1 ? 'md:text-right' : 'md:text-left'}`}>
                   <div className="bg-emerald-600 rounded-2xl p-6 shadow-md hover:shadow-lg hover:bg-emerald-700 transition-all duration-300">
                     <h3 className="font-bold text-lg text-white mb-2">{step.phase}</h3>
                     <p className="text-emerald-50 text-sm leading-relaxed">{step.description}</p>

@@ -336,10 +336,10 @@ export function REAPGenerator() {
 
   return (
     <Card className="w-full max-w-4xl mx-auto border-emerald-100 shadow-xl overflow-hidden">
-      <CardHeader className="bg-emerald-50/50 border-b border-emerald-100/50">
+      <CardHeader className="border-b border-emerald-100/50 bg-emerald-50/50 p-4 sm:p-6">
         <div className="flex items-center justify-between">
           <div className="space-y-1">
-            <CardTitle className="text-2xl font-bold text-slate-800 flex items-center gap-2">
+            <CardTitle className="flex items-center gap-2 text-xl font-bold text-slate-800 sm:text-2xl">
               <QrCode className="w-6 h-6 text-emerald-600" />
               Gerador de comprovante simplificado
             </CardTitle>
@@ -355,7 +355,7 @@ export function REAPGenerator() {
         </div>
       </CardHeader>
 
-      <CardContent className="p-6 space-y-8">
+      <CardContent className="space-y-6 p-4 sm:space-y-8 sm:p-6">
         {/* ═══ Logo da Entidade ═══ */}
         <div className="space-y-3">
           <h3 className="text-sm font-semibold text-slate-700 flex items-center gap-2">
@@ -385,13 +385,13 @@ export function REAPGenerator() {
 
             <div className="flex-1 space-y-2 w-full">
               {/* Upload de arquivo */}
-              <div className="flex gap-2">
+              <div className="flex flex-wrap gap-2">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => entityLogoInputRef.current?.click()}
                   disabled={isLoadingLogo}
-                  className="text-xs"
+                  className="min-h-11 text-xs"
                 >
                   <FileUp className="w-3.5 h-3.5 mr-1.5" />
                   Upload
@@ -401,7 +401,7 @@ export function REAPGenerator() {
                     variant="ghost"
                     size="sm"
                     onClick={clearEntityLogo}
-                    className="text-xs text-slate-400 hover:text-rose-500"
+                    className="min-h-11 text-xs text-slate-400 hover:text-rose-500"
                   >
                     <XIcon className="w-3.5 h-3.5 mr-1" />
                     Remover
@@ -416,7 +416,7 @@ export function REAPGenerator() {
                   value={entityLogoUrl}
                   onChange={(e) => setEntityLogoUrl(e.target.value)}
                   placeholder="Ou cole a URL da imagem..."
-                  className="flex-1 text-xs border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-200 focus:border-emerald-400 transition-all"
+                  className="min-w-0 flex-1 rounded-lg border border-slate-200 px-3 py-2 text-xs transition-all focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter') handleEntityLogoUrl();
                   }}
@@ -427,7 +427,8 @@ export function REAPGenerator() {
                   size="sm"
                   onClick={handleEntityLogoUrl}
                   disabled={!entityLogoUrl.trim() || isLoadingLogo}
-                  className="text-xs"
+                  aria-label="Usar URL do logo"
+                  className="min-h-11 min-w-11 text-xs"
                 >
                   {isLoadingLogo ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -463,7 +464,7 @@ export function REAPGenerator() {
             e.preventDefault();
             handleFileAdd(Array.from(e.dataTransfer.files));
           }}
-          className="w-full group relative flex flex-col items-center justify-center py-12 px-6 border-2 border-dashed border-emerald-200 bg-emerald-50/20 hover:bg-emerald-50/50 hover:border-emerald-400 rounded-2xl cursor-pointer transition-all duration-300"
+          className="group relative flex w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-emerald-200 bg-emerald-50/20 px-4 py-10 transition-all duration-300 hover:border-emerald-400 hover:bg-emerald-50/50 sm:px-6 sm:py-12"
           aria-label="Adicionar arquivos PDF"
         >
           <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-md mb-4 group-hover:scale-110 transition-transform">
@@ -536,7 +537,7 @@ export function REAPGenerator() {
                   {!isProcessing && (
                     <button
                       onClick={() => removeFile(i)}
-                      className="p-1.5 text-slate-400 hover:text-rose-500 transition-colors"
+                      className="flex min-h-11 min-w-11 items-center justify-center text-slate-400 transition-colors hover:text-rose-500"
                       title="Remover arquivo"
                       aria-label={`Remover ${f.file.name}`}
                     >
@@ -617,7 +618,7 @@ export function REAPGenerator() {
         </div>
       </CardContent>
 
-      <div className="px-6 py-4 bg-slate-50 border-t border-slate-100 flex flex-wrap gap-4 justify-center">
+      <div className="flex flex-wrap justify-center gap-3 border-t border-slate-100 bg-slate-50 px-4 py-4 sm:gap-4 sm:px-6">
         <div className="flex items-center gap-1.5 text-xs text-slate-400">
           <User className="w-3.5 h-3.5" />
           <span>Nome Automatizado</span>

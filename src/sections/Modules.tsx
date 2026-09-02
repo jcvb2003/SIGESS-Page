@@ -157,7 +157,7 @@ function ModuleVisual({ module }: { module: typeof modules[0] }) {
 
   return (
     <div className="relative">
-      <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
+      <div className="rounded-2xl border border-slate-100 bg-slate-50 p-3 sm:p-6">
         <div className="grid grid-cols-2 gap-3">
           {module.visualType === 'reports' ? (
             <>
@@ -338,10 +338,10 @@ export function Modules() {
   const module = modules[active];
 
   return (
-    <section id="modulos" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="modulos" className="relative flex items-center bg-white py-10 snap-start snap-always scroll-mt-16 lg:min-h-screen lg:py-14 lg:scroll-mt-20">
       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}
-        <div className="text-center max-w-3xl mx-auto mb-10">
+        <div className="mx-auto mb-10 max-w-3xl text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Módulos do sistema
           </h2>
@@ -350,9 +350,9 @@ export function Modules() {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[240px_1fr] gap-6 lg:gap-12 items-start">
+        <div className="grid items-start gap-6 lg:grid-cols-[240px_1fr] lg:gap-12">
           {/* Navegação - lista lateral como um menu de app */}
-          <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible -mx-1 px-1 lg:mx-0 lg:px-0 pb-2 lg:pb-0 lg:border-r lg:border-slate-100 lg:pr-4">
+          <nav className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:mx-0 lg:flex lg:flex-col lg:gap-1 lg:border-r lg:border-slate-100 lg:px-0 lg:pb-0 lg:pr-4">
             {modules.map((m, i) => {
               const Icon = m.icon;
               const isActive = i === active;
@@ -361,7 +361,7 @@ export function Modules() {
                   key={i}
                   id={`modulo-tab-${i}`}
                   onClick={() => setActive(i)}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-left whitespace-nowrap transition-colors duration-200 ${isActive ? 'bg-slate-50' : 'hover:bg-slate-50/60'
+                  className={`flex min-h-14 min-w-0 items-center gap-2 rounded-xl px-2 py-2.5 text-left transition-colors duration-200 sm:gap-3 sm:px-3 ${isActive ? 'bg-slate-50' : 'hover:bg-slate-50/60'
                     }`}
                 >
                   <div
@@ -370,7 +370,7 @@ export function Modules() {
                   >
                     <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                   </div>
-                  <span className={`text-sm ${isActive ? 'font-bold text-slate-800' : 'font-medium text-slate-500'}`}>
+                  <span className={`min-w-0 text-xs leading-tight sm:text-sm ${isActive ? 'font-bold text-slate-800' : 'font-medium text-slate-500'}`}>
                     {m.title}
                   </span>
                 </button>
@@ -379,7 +379,7 @@ export function Modules() {
           </nav>
 
           {/* Painel do módulo ativo */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          <div className="grid min-w-0 items-center gap-8 lg:grid-cols-2 lg:gap-16">
             {/* Conteúdo */}
             <div className="space-y-6">
               <p className="text-lg text-slate-600">

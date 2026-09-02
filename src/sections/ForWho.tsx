@@ -33,12 +33,12 @@ export function ForWho() {
   const [gridRef, gridVisible] = useInView<HTMLDivElement>({ threshold: 0.1 });
 
   return (
-    <section id="para-quem" className="relative min-h-screen flex items-center py-10 lg:py-14 bg-white snap-start snap-always scroll-mt-16 lg:scroll-mt-20">
+    <section id="para-quem" className="relative flex items-center bg-white py-10 snap-start snap-always scroll-mt-16 lg:min-h-screen lg:py-14 lg:scroll-mt-20">
       <div className="w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div
           ref={headerRef}
-          className={`text-center max-w-3xl mx-auto mb-16 will-animate ${headerVisible ? 'is-visible' : ''}`}
+          className={`mx-auto mb-10 max-w-3xl text-center will-animate lg:mb-16 ${headerVisible ? 'is-visible' : ''}`}
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
             Para quem é o SIGESS
@@ -50,11 +50,11 @@ export function ForWho() {
         </div>
 
         {/* Cards Grid */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div ref={gridRef} className="grid gap-5 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {entities.map((entity, index) => (
             <div
               key={index}
-              className={`bg-white rounded-2xl p-8 shadow-sm border border-slate-100 will-animate anim-delay-${index} ${gridVisible ? 'is-visible' : ''}`}
+              className={`rounded-2xl border border-slate-100 bg-white p-6 shadow-sm will-animate anim-delay-${index} lg:p-8 ${gridVisible ? 'is-visible' : ''}`}
             >
               {/* Icon */}
               <div className={`w-16 h-16 rounded-xl ${entity.color} flex items-center justify-center mb-6`}>

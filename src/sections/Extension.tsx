@@ -70,7 +70,7 @@ export function Extension() {
   return (
     <section
       id="extensao"
-      className="relative min-h-screen snap-start snap-always scroll-mt-16 overflow-hidden bg-[#06382f] py-12 lg:scroll-mt-20 lg:py-16"
+      className="relative snap-start snap-always scroll-mt-16 overflow-hidden bg-[#06382f] py-12 lg:min-h-screen lg:scroll-mt-20 lg:py-16"
     >
       <div
         ref={sectionRef}

@@ -35,13 +35,13 @@ export function ServiceFooter() {
       aria-label="Atendimento e suporte"
       className="border-b border-white/10 bg-emerald-950 text-white"
     >
-      <div className="mx-auto grid max-w-screen-2xl md:grid-cols-3">
+      <div className="mx-auto grid max-w-screen-2xl lg:grid-cols-3">
         {services.map(({ title, description, icon: Icon }, index) => (
           <div
             key={title}
             className={`flex items-center gap-4 px-6 py-7 sm:px-8 lg:px-10 lg:py-9 ${
               index > 0
-                ? 'border-t border-white/10 md:border-l md:border-t-0'
+                ? 'border-t border-white/10 lg:border-l lg:border-t-0'
                 : ''
             }`}
           >
